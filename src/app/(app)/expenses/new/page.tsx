@@ -1,4 +1,5 @@
 import type { Category, ItemKind } from "@/generated/prisma/enums";
+import { PageHeader } from "@/components/ui";
 import { db } from "@/lib/db";
 import { getSession } from "@/lib/session";
 import { currentTripDay, localNow } from "@/lib/trip-time";
@@ -34,7 +35,7 @@ export default async function NewExpensePage({ searchParams }: PageProps<"/expen
 
   return (
     <>
-      <h1 className="text-[28px]">지출 추가</h1>
+      <PageHeader title="지출 추가" back={{ href: "/expenses", label: "경비" }} />
       <ExpenseForm
         action={createExpense}
         users={users}

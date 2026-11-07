@@ -1,13 +1,17 @@
 import Link from "next/link";
-import { DayAlerts, citySoft } from "@/components/day-timeline";
+import { ChevronRight, MapPin, TriangleAlert } from "lucide-react";
+import { LogoutButton } from "@/components/logout-button";
+import { PhotoHero } from "@/components/photo-hero";
 import { SummaryTiles } from "@/components/summary-tiles";
-import type { ItineraryItem } from "@/generated/prisma/client";
+import { CITY_NAME, CITY_PHOTO, KIND_ICON, mapUrl } from "@/components/travel";
+import { Badge, Card, IconTile, ProgressBar, SectionTitle } from "@/components/ui";
+import type { DayAlert, ItineraryItem } from "@/generated/prisma/client";
 import { summarizeBudget, sumKrw } from "@/lib/budget";
 import { db } from "@/lib/db";
 import { formatDate, formatKrw } from "@/lib/format";
 import { getSession } from "@/lib/session";
 import { getSettings } from "@/lib/settings";
-import { currentTripDay, findNowAndNext, localNow } from "@/lib/trip-time";
+import { currentTripDay, findNowAndNext, localNow, toInstant } from "@/lib/trip-time";
 
 // 개발 중에만 ?now=2026-12-06T14:00:00+01:00 으로 현재 시각을 바꿔 화면을 확인한다
 function resolveNow(param: string | string[] | undefined) {
@@ -20,23 +24,33 @@ function resolveNow(param: string | string[] | undefined) {
 
 const daysBetween = (from: string, to: string) => Math.round((Date.parse(to) - Date.parse(from)) / 86_400_000);
 
-function ItemCard({ label, item }: { label: string; item: ItineraryItem | null }) {
+// "35분 후", "2시간 10분 후", 다음 날이면 날짜
+function untilText(minutes: number, item: ItineraryItem, today: string) {
+  if (item.date !== today) return formatDate(item.date);
+  if (minutes < 60) return `${minutes}분 후`;
+  const h = Math.floor(minutes / 60);
+  const m = minutes % 60;
+  return `${h}시간${m ? ` ${m}분` : ""} 후`;
+}
+
+function Alerts({ alerts }: { alerts: DayAlert[] }) {
+  return alerts.map((a) => (
+    <div key={a.id} role="note" className="flex gap-3 rounded-[var(--radius-card)] bg-caution-soft p-4 text-[14px] leading-relaxed text-fg">
+      <TriangleAlert size={20} className="mt-0.5 shrink-0 text-caution" aria-hidden />
+      <p>
+        <b className="block text-caution">{a.title}</b>
+        {a.body}
+      </p>
+    </div>
+  ));
+}
+
+// 사진 위 맨 윗줄: 두 사람 이름과 로그아웃
+function HeroTop({ couple }: { couple: string }) {
   return (
-    <div className="flex min-w-0 flex-col gap-1 rounded-[10px] border border-line bg-surface px-4 py-3.5">
-      <span className="text-xs text-muted">{label}</span>
-      {item ? (
-        <>
-          <span className="font-semibold">
-            <span className="mono mr-2 text-[13px] text-muted">
-              {formatDate(item.date).split(" ")[0]} {item.startTime}
-            </span>
-            {item.title}
-          </span>
-          {item.description && <span className="text-sm text-muted">{item.description}</span>}
-        </>
-      ) : (
-        <span className="text-sm text-muted">없음</span>
-      )}
+    <div className="flex items-center justify-between">
+      <span className="inline-flex rounded-full bg-black/35 px-3 py-1 text-[13px] font-semibold text-white backdrop-blur-md">{couple}</span>
+      <LogoutButton />
     </div>
   );
 }
@@ -44,13 +58,14 @@ function ItemCard({ label, item }: { label: string; item: ItineraryItem | null }
 export default async function HomePage({ searchParams }: PageProps<"/">) {
   await getSession();
   const now = resolveNow((await searchParams).now);
-  const [days, items, budgetItems, expenses, settings, checklist] = await Promise.all([
+  const [days, items, budgetItems, expenses, settings, checklist, users] = await Promise.all([
     db.tripDay.findMany({ orderBy: { date: "asc" }, include: { alerts: true } }),
     db.itineraryItem.findMany({ where: { hidden: false }, orderBy: [{ date: "asc" }, { startTime: "asc" }, { sortOrder: "asc" }] }),
     db.budgetItem.findMany(),
     db.expense.findMany({ select: { spentOn: true, category: true, currency: true, amountMinor: true, amountKrw: true, budgetItemId: true } }),
     getSettings(),
     db.checklistItem.findMany({ select: { checkedById: true } }),
+    db.user.findMany({ orderBy: { id: "asc" } }),
   ]);
   const summary = summarizeBudget({ budgetItems, expenses, ...settings });
   const first = days[0];
@@ -58,46 +73,89 @@ export default async function HomePage({ searchParams }: PageProps<"/">) {
   const today = currentTripDay(days, now);
   const before = !today && localNow(now, first.tz).date < first.date;
   const done = checklist.filter((c) => c.checkedById).length;
-
-  const checklistBar = (
-    <Link href="/checklist" className="flex flex-col gap-2 rounded-[10px] border border-line bg-surface px-4 py-3.5 text-fg no-underline">
-      <span className="flex justify-between text-sm">
-        <span>출발 전 체크리스트</span>
-        <span className="mono text-muted">
-          {done}/{checklist.length}
-        </span>
-      </span>
-      <span className="h-1.5 overflow-hidden rounded-full bg-line" aria-hidden>
-        <i className="block h-full bg-ok" style={{ width: `${(done / checklist.length) * 100}%` }} />
-      </span>
-    </Link>
-  );
+  const couple = users.map((u) => u.name).join(" · ");
 
   if (today) {
     const index = days.indexOf(today);
     const { current, next } = findNowAndNext(days, items, now);
+    const nextAt = next ? toInstant(next.date, next.startTime, days.find((d) => d.date === next.date)!.tz) : null;
+    const minutes = nextAt ? Math.max(0, Math.round((nextAt.getTime() - now.getTime()) / 60000)) : 0;
+    const NowIcon = current ? KIND_ICON[current.kind] : null;
+    const todaySpent = sumKrw(expenses.filter((e) => e.spentOn === today.date));
+
     return (
       <>
-        <header className="flex flex-col gap-2">
-          <span className={`mono self-start rounded px-2 py-0.5 text-[13px] ${citySoft(today.city)}`}>
-            {formatDate(today.date)} · {localNow(now, today.tz).time} 현지
+        <PhotoHero src={CITY_PHOTO[today.city]} alt={`${CITY_NAME[today.city]} 풍경`} top={<HeroTop couple={couple} />}>
+          <span className="mono text-[13px] font-semibold opacity-90">
+            Day {String(index + 1).padStart(2, "0")} · {formatDate(today.date)} · {localNow(now, today.tz).time} 현지
           </span>
-          <h1 className="text-[28px]">여행 {index + 1}일차</h1>
-          <p className="text-muted">{today.title}</p>
-        </header>
-        <DayAlerts alerts={today.alerts} />
-        <div className="grid gap-3 sm:grid-cols-2">
-          <ItemCard label="지금" item={current} />
-          <ItemCard label="다음 일정" item={next} />
-        </div>
-        <Link
-          href={`/itinerary/${today.date}`}
-          className="flex items-center justify-between rounded-[10px] border border-line bg-surface px-4 py-3.5 text-fg no-underline"
-        >
-          <span className="text-sm text-muted">오늘 지출</span>
-          <span className="mono text-xl">{formatKrw(sumKrw(expenses.filter((e) => e.spentOn === today.date)))}</span>
+          <h1 className="text-[32px] leading-tight">{CITY_NAME[today.city]}</h1>
+          <p className="text-[15px] opacity-90">{today.title}</p>
+        </PhotoHero>
+
+        <Card className="relative -mt-9 shadow-[0_12px_32px_-12px_rgb(16_19_23/0.25)]">
+          <div className="flex items-center gap-2">
+            <Badge tone="accent">지금</Badge>
+            {current && <span className="mono text-[13px] text-muted">{current.startTime}부터</span>}
+          </div>
+          {current && NowIcon ? (
+            <>
+              <div className="mt-3 flex items-start gap-3">
+                <IconTile icon={NowIcon} tone="accent" size={44} />
+                <div className="min-w-0">
+                  <h2 className="text-[20px]">{current.title}</h2>
+                  {current.description && <p className="mt-1 line-clamp-3 text-[14px] text-muted">{current.description}</p>}
+                </div>
+              </div>
+              <div className="mt-4 flex gap-2">
+                {current.mapQuery && (
+                  <a
+                    href={mapUrl(current.mapQuery)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="press flex min-h-11 flex-1 items-center justify-center gap-1.5 rounded-[var(--radius-control)] bg-surface-2 text-[14px] font-semibold text-fg no-underline"
+                  >
+                    <MapPin size={18} aria-hidden />
+                    지도
+                  </a>
+                )}
+                <Link
+                  href={`/expenses/new?itineraryItemId=${current.id}`}
+                  className="press flex min-h-11 flex-1 items-center justify-center rounded-[var(--radius-control)] bg-accent-soft text-[14px] font-semibold text-accent-ink no-underline"
+                >
+                  이 일정으로 지출 추가
+                </Link>
+              </div>
+            </>
+          ) : (
+            <p className="mt-3 text-muted">아직 시작한 일정이 없어요.</p>
+          )}
+        </Card>
+
+        {next && (
+          <Link href={`/itinerary/${next.date}`} className="press flex items-center gap-3 rounded-[var(--radius-card)] bg-surface p-4 text-fg no-underline">
+            <IconTile icon={KIND_ICON[next.kind]} />
+            <div className="min-w-0 flex-1">
+              <span className="text-[13px] font-semibold text-muted">
+                다음 · <span className="mono">{next.startTime}</span> · {untilText(minutes, next, today.date)}
+              </span>
+              <p className="truncate font-semibold">{next.title}</p>
+            </div>
+            <ChevronRight size={20} className="shrink-0 text-muted" aria-hidden />
+          </Link>
+        )}
+
+        <Alerts alerts={today.alerts} />
+
+        <Link href={`/itinerary/${today.date}`} className="press flex items-center justify-between rounded-[var(--radius-card)] bg-surface p-5 text-fg no-underline">
+          <div>
+            <span className="text-[13px] font-semibold text-muted">오늘 지출</span>
+            <p className="mono text-[26px] leading-tight font-bold">{formatKrw(todaySpent)}</p>
+          </div>
+          <ChevronRight size={22} className="text-muted" aria-hidden />
         </Link>
-        <SummaryTiles s={summary} />
+
+        <SummaryTiles s={summary} href="/expenses" />
       </>
     );
   }
@@ -107,44 +165,70 @@ export default async function HomePage({ searchParams }: PageProps<"/">) {
     const firstItems = items.filter((i) => i.date === first.date);
     return (
       <>
-        <header className="flex flex-col gap-2">
-          <span className="text-xs font-semibold tracking-[.12em] text-muted uppercase">Honeymoon · 2026.11.30 – 12.08</span>
-          <h1 className="text-[clamp(28px,8vw,42px)]">출발까지 D-{dday}</h1>
-        </header>
-        {checklistBar}
-        <SummaryTiles s={summary} />
-        <section className="flex flex-col gap-2">
-          <h2 className="text-xl">
-            <Link href={`/itinerary/${first.date}`} className="text-fg">
-              첫날 · {first.title}
-            </Link>
-          </h2>
+        <PhotoHero
+          src="/images/porto-dusk.webp"
+          alt="해 질 녘 포르투 도루강"
+          height={340}
+          top={<HeroTop couple={couple} />}
+        >
+          <span className="text-[15px] font-semibold opacity-90">포르투 · 바르셀로나 신혼여행</span>
+          <h1 className="mono text-[52px] leading-none font-bold tracking-tight">D-{dday}</h1>
+          <span className="mono text-[14px] opacity-90">2026.11.30 – 12.08 · 8박 9일</span>
+        </PhotoHero>
+
+        <Card className="relative -mt-9 shadow-[0_12px_32px_-12px_rgb(16_19_23/0.25)]">
+          <Link href="/checklist" className="block text-fg no-underline">
+            <div className="mb-3 flex items-end justify-between">
+              <div>
+                <span className="text-[13px] font-semibold text-muted">출발 준비</span>
+                <p className="text-[20px] font-bold">
+                  <span className="mono">{done}</span>
+                  <span className="text-muted"> / {checklist.length}개 완료</span>
+                </p>
+              </div>
+              <ChevronRight size={22} className="text-muted" aria-hidden />
+            </div>
+            <ProgressBar value={done} max={checklist.length} tone="ok" label="체크리스트 진행" />
+          </Link>
+        </Card>
+
+        <SummaryTiles s={summary} href="/expenses" />
+
+        <Card>
+          <SectionTitle
+            action={
+              <Link href={`/itinerary/${first.date}`} className="-my-2 inline-flex min-h-11 items-center px-1 text-[14px] font-semibold no-underline">
+                전체 보기
+              </Link>
+            }
+          >
+            첫날 · {first.title}
+          </SectionTitle>
           <ol className="flex flex-col">
             {firstItems.map((i) => (
-              <li key={i.id} className="grid grid-cols-[52px_1fr] gap-2.5 border-t border-line py-2 first:border-t-0">
-                <span className="mono text-[13px] text-muted">{i.startTime}</span>
-                <span className="text-sm">{i.title}</span>
+              <li key={i.id} className="flex items-center gap-3 py-2">
+                <IconTile icon={KIND_ICON[i.kind]} size={36} />
+                <span className="mono w-12 shrink-0 text-[13px] text-muted">{i.startTime}</span>
+                <span className="min-w-0 truncate text-[15px] font-semibold">{i.title}</span>
               </li>
             ))}
           </ol>
-        </section>
+        </Card>
       </>
     );
   }
 
   return (
     <>
-      <header className="flex flex-col gap-2">
-        <span className="text-xs font-semibold tracking-[.12em] text-muted uppercase">
+      <PhotoHero src="/images/barcelona.webp" alt="바르셀로나 사그라다 파밀리아" top={<HeroTop couple={couple} />}>
+        <span className="mono text-[14px] font-semibold opacity-90">
           {formatDate(first.date)} – {formatDate(last.date)}
         </span>
-        <h1 className="text-[28px]">여행을 마쳤어요</h1>
-        <p className="text-muted">최종 경비</p>
-      </header>
-      <SummaryTiles s={summary} />
-      <Link href="/expenses" className="inline-flex min-h-11 items-center">
-        경비 자세히 보기
-      </Link>
+        <h1 className="text-[32px] leading-tight">여행을 마쳤어요</h1>
+      </PhotoHero>
+      <div className="relative -mt-9">
+        <SummaryTiles s={summary} href="/expenses" />
+      </div>
     </>
   );
 }

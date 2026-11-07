@@ -1,103 +1,106 @@
 import Link from "next/link";
+import { ChevronRight, MapPin, Plus, Sparkles, TriangleAlert } from "lucide-react";
 import { ItemEditor } from "@/app/(app)/itinerary/item-editor";
-import type { City, DayAlert, ItineraryItem, TripDay } from "@/generated/prisma/client";
+import type { DayAlert, ItineraryItem, TripDay } from "@/generated/prisma/client";
 import { formatDate } from "@/lib/format";
-
-export const CITY_LABEL: Record<City, string> = {
-  paris: "파리 · Paris",
-  porto: "포르투 · Porto",
-  barcelona: "바르셀로나 · Barcelona",
-};
-
-// 포르투는 코발트, 바르셀로나는 오커
-export const cityText = (city: City) => (city === "barcelona" ? "text-ocre" : "text-azul");
-export const citySoft = (city: City) => (city === "barcelona" ? "bg-ocre-soft text-ocre" : "bg-azul-soft text-azul");
-
-export function mapUrl(query: string) {
-  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
-}
+import { CITY_NAME, KIND_ICON, KIND_LABEL, mapUrl } from "./travel";
+import { Badge } from "./ui";
 
 export function DayAlerts({ alerts }: { alerts: DayAlert[] }) {
   if (alerts.length === 0) return null;
   return (
-    <div className="flex flex-col gap-2.5">
+    <div className="flex flex-col gap-2">
       {alerts.map((a) => (
-        <div key={a.id} role="note" className="rounded-r-lg border-l-[3px] border-warn bg-warn-soft px-4 py-3 text-sm">
-          <b className="text-warn">{a.title}</b> {a.body}
+        <div key={a.id} role="note" className="flex gap-3 rounded-[16px] bg-caution-soft p-4 text-[14px] leading-relaxed">
+          <TriangleAlert size={20} className="mt-0.5 shrink-0 text-caution" aria-hidden />
+          <p>
+            <b className="block text-caution">{a.title}</b>
+            {a.body}
+          </p>
         </div>
       ))}
     </div>
   );
 }
 
-function Tags({ item, city }: { item: ItineraryItem; city: City }) {
-  const tag = "ml-1.5 inline-block rounded px-1.5 align-[2px] text-[11px] font-semibold";
-  return (
-    <>
-      {item.booking === "required" && <span className={`${tag} bg-warn-soft text-warn`}>예약 필요</span>}
-      {item.booking === "done" && <span className={`${tag} bg-ok/15 text-ok`}>예약 완료</span>}
-      {item.kind === "meal" && <span className={`${tag} ${citySoft(city)}`}>식사</span>}
-    </>
-  );
-}
+const action =
+  "press inline-flex min-h-11 items-center gap-1 rounded-full bg-surface-2 px-3.5 text-[13px] font-semibold text-fg no-underline";
 
 type Props = {
   day: TripDay & { alerts: DayAlert[]; items: ItineraryItem[] };
   index: number;
-  // 하루 일정 화면: 지도 링크와 지출 추가 링크를 보인다
+  // 하루 일정 화면: 항목마다 지도·지출·편집 버튼을 보인다
   detail?: boolean;
 };
 
+export function DayHeading({ day, index }: { day: TripDay; index: number }) {
+  return (
+    <span className="mono text-[13px] font-semibold text-muted">
+      Day {String(index + 1).padStart(2, "0")} · {formatDate(day.date)} · {CITY_NAME[day.city]}
+    </span>
+  );
+}
+
 export function DayTimeline({ day, index, detail = false }: Props) {
   return (
-    <section id={`d-${day.date}`} className="flex scroll-mt-16 flex-col gap-4">
-      <div className="flex flex-wrap items-baseline gap-x-3.5 gap-y-1">
-        <span className={`mono rounded px-2 py-0.5 text-[13px] ${citySoft(day.city)}`}>
-          {formatDate(day.date)} · D{index}
-        </span>
-        {detail ? (
-          <h1 className="text-2xl">{day.title}</h1>
-        ) : (
-          <h2 className="text-xl">
-            <Link href={`/itinerary/${day.date}`} className="text-fg">
-              {day.title}
-            </Link>
-          </h2>
-        )}
-      </div>
-      <DayAlerts alerts={day.alerts} />
-      {day.note && <p className="text-sm text-muted">{day.note}</p>}
+    <section id={`d-${day.date}`} className="scroll-mt-20 rounded-[var(--radius-card)] bg-surface p-5">
+      {!detail && (
+        <Link href={`/itinerary/${day.date}`} className="mb-4 flex items-start justify-between gap-3 text-fg no-underline">
+          <div className="flex min-w-0 flex-col gap-1">
+            <DayHeading day={day} index={index} />
+            <h2 className="text-[19px]">{day.title}</h2>
+          </div>
+          <ChevronRight size={22} className="mt-6 shrink-0 text-muted" aria-hidden />
+        </Link>
+      )}
+      {day.note && <p className="mb-4 rounded-[14px] bg-surface-2 px-4 py-3 text-[14px] text-muted">{day.note}</p>}
+      {!detail && day.alerts.length > 0 && (
+        <div className="mb-4">
+          <DayAlerts alerts={day.alerts} />
+        </div>
+      )}
       <ol className="flex flex-col">
         {day.items.map((item, i) => {
-          const prevKey = i > 0 && day.items[i - 1].isKey;
+          const I = KIND_ICON[item.kind];
+          const last = i === day.items.length - 1;
           return (
-            <li
-              key={item.id}
-              className={`grid grid-cols-[52px_1fr] gap-2.5 py-3 sm:grid-cols-[64px_1fr] sm:gap-3.5 ${
-                item.isKey ? "rounded-lg bg-ocre-soft px-3" : i > 0 && !prevKey ? "border-t border-line" : ""
-              }`}
-            >
-              <span className="mono pt-0.5 text-[13px] text-muted">{item.startTime}</span>
-              <div className="flex min-w-0 flex-col gap-1">
-                <span className="font-semibold">
-                  {item.kind === "flight" && (
-                    <span className="text-muted" aria-label="항공">
-                      ✈{" "}
-                    </span>
-                  )}
-                  {item.title}
-                  <Tags item={item} city={day.city} />
+            <li key={item.id} className={`grid gap-x-2.5 ${detail ? "grid-cols-[36px_1fr]" : "grid-cols-[44px_36px_1fr]"}`}>
+              {!detail && <span className="mono pt-2 text-[13px] font-semibold text-muted">{item.startTime}</span>}
+              <span className="relative flex justify-center">
+                <span
+                  className={`relative z-[1] mt-0.5 flex size-9 items-center justify-center rounded-full ${
+                    item.isKey ? "bg-accent text-on-accent" : "bg-surface-2 text-muted"
+                  }`}
+                >
+                  <I size={17} aria-label={KIND_LABEL[item.kind]} />
                 </span>
-                {item.description && <span className="text-sm text-muted">{item.description}</span>}
+                {!last && <span className="absolute top-10 bottom-0 w-px bg-line" aria-hidden />}
+              </span>
+              <div className={`flex min-w-0 flex-col gap-1 ${detail ? "pt-0" : "pt-1.5"} ${last ? "" : "pb-6"}`}>
+                {detail && <span className="mono text-[13px] font-semibold text-muted">{item.startTime}</span>}
+                <span className="flex flex-wrap items-center gap-1.5">
+                  <span className="text-[15px] font-semibold">{item.title}</span>
+                  {item.isKey && (
+                    <Badge tone="accent">
+                      <Sparkles size={11} className="mr-0.5" aria-hidden />
+                      하이라이트
+                    </Badge>
+                  )}
+                  {item.booking === "required" && <Badge tone="caution">예약 필요</Badge>}
+                  {item.booking === "done" && <Badge tone="ok">예약 완료</Badge>}
+                </span>
+                {item.description && <span className="text-[14px] leading-relaxed text-muted">{item.description}</span>}
                 {detail && (
-                  <span className="flex flex-wrap gap-x-4 text-sm">
+                  <span className="mt-2 flex flex-wrap items-start gap-2">
                     {item.mapQuery && (
-                      <a href={mapUrl(item.mapQuery)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center">
-                        지도 열기
+                      <a href={mapUrl(item.mapQuery)} target="_blank" rel="noopener noreferrer" className={action}>
+                        <MapPin size={15} aria-hidden />
+                        지도
                       </a>
                     )}
-                    <Link href={`/expenses/new?itineraryItemId=${item.id}`} className="inline-flex min-h-11 items-center">
-                      이 항목으로 지출 추가
+                    <Link href={`/expenses/new?itineraryItemId=${item.id}`} className={action}>
+                      <Plus size={15} aria-hidden />
+                      지출<span className="sr-only"> 추가</span>
                     </Link>
                     <ItemEditor item={item} />
                   </span>

@@ -3,20 +3,20 @@
 import { useState } from "react";
 import type { BudgetStatus, Category, Currency } from "@/generated/prisma/enums";
 import { CATEGORIES, CATEGORY_LABEL } from "@/lib/budget";
+import { field, input, primaryButton } from "@/components/form-styles";
 import { useSafeAction } from "@/lib/use-safe-action";
 import { type FormState, updateSetting, upsertBudgetItem } from "./actions";
 
-const input = "min-h-11 rounded-lg border border-line bg-surface px-3 text-base text-fg";
-const submit = "min-h-11 rounded-lg bg-fg px-4 text-sm font-bold text-bg disabled:opacity-60";
+const submit = `${primaryButton} min-h-12 text-[15px]`;
 
 function Result({ state }: { state: FormState }) {
   if (!state) return null;
   return state.error ? (
-    <p role="alert" className="text-sm text-warn">
+    <p role="alert" className="text-[13px] font-semibold text-warn">
       {state.error}
     </p>
   ) : (
-    <p role="status" className="text-sm text-ok">
+    <p role="status" className="text-[13px] font-semibold text-ok">
       저장했습니다.
     </p>
   );
@@ -28,11 +28,11 @@ export function SettingForm({ name, label, unit, initial }: { name: "fx_eur_krw"
   return (
     <form action={action} className="flex flex-wrap items-end gap-2">
       <input type="hidden" name="key" value={name} />
-      <label className="flex flex-col gap-1 text-sm text-muted">
+      <label className={`${field} min-w-0 flex-1`}>
         {label}
-        <span className="flex items-center gap-2">
-          <input name="value" inputMode="decimal" value={value} onChange={(e) => setValue(e.target.value)} className={`mono w-28 text-right ${input}`} />
-          <span className="text-fg">{unit}</span>
+        <span className="relative flex items-center">
+          <input name="value" inputMode="decimal" value={value} onChange={(e) => setValue(e.target.value)} className={`mono pr-10 text-right ${input}`} />
+          <span className="pointer-events-none absolute right-4 text-[15px] font-semibold text-muted">{unit}</span>
         </span>
       </label>
       <button type="submit" disabled={pending} className={submit}>
@@ -60,14 +60,14 @@ export function BudgetItemForm({ initial }: { initial: BudgetItemValues }) {
   const set = <K extends keyof BudgetItemValues>(k: K, value: BudgetItemValues[K]) => setV((s) => ({ ...s, [k]: value }));
   const [state, action, pending] = useSafeAction(upsertBudgetItem);
   return (
-    <form action={action} className="flex flex-col gap-3 pt-3">
+    <form action={action} className="flex flex-col gap-3 pt-2">
       <input type="hidden" name="id" value={v.id ?? ""} />
-      <label className="flex flex-col gap-1 text-sm text-muted">
+      <label className={field}>
         이름
         <input name="title" required value={v.title} onChange={(e) => set("title", e.target.value)} className={input} />
       </label>
       <div className="grid grid-cols-2 gap-3">
-        <label className="flex flex-col gap-1 text-sm text-muted">
+        <label className={field}>
           항목
           <select name="category" value={v.category} onChange={(e) => set("category", e.target.value as Category)} className={input}>
             {CATEGORIES.map((c) => (
@@ -77,18 +77,18 @@ export function BudgetItemForm({ initial }: { initial: BudgetItemValues }) {
             ))}
           </select>
         </label>
-        <label className="flex flex-col gap-1 text-sm text-muted">
+        <label className={field}>
           상태
           <select name="status" value={v.status} onChange={(e) => set("status", e.target.value as BudgetStatus)} className={input}>
             <option value="paid">결제 완료</option>
             <option value="estimated">예상</option>
           </select>
         </label>
-        <label className="flex flex-col gap-1 text-sm text-muted">
+        <label className={field}>
           금액
           <input name="amount" inputMode="decimal" required value={v.amount} onChange={(e) => set("amount", e.target.value)} className={`mono text-right ${input}`} />
         </label>
-        <label className="flex flex-col gap-1 text-sm text-muted">
+        <label className={field}>
           통화
           <select name="currency" value={v.currency} onChange={(e) => set("currency", e.target.value as Currency)} className={input}>
             <option value="EUR">EUR</option>
@@ -96,7 +96,7 @@ export function BudgetItemForm({ initial }: { initial: BudgetItemValues }) {
           </select>
         </label>
       </div>
-      <label className="flex flex-col gap-1 text-sm text-muted">
+      <label className={field}>
         메모
         <input name="note" value={v.note} onChange={(e) => set("note", e.target.value)} className={input} />
       </label>

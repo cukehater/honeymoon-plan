@@ -45,3 +45,6 @@ next-env.d.ts
 *.db
 *.db-journal
 /src/generated/
+
+# impeccable 리뷰용 스크린샷
+/.impeccable/review/

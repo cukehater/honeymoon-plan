@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { PageHeader } from "@/components/ui";
 import { db } from "@/lib/db";
 import { centsToInput } from "@/lib/format";
 import { getSession } from "@/lib/session";
@@ -20,7 +21,7 @@ export default async function EditExpensePage({ params }: PageProps<"/expenses/[
 
   return (
     <>
-      <h1 className="text-[28px]">지출 수정</h1>
+      <PageHeader title="지출 수정" back={{ href: "/expenses", label: "경비" }} />
       <ExpenseForm
         action={updateExpense.bind(null, expense.id)}
         users={users}

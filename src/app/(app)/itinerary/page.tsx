@@ -1,10 +1,12 @@
-import { Fragment } from "react";
-import { CITY_LABEL, DayAlerts, DayTimeline, cityText } from "@/components/day-timeline";
+import { DayTimeline } from "@/components/day-timeline";
+import { CITY_NAME } from "@/components/travel";
+import { PageHeader } from "@/components/ui";
 import { db } from "@/lib/db";
-import { formatDate } from "@/lib/format";
 import { getSession } from "@/lib/session";
 
 export const metadata = { title: "일정" };
+
+const WEEKDAYS = ["일", "월", "화", "수", "목", "금", "토"];
 
 export default async function ItineraryPage() {
   await getSession();
@@ -21,33 +23,38 @@ export default async function ItineraryPage() {
 
   return (
     <>
-      <h1 className="text-[28px]">일정</h1>
+      <PageHeader title="일정" />
       <nav
         aria-label="날짜 바로가기"
-        className="no-scrollbar sticky top-[env(safe-area-inset-top)] z-10 -mx-4 -my-4 flex gap-1.5 overflow-x-auto border-b border-line bg-bg px-4 py-2.5"
+        className="no-scrollbar sticky top-[env(safe-area-inset-top)] z-20 -mx-4 flex gap-2 overflow-x-auto bg-bg/90 px-4 py-2 backdrop-blur-xl"
       >
-        {days.map((d) => (
-          <a
-            key={d.date}
-            href={`#d-${d.date}`}
-            className={`flex min-h-11 shrink-0 items-center rounded-full border bg-surface px-3 text-[13px] whitespace-nowrap text-fg no-underline ${
-              d.city === "barcelona" ? "border-ocre/45" : "border-azul/40"
-            }`}
-          >
-            {formatDate(d.date)}
-          </a>
-        ))}
+        {days.map((d, i) => {
+          const [, m, dd] = d.date.split("-").map(Number);
+          const wd = WEEKDAYS[new Date(Date.UTC(2026, m - 1, dd)).getUTCDay()];
+          return (
+            <a
+              key={d.date}
+              href={`#d-${d.date}`}
+              className="press flex min-h-11 min-w-[68px] shrink-0 flex-col items-center rounded-[16px] bg-surface px-3 py-2 text-fg no-underline"
+            >
+              <span className="mono text-[11px] font-semibold text-muted">D{i + 1}</span>
+              <span className="mono text-[17px] leading-tight font-bold">
+                {m}/{dd}
+              </span>
+              <span className="text-[11px] text-muted">
+                {wd} · {CITY_NAME[d.city]}
+              </span>
+            </a>
+          );
+        })}
       </nav>
-      <DayAlerts alerts={tripAlerts} />
+      {tripAlerts.map((a) => (
+        <p key={a.id} role="note" className="rounded-[16px] bg-caution-soft p-4 text-[14px]">
+          <b className="text-caution">{a.title}</b> {a.body}
+        </p>
+      ))}
       {days.map((day, i) => (
-        <Fragment key={day.date}>
-          {(i === 0 || days[i - 1].city !== day.city) && (
-            <div className="mt-2 flex items-center gap-3 after:h-px after:flex-1 after:bg-line">
-              <span className={`text-[15px] font-bold ${cityText(day.city)}`}>{CITY_LABEL[day.city]}</span>
-            </div>
-          )}
-          <DayTimeline day={day} index={i} />
-        </Fragment>
+        <DayTimeline key={day.date} day={day} index={i} />
       ))}
     </>
   );
