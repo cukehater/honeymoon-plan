@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
-/* 색 토큰: docs/reference/honeymoon.html의 :root 값 */
+/* 색 토큰: docs/reference/honeymoon.html의 :root 값.
+   라이트 --ocre(#b06a12)와 --ok(#2c7a4b)는 연한 배경 위 글자 대비 4.5:1을 맞추려고 같은 색조로 조금 어둡게 했다. */
 :root {
   --bg: #f5f7fa;
   --surface: #ffffff;
@@ -9,11 +10,11 @@
   --line: #dde2ea;
   --azul: #1f4fa3;
   --azul-soft: #e7eefb;
-  --ocre: #b06a12;
+  --ocre: #9b5d10;
   --ocre-soft: #fbf0df;
   --warn: #a3361f;
   --warn-soft: #fbeae5;
-  --ok: #2c7a4b;
+  --ok: #2a7447;
 }
 
 @media (prefers-color-scheme: dark) {

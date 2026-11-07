@@ -12,7 +12,7 @@ export function LoginForm({ users }: { users: { id: number; name: string }[] }) 
         {users.map((u) => (
           <label
             key={u.id}
-            className="flex min-h-11 flex-1 cursor-pointer items-center justify-center rounded-lg border border-line bg-surface px-4 has-[:checked]:border-current has-[:checked]:font-bold"
+            className="flex min-h-11 flex-1 cursor-pointer items-center justify-center rounded-lg border border-line bg-surface px-4 has-[:checked]:border-current has-[:checked]:font-bold has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-azul"
           >
             <input
               type="radio"
