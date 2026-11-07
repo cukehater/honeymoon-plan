@@ -1,0 +1,1243 @@
+{
+  "_source": "docs/reference/honeymoon.html 에서 추출 (2026-11-07)",
+  "users": [
+    {
+      "id": 1,
+      "name": "경식"
+    },
+    {
+      "id": 2,
+      "name": "배우자"
+    }
+  ],
+  "settings": {
+    "fx_eur_krw": 1544,
+    "reserve_pct": 10
+  },
+  "tripDays": [
+    {
+      "date": "2026-11-30",
+      "city": "porto",
+      "tz": "Europe/Lisbon",
+      "title": "출국, 그리고 밤의 포르투",
+      "note": null
+    },
+    {
+      "date": "2026-12-01",
+      "city": "porto",
+      "tz": "Europe/Lisbon",
+      "title": "구시가지를 걸어서, 해 질 녘엔 강 건너로",
+      "note": "모든 동선이 숙소에서 도보권. 언덕과 돌길이 많으니 편한 신발로."
+    },
+    {
+      "date": "2026-12-02",
+      "city": "porto",
+      "tz": "Europe/Lisbon",
+      "title": "도루 밸리 와이너리 데이투어",
+      "note": "세계유산 계단식 포도밭. 12월엔 포도잎은 졌지만 강과 언덕 풍경이 고요하고 한산합니다. 비 예보면 아베이루·코스타 노바(줄무늬 집 마을) 반나절로 교체."
+    },
+    {
+      "date": "2026-12-03",
+      "city": "porto",
+      "tz": "Europe/Lisbon",
+      "title": "강을 따라 바다까지, 그리고 허니문 디너",
+      "note": null
+    },
+    {
+      "date": "2026-12-04",
+      "city": "barcelona",
+      "tz": "Europe/Madrid",
+      "title": "이동하는 날, 그라시아 거리의 가우디",
+      "note": null
+    },
+    {
+      "date": "2026-12-05",
+      "city": "barcelona",
+      "tz": "Europe/Madrid",
+      "title": "구엘 공원에서 고딕 지구, 바다까지",
+      "note": "일요일에 문 닫는 곳(보케리아 시장, 상점)은 오늘 몰아서."
+    },
+    {
+      "date": "2026-12-06",
+      "city": "barcelona",
+      "tz": "Europe/Madrid",
+      "title": "모데르니스메의 하루, 오후 3시 사그라다 파밀리아",
+      "note": "벙커스는 겨울에 17:30이면 닫혀서 아침으로 옮겼어요. 산 파우부터 사그라다까지는 같은 동네(도보 10분)라 오후 이동 부담이 없습니다."
+    },
+    {
+      "date": "2026-12-07",
+      "city": "barcelona",
+      "tz": "Europe/Madrid",
+      "title": "라 페드레라, 그리고 귀국",
+      "note": null
+    }
+  ],
+  "dayAlerts": [
+    {
+      "date": "2026-12-07",
+      "title": "귀국 환승 65분",
+      "body": "12/7 바르셀로나→파리 19:55 도착, 파리→서울 21:00 출발입니다. CDG에서 셍겐 출국심사까지 거쳐야 해서 빠듯해요. 한 예약번호로 묶인 연결편이라 놓쳐도 항공사가 대체편을 잡아주지만, 짐은 최종 목적지(ICN)까지 연결되는지 꼭 확인하고 앞쪽 좌석을 잡아두세요."
+    },
+    {
+      "date": "2026-12-01",
+      "title": "12/1(화)은 포르투갈 공휴일",
+      "body": "(독립회복기념일)입니다. 관광지는 대체로 열지만 일부 상점·식당은 쉬거나 단축 영업해요."
+    },
+    {
+      "date": "2026-12-06",
+      "title": "12/6(일)은 스페인 헌법기념일이자 일요일",
+      "body": "이라 바르셀로나 상점 대부분이 닫고, 보케리아 시장도 휴무입니다. 장보기·쇼핑은 토요일에 몰아두었어요. 12/7(월)은 12/8 공휴일 사이 징검다리라 현지 연휴 인파가 있을 수 있어요."
+    }
+  ],
+  "itineraryItems": [
+    {
+      "date": "2026-11-30",
+      "startTime": "12:05",
+      "title": "인천 → 파리 CDG · AF5093",
+      "description": "18:30 도착. 기내에서 최대한 자두기.",
+      "kind": "flight",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 1
+    },
+    {
+      "date": "2026-11-30",
+      "startTime": "18:30",
+      "title": "CDG 환승 2시간 10분",
+      "description": "여기서 셍겐 입국심사를 받습니다. 첫 유럽 입국이라 출입국시스템(EES) 지문·얼굴 등록이 있어 줄이 길 수 있으니 바로 이동하세요.",
+      "kind": "transfer",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 2
+    },
+    {
+      "date": "2026-11-30",
+      "startTime": "20:40",
+      "title": "파리 → 포르투 · AF1516",
+      "description": "21:55 도착.",
+      "kind": "flight",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 3
+    },
+    {
+      "date": "2026-11-30",
+      "startTime": "22:30",
+      "title": "공항 → 숙소: 우버/택시 추천",
+      "description": "약 20분, 30유로 안팎. 밤늦게 짐 들고 메트로(보라색 E선, 상벤투역)보다 편합니다. 열쇠보관함 비밀번호는 미리 받아두기.",
+      "kind": "transfer",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 4
+    },
+    {
+      "date": "2026-11-30",
+      "startTime": "23:00",
+      "title": "체크인 후 휴식",
+      "description": "근처 식당은 거의 닫으니 파리 공항에서 간단히 먹고 오세요.",
+      "kind": "rest",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 5
+    },
+    {
+      "date": "2026-12-01",
+      "startTime": "09:00",
+      "title": "렐루 서점 (Livraria Lello)",
+      "description": "예매 페이지의 첫 입장 시간대로(안내되는 개장 시각이 출처마다 9:00~9:30으로 달라요). 숙소에서 도보 7분. 입장권 금액은 책 구매 시 차감.",
+      "kind": "activity",
+      "booking": "required",
+      "bookingNote": "사전 예매",
+      "isKey": false,
+      "sortOrder": 1
+    },
+    {
+      "date": "2026-12-01",
+      "startTime": "10:00",
+      "title": "클레리구스 탑",
+      "description": "바로 옆. 200여 계단 위에서 붉은 지붕과 도루강을 한눈에.",
+      "kind": "activity",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 2
+    },
+    {
+      "date": "2026-12-01",
+      "startTime": "11:00",
+      "title": "만테이가리아 에그타르트 → 알마스 성당 → 산타 카타리나 거리",
+      "description": "파란 아줄레주 외벽의 알마스 성당 앞이 사진 명소. 마제스틱 카페는 공휴일 영업 여부 확인.",
+      "kind": "meal",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 3
+    },
+    {
+      "date": "2026-12-01",
+      "startTime": "12:30",
+      "title": "점심: 카자 게데스 (Casa Guedes)",
+      "description": "돼지고기 다리살에 세하 치즈를 얹은 샌드위치가 명물. 볼량 시장 근처.",
+      "kind": "meal",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 4
+    },
+    {
+      "date": "2026-12-01",
+      "startTime": "13:45",
+      "title": "상벤투역 아줄레주 → 포르투 대성당(Sé)",
+      "description": "숙소 바로 옆 역사 홀의 2만 장 타일 벽화. 대성당 테라스에서 구시가 전망.",
+      "kind": "activity",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 5
+    },
+    {
+      "date": "2026-12-01",
+      "startTime": "14:45",
+      "title": "플로레스 거리 → 히베이라 강변 → 다리 하층으로 가이아",
+      "description": "숙소 이름의 그 거리. 내리막을 따라 강변까지, 동 루이스 1세 다리 아래층을 걸어 건넙니다.",
+      "kind": "activity",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 6
+    },
+    {
+      "date": "2026-12-01",
+      "startTime": "15:30",
+      "title": "테일러스 포트와인 셀러",
+      "description": "셀러는 18:15까지, 오디오 가이드로 둘러보는 자유 관람에 시음 포함. 해 지기 전에 끝내도록 오후로 당겼어요.",
+      "kind": "activity",
+      "booking": "required",
+      "bookingNote": "예약",
+      "isKey": false,
+      "sortOrder": 7
+    },
+    {
+      "date": "2026-12-01",
+      "startTime": "16:45",
+      "title": "모루 정원 일몰 → 다리 상층으로 귀환",
+      "description": "셀러에서 도보 15분. 12월 초 일몰은 17시 조금 넘어서. 노을 뒤 다리 위층을 걸어 구시가로 돌아오면 야경이 정면.",
+      "kind": "activity",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": true,
+      "sortOrder": 8
+    },
+    {
+      "date": "2026-12-01",
+      "startTime": "18:00",
+      "title": "숙소에서 휴식",
+      "description": "다리 상층 끝에서 숙소까지 도보 10분 남짓.",
+      "kind": "rest",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 9
+    },
+    {
+      "date": "2026-12-01",
+      "startTime": "20:00",
+      "title": "저녁: 타베르나 두스 메르카도레스",
+      "description": "히베이라 골목의 작은 해산물 타베르나. 월요일 휴무, 화요일 영업. 좌석이 적어 예약 필수.",
+      "kind": "meal",
+      "booking": "required",
+      "bookingNote": "예약",
+      "isKey": false,
+      "sortOrder": 10
+    },
+    {
+      "date": "2026-12-02",
+      "startTime": "08:00",
+      "title": "소규모 도루 투어 출발",
+      "description": "대부분 시내 픽업. 피냥 마을, 퀸타 2곳 시음, 점심, 강 보트가 포함된 상품을 고르세요.",
+      "kind": "activity",
+      "booking": "required",
+      "bookingNote": "예약",
+      "isKey": true,
+      "sortOrder": 1
+    },
+    {
+      "date": "2026-12-02",
+      "startTime": "18:30",
+      "title": "포르투 복귀, 숙소에서 잠깐 휴식",
+      "description": null,
+      "kind": "rest",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 2
+    },
+    {
+      "date": "2026-12-02",
+      "startTime": "20:00",
+      "title": "저녁: 프란세지냐 (카페 산티아구)",
+      "description": "포르투식 고기 샌드위치에 치즈와 소스를 끼얹은 명물. 하나를 나눠 먹어도 충분. 이후 알리아두스 광장 크리스마스 조명.",
+      "kind": "meal",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 3
+    },
+    {
+      "date": "2026-12-03",
+      "startTime": "10:00",
+      "title": "느긋한 브런치",
+      "description": "전날 투어로 피곤할 테니 늦게 시작.",
+      "kind": "meal",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 1
+    },
+    {
+      "date": "2026-12-03",
+      "startTime": "11:00",
+      "title": "6개 다리 크루즈 (약 50분)",
+      "description": "히베이라 선착장 출발. 전통 라벨루 배를 타고 다리 여섯 개를 지나갑니다.",
+      "kind": "activity",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 2
+    },
+    {
+      "date": "2026-12-03",
+      "startTime": "12:30",
+      "title": "1번 트램 → 포즈 두 도루",
+      "description": "강변 정류장 인판트에서 출발, 강을 따라 대서양 하구까지 약 20분.",
+      "kind": "activity",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 3
+    },
+    {
+      "date": "2026-12-03",
+      "startTime": "13:30",
+      "title": "점심: 마토지뉴스 생선구이 거리",
+      "description": "포즈에서 우버 10분. 숯불에 굽는 정어리·도미 같은 그날 생선.",
+      "kind": "meal",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 4
+    },
+    {
+      "date": "2026-12-03",
+      "startTime": "15:00",
+      "title": "포즈 해안 산책 · 펠게이라스 등대",
+      "description": "파도가 방파제를 넘는 풍경. 바람이 세니 겉옷 필수. 이후 숙소로 돌아가 짐 미리 싸기.",
+      "kind": "activity",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 5
+    },
+    {
+      "date": "2026-12-03",
+      "startTime": "19:30",
+      "title": "허니문 디너: 더 예트먼 (The Yeatman)",
+      "description": "가이아 언덕의 미쉐린 2스타. 화~토 저녁만 영업하고 좌석은 18:30·19:30·20:30 세 번이라 목요일 19:30이 맞습니다. 예약 시 신혼여행이라고 적어두세요. 대안: 안티쿰(Antiqvvm, 1스타).",
+      "kind": "meal",
+      "booking": "required",
+      "bookingNote": "예약 필수",
+      "isKey": true,
+      "sortOrder": 6
+    },
+    {
+      "date": "2026-12-04",
+      "startTime": "07:45",
+      "title": "체크아웃(열쇠 반납) → 우버로 공항",
+      "description": "약 20분. 셍겐 내 이동이라 출국심사 없음. 부엘링은 수하물 규정이 엄격하니 무게 미리 확인.",
+      "kind": "transfer",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 1
+    },
+    {
+      "date": "2026-12-04",
+      "startTime": "10:15",
+      "title": "포르투 → 바르셀로나 · VY1175",
+      "description": "13:00 도착 (제1터미널).",
+      "kind": "flight",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 2
+    },
+    {
+      "date": "2026-12-04",
+      "startTime": "13:45",
+      "title": "공항 → 카사 푸스터",
+      "description": "택시 약 30분. 대중교통이면 에어로부스로 카탈루냐 광장 후 메트로. 짐이 있으면 택시가 편해요.",
+      "kind": "transfer",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 3
+    },
+    {
+      "date": "2026-12-04",
+      "startTime": "14:30",
+      "title": "짐 맡기고 늦은 점심",
+      "description": "호텔 바로 위가 그라시아 지구. 동네 타파스 바에서 가볍게.",
+      "kind": "meal",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 4
+    },
+    {
+      "date": "2026-12-04",
+      "startTime": "16:30",
+      "title": "카사 바트요",
+      "description": "호텔에서 그라시아 거리를 따라 도보 15분. 해 질 무렵 입장하면 옥상에서 노을. 약 1시간 30분.",
+      "kind": "activity",
+      "booking": "required",
+      "bookingNote": "예약",
+      "isKey": true,
+      "sortOrder": 5
+    },
+    {
+      "date": "2026-12-04",
+      "startTime": "18:30",
+      "title": "그라시아 거리 산책",
+      "description": "카사 아마트예르, 크리스마스 조명. 호텔로 돌아와 체크인 정리.",
+      "kind": "activity",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 6
+    },
+    {
+      "date": "2026-12-04",
+      "startTime": "20:30",
+      "title": "저녁: 타파스 (세르베세리아 카탈라나 또는 타파스 24)",
+      "description": "카사 바트요에서 둘 다 도보 5~10분. 카탈라나는 예약을 받지 않아 30분~1시간 대기가 흔하니 바에서 한 잔 하며 기다리세요.",
+      "kind": "meal",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 7
+    },
+    {
+      "date": "2026-12-04",
+      "startTime": "22:00",
+      "title": "카사 푸스터 루프탑 테라스 한 잔",
+      "description": "호텔 옥상에서 바르셀로나 야경. 겨울 운영 여부와 시간은 체크인 때 프런트에 확인하세요.",
+      "kind": "activity",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 8
+    },
+    {
+      "date": "2026-12-05",
+      "startTime": "09:30",
+      "title": "구엘 공원",
+      "description": "호텔에서 택시 10분. 오전 일찍이 사람이 적고 빛이 좋아요. 약 1시간 30분.",
+      "kind": "activity",
+      "booking": "required",
+      "bookingNote": "시간 지정 예매",
+      "isKey": true,
+      "sortOrder": 1
+    },
+    {
+      "date": "2026-12-05",
+      "startTime": "11:30",
+      "title": "그라시아 골목 산책하며 내려오기",
+      "description": "비레이나 광장, 솔 광장 주변 카페에서 커피.",
+      "kind": "activity",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 2
+    },
+    {
+      "date": "2026-12-05",
+      "startTime": "13:00",
+      "title": "보케리아 시장 → 람블라스 일부",
+      "description": "메트로 L3 리세우역. 시장 안 카운터 바(피노초 등)에서 서서 먹는 점심. 람블라스는 소매치기 주의.",
+      "kind": "meal",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 3
+    },
+    {
+      "date": "2026-12-05",
+      "startTime": "14:30",
+      "title": "고딕 지구: 대성당 + 산타 루시아 크리스마스 마켓",
+      "description": "대성당 앞 광장에 서는 바르셀로나에서 가장 오래된 성탄 시장. 산 펠립 네리 광장, 레이알 광장까지.",
+      "kind": "activity",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 4
+    },
+    {
+      "date": "2026-12-05",
+      "startTime": "15:45",
+      "title": "엘 보른: 산타 마리아 델 마르 성당",
+      "description": "피카소 미술관을 원하면 이 시간대로 예약해서 넣기.",
+      "kind": "activity",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 5
+    },
+    {
+      "date": "2026-12-05",
+      "startTime": "16:45",
+      "title": "바르셀로네타 해변 일몰",
+      "description": "해변 산책로를 따라 걸으며 17시 20분 전후 노을.",
+      "kind": "activity",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 6
+    },
+    {
+      "date": "2026-12-05",
+      "startTime": "19:00",
+      "title": "베르무트 한 잔",
+      "description": "바르셀로네타 골목의 오래된 보데가에서 현지식 식전주.",
+      "kind": "meal",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 7
+    },
+    {
+      "date": "2026-12-05",
+      "startTime": "20:30",
+      "title": "저녁: 세트 포르테스 (7 Portes) 파에야",
+      "description": "1836년부터 이어온 노포. 해산물 파에야와 검은 오징어먹물 쌀요리. 택시로 호텔 복귀.",
+      "kind": "meal",
+      "booking": "required",
+      "bookingNote": "예약",
+      "isKey": false,
+      "sortOrder": 8
+    },
+    {
+      "date": "2026-12-06",
+      "startTime": "08:30",
+      "title": "이른 아침 식사",
+      "description": "일요일이라 문 연 곳 위주로. 호텔 조식이 가장 간편.",
+      "kind": "meal",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 1
+    },
+    {
+      "date": "2026-12-06",
+      "startTime": "09:30",
+      "title": "벙커스 델 카르멜 전망대",
+      "description": "택시 15분 + 짧은 오르막. 겨울엔 09:00~17:30만 개방하고 밤에는 닫아서 아침에 갑니다. 일요일 오전이라 한산하고, 도시 너머 바다와 사그라다가 한눈에.",
+      "kind": "activity",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 2
+    },
+    {
+      "date": "2026-12-06",
+      "startTime": "11:00",
+      "title": "산 파우 모데르니스메 지구",
+      "description": "택시 10분. 세계유산 옛 병원. 타일과 스테인드글라스가 화려하고 붐비지 않아요. 약 1시간 30분.",
+      "kind": "activity",
+      "booking": "required",
+      "bookingNote": "예매",
+      "isKey": false,
+      "sortOrder": 3
+    },
+    {
+      "date": "2026-12-06",
+      "startTime": "13:00",
+      "title": "점심: 가우디 대로 테라스",
+      "description": "산 파우에서 사그라다까지 이어진 보행자 거리. 성당을 바라보며 여유 있게.",
+      "kind": "meal",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 4
+    },
+    {
+      "date": "2026-12-06",
+      "startTime": "15:00",
+      "title": "사그라다 파밀리아",
+      "description": "14:40까지 입구 도착(보안검색). 오디오가이드 포함 약 1시간 30분~2시간. 오후 햇살이 서쪽 '수난의 파사드' 쪽 스테인드글라스를 통과해 실내가 주황·붉은빛으로 물드는 시간대입니다.",
+      "kind": "activity",
+      "booking": "done",
+      "bookingNote": "예약 완료",
+      "isKey": true,
+      "sortOrder": 5
+    },
+    {
+      "date": "2026-12-06",
+      "startTime": "17:15",
+      "title": "가우디 광장 연못에서 본 사그라다",
+      "description": "관람을 마치고 나오면 해 질 무렵. 성당 동쪽 가우디 광장 연못 건너편에서 조명이 켜지는 '탄생의 파사드'가 물에 비칩니다. 이후 택시로 호텔.",
+      "kind": "activity",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 6
+    },
+    {
+      "date": "2026-12-06",
+      "startTime": "20:30",
+      "title": "마지막 밤 저녁: 그라시아 지구",
+      "description": "많은 식당이 일요일 저녁 휴무라 예약 시 영업 여부를 꼭 확인. 호텔에서 도보권인 그라시아가 편해요.",
+      "kind": "meal",
+      "booking": "required",
+      "bookingNote": "일요일 영업 확인",
+      "isKey": false,
+      "sortOrder": 7
+    },
+    {
+      "date": "2026-12-07",
+      "startTime": "09:30",
+      "title": "체크아웃 후 짐 맡기기",
+      "description": null,
+      "kind": "transfer",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 1
+    },
+    {
+      "date": "2026-12-07",
+      "startTime": "10:00",
+      "title": "카사 밀라 (라 페드레라)",
+      "description": "호텔에서 도보 8분. 굴뚝 조각이 늘어선 물결 모양 옥상. 약 1시간 15분.",
+      "kind": "activity",
+      "booking": "required",
+      "bookingNote": "예매",
+      "isKey": true,
+      "sortOrder": 2
+    },
+    {
+      "date": "2026-12-07",
+      "startTime": "11:30",
+      "title": "그라시아 거리 쇼핑 · 기념품",
+      "description": "포트와인 등 액체류 기념품은 위탁 수하물에.",
+      "kind": "activity",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 3
+    },
+    {
+      "date": "2026-12-07",
+      "startTime": "12:45",
+      "title": "점심",
+      "description": "호텔 주변에서 마지막 하몽과 크레마 카탈라나.",
+      "kind": "meal",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 4
+    },
+    {
+      "date": "2026-12-07",
+      "startTime": "14:15",
+      "title": "호텔에서 짐 찾아 택시로 공항 (제1터미널)",
+      "description": "약 30분. 15:00 전후 도착해 수하물 위탁, 최종 목적지 인천까지 연결 확인.",
+      "kind": "transfer",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 5
+    },
+    {
+      "date": "2026-12-07",
+      "startTime": "17:55",
+      "title": "바르셀로나 → 파리 · AF1549",
+      "description": "19:55 도착. 내리자마자 환승 표지(Correspondance) 따라 이동.",
+      "kind": "flight",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 6
+    },
+    {
+      "date": "2026-12-07",
+      "startTime": "21:00",
+      "title": "파리 → 인천 · AF5092",
+      "description": "12/8(화) 17:20 인천 도착.",
+      "kind": "flight",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 7
+    }
+  ],
+  "checklistGroups": [
+    {
+      "title": "수하물 추가",
+      "urgent": true,
+      "sortOrder": 1,
+      "items": [
+        {
+          "title": "인천 → 파리 → 포르투 (AF5093, AF1516)",
+          "detail": "공동운항편은 실제 운항 항공사 규정이 적용될 수 있어요. 예약한 사이트(또는 에어프랑스 '예약 관리')에서 위탁 수하물 추가. 공항 현장 구매보다 사전 구매가 저렴합니다.",
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 1
+        },
+        {
+          "title": "포르투 → 바르셀로나 (부엘링 VY1175)",
+          "detail": "부엘링은 요금 등급에 따라 기내용 캐리어도 유료이고, 위탁 수하물은 별도 구매입니다. 부엘링 사이트 '예약 관리'에서 기내 캐리어 포함 여부까지 확인.",
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 2
+        },
+        {
+          "title": "바르셀로나 → 파리 → 인천 (AF1549, AF5092)",
+          "detail": "귀국 환승이 65분이라 짐이 인천까지 한 번에 연결되는 구성이어야 해요. 구매할 때 '최종 목적지까지 수하물 연결' 여부 확인.",
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 3
+        },
+        {
+          "title": "귀국편은 무게 여유 있게",
+          "detail": "포트와인·올리브오일 같은 액체 기념품은 기내 반입이 안 되니 위탁 수하물을 넉넉한 무게로.",
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 4
+        }
+      ]
+    },
+    {
+      "title": "여권 · 항공",
+      "urgent": false,
+      "sortOrder": 2,
+      "items": [
+        {
+          "title": "여권 유효기간 확인",
+          "detail": "셍겐 지역은 출국 예정일 기준 3개월 이상 남아 있어야 합니다. 두 사람 모두.",
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 1
+        },
+        {
+          "title": "ETIAS(유럽 여행허가) 시행 여부 재확인",
+          "detail": "2026년 4분기 도입 예정으로 발표돼 있습니다. 출발 2~3주 전 EU 공식 사이트에서 신청 필요 여부를 확인하세요.",
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 2
+        },
+        {
+          "title": "좌석 지정 (나란히)",
+          "detail": "특히 귀국 BCN→CDG는 앞쪽 좌석이 환승에 유리.",
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 3
+        },
+        {
+          "title": "각 구간 온라인 체크인",
+          "detail": "11/29 · 12/3 · 12/6에 알림 맞춰두기.",
+          "dueNote": "출발 24~30시간 전",
+          "checked": false,
+          "sortOrder": 4
+        },
+        {
+          "title": "귀국 환승 65분 확인",
+          "detail": "같은 예약번호의 연결편인지 예약처에 확인. 별도 발권이면 대체편 보호가 안 되니 반드시 체크.",
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 5
+        }
+      ]
+    },
+    {
+      "title": "숙소",
+      "urgent": false,
+      "sortOrder": 3,
+      "items": [
+        {
+          "title": "에어비앤비: 밤 11시경 도착 알리기",
+          "detail": "호스트에게 메시지로 도착 시간 공유, 열쇠보관함 위치·비밀번호 받아두기. 와이파이 정보는 체크인 48시간 전 공개.",
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 1
+        },
+        {
+          "title": "에어비앤비 무료 취소 기한",
+          "detail": "일정 변경 가능성이 있으면 이 전에 결정.",
+          "dueNote": "10/31 16:00",
+          "checked": false,
+          "sortOrder": 2
+        },
+        {
+          "title": "카사 푸스터: 특별 요청 남기기",
+          "detail": "아고다 '특별 요청'에 신혼여행(Honeymoon)과 14시 30분경 도착 예정 기재. 객실은 더블베드로 요청.",
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 3
+        },
+        {
+          "title": "도시 관광세 현장 결제 준비",
+          "detail": "포르투(숙소)와 바르셀로나(호텔) 모두 1인 1박 단위 관광세를 현장에서 따로 걷습니다.",
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 4
+        }
+      ]
+    },
+    {
+      "title": "미리 예약할 곳",
+      "urgent": false,
+      "sortOrder": 4,
+      "items": [
+        {
+          "title": "사그라다 파밀리아 · 12/6 15:00",
+          "detail": "완료. 입장권 QR을 두 사람 휴대폰에 저장.",
+          "dueNote": null,
+          "checked": true,
+          "sortOrder": 1
+        },
+        {
+          "title": "렐루 서점 · 12/1 09:00",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 2
+        },
+        {
+          "title": "테일러스 포트와인 셀러 · 12/1 15:30",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 3
+        },
+        {
+          "title": "타베르나 두스 메르카도레스 · 12/1 20:00",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 4
+        },
+        {
+          "title": "도루 밸리 데이투어 · 12/2",
+          "detail": "무료 취소 가능한 상품으로 (날씨 대비).",
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 5
+        },
+        {
+          "title": "더 예트먼 디너 · 12/3 19:30",
+          "detail": "미쉐린 2스타라 빨리 찹니다. 지금 예약 권장.",
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 6
+        },
+        {
+          "title": "카사 바트요 · 12/4 16:30",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 7
+        },
+        {
+          "title": "구엘 공원 · 12/5 09:30",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 8
+        },
+        {
+          "title": "세트 포르테스 · 12/5 20:30",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 9
+        },
+        {
+          "title": "산 파우 · 12/6 11:00",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 10
+        },
+        {
+          "title": "12/6 저녁 식당 (일요일 영업 확인)",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 11
+        },
+        {
+          "title": "카사 밀라 · 12/7 10:00",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 12
+        }
+      ]
+    },
+    {
+      "title": "돈 · 통신 · 보험",
+      "urgent": false,
+      "sortOrder": 5,
+      "items": [
+        {
+          "title": "여행자 보험 가입",
+          "detail": "항공 지연·수하물 지연 보장 포함 상품. 환승이 짧아 특히 유용.",
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 1
+        },
+        {
+          "title": "유럽 eSIM 또는 로밍",
+          "detail": "포르투갈·스페인·프랑스 모두 되는 유럽 통합 상품.",
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 2
+        },
+        {
+          "title": "해외결제 수수료 낮은 카드 + 소액 유로 현금",
+          "detail": "대부분 카드 결제 가능. 관광세·팁·작은 가게용 현금 조금.",
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 3
+        },
+        {
+          "title": "앱 설치: 우버, 볼트, 프리나우",
+          "detail": "포르투는 우버·볼트, 바르셀로나는 프리나우·우버(택시 호출).",
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 4
+        }
+      ]
+    },
+    {
+      "title": "짐",
+      "urgent": false,
+      "sortOrder": 6,
+      "items": [
+        {
+          "title": "우산 · 방수 겉옷",
+          "detail": "12월 포르투는 비가 잦고 낮 기온 10~15℃ 안팎. 바르셀로나는 조금 더 온화하지만 저녁엔 쌀쌀합니다.",
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 1
+        },
+        {
+          "title": "쿠션 좋은 운동화",
+          "detail": "포르투 언덕과 돌길, 바르셀로나 도보 이동이 많아요.",
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 2
+        },
+        {
+          "title": "지퍼 달린 크로스백",
+          "detail": "바르셀로나 람블라스·지하철 소매치기 대비.",
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 3
+        },
+        {
+          "title": "디너용 옷 한 벌",
+          "detail": "더 예트먼 같은 파인다이닝용 스마트 캐주얼.",
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 4
+        },
+        {
+          "title": "멀티 어댑터는 필요 없음",
+          "detail": "포르투갈·스페인·프랑스 모두 한국과 같은 둥근 2핀(220~230V). 멀티탭 하나면 충분.",
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 5
+        }
+      ]
+    }
+  ],
+  "bookings": [
+    {
+      "kind": "flight",
+      "title": "인천 → 파리 CDG · AF5093 (공동운항)",
+      "refCode": "1400829265234269",
+      "startsAt": "2026-11-30T12:05:00+09:00",
+      "endsAt": "2026-11-30T18:30:00+01:00",
+      "address": null,
+      "phone": null,
+      "detail": null
+    },
+    {
+      "kind": "flight",
+      "title": "파리 CDG → 포르투 OPO · AF1516",
+      "refCode": "1400829265234269",
+      "startsAt": "2026-11-30T20:40:00+01:00",
+      "endsAt": "2026-11-30T21:55:00+00:00",
+      "address": null,
+      "phone": null,
+      "detail": null
+    },
+    {
+      "kind": "flight",
+      "title": "포르투 OPO → 바르셀로나 BCN · VY1175 부엘링",
+      "refCode": "1400829265234269",
+      "startsAt": "2026-12-04T10:15:00+00:00",
+      "endsAt": "2026-12-04T13:00:00+01:00",
+      "address": null,
+      "phone": null,
+      "detail": null
+    },
+    {
+      "kind": "flight",
+      "title": "바르셀로나 BCN → 파리 CDG · AF1549 (공동운항)",
+      "refCode": "1400829265234269",
+      "startsAt": "2026-12-07T17:55:00+01:00",
+      "endsAt": "2026-12-07T19:55:00+01:00",
+      "address": null,
+      "phone": null,
+      "detail": null
+    },
+    {
+      "kind": "flight",
+      "title": "파리 CDG → 인천 · AF5092 (공동운항)",
+      "refCode": "1400829265234269",
+      "startsAt": "2026-12-07T21:00:00+01:00",
+      "endsAt": "2026-12-08T17:20:00+09:00",
+      "address": null,
+      "phone": null,
+      "detail": null
+    },
+    {
+      "kind": "stay",
+      "title": "포르투 에어비앤비 · Fils place @ Flores",
+      "refCode": "HMEJYPS5N2",
+      "startsAt": "2026-11-30T16:00:00+00:00",
+      "endsAt": "2026-12-04T11:00:00+00:00",
+      "address": "Rua Trindade Coelho 10, 2 FRT, 4050-618 Porto, Portugal",
+      "detail": "열쇠보관함 셀프 체크인. 호스트 Porto Velho Apartamentos. 무료 취소 10/31 16:00까지",
+      "phone": null
+    },
+    {
+      "kind": "stay",
+      "title": "카사 푸스터 호텔 (Casa Fuster) · 코트야드뷰",
+      "refCode": "1774123581",
+      "startsAt": "2026-12-04T15:00:00+01:00",
+      "endsAt": "2026-12-07T12:00:00+01:00",
+      "address": "Passeig de Gràcia 132, 08008 Barcelona, Spain",
+      "phone": "+34 932 553 000",
+      "detail": "아고다 예약, 환불 불가. 체크인·체크아웃 시각은 호텔 정책 확인 필요(임시값)"
+    },
+    {
+      "kind": "activity",
+      "title": "사그라다 파밀리아",
+      "refCode": null,
+      "startsAt": "2026-12-06T15:00:00+01:00",
+      "detail": "예약 완료. 14:40까지 입구 도착",
+      "endsAt": null,
+      "address": null,
+      "phone": null
+    }
+  ],
+  "budgetItems": [
+    {
+      "category": "air",
+      "title": "항공권 5구간",
+      "status": "paid",
+      "currency": "KRW",
+      "amountMinor": 2685370,
+      "note": "예약번호 1400829265234269",
+      "sortOrder": 1
+    },
+    {
+      "category": "air",
+      "title": "위탁 수하물 추가 (전 구간)",
+      "status": "estimated",
+      "currency": "EUR",
+      "amountMinor": 35000,
+      "note": "2인 · 장거리 왕복+부엘링, 사전 구매 기준 대략치",
+      "sortOrder": 2
+    },
+    {
+      "category": "stay",
+      "title": "포르투 에어비앤비 4박",
+      "status": "paid",
+      "currency": "KRW",
+      "amountMinor": 478062,
+      "note": null,
+      "sortOrder": 3
+    },
+    {
+      "category": "stay",
+      "title": "카사 푸스터 3박",
+      "status": "paid",
+      "currency": "KRW",
+      "amountMinor": 982119,
+      "note": null,
+      "sortOrder": 4
+    },
+    {
+      "category": "stay",
+      "title": "도시 관광세 (포르투+바르셀로나)",
+      "status": "estimated",
+      "currency": "EUR",
+      "amountMinor": 9600,
+      "note": "현장 결제 · 포르투 €3, 바르셀로나 5성 €12 (1인 1박)",
+      "sortOrder": 5
+    },
+    {
+      "category": "food",
+      "title": "더 예트먼 허니문 디너",
+      "status": "estimated",
+      "currency": "EUR",
+      "amountMinor": 55000,
+      "note": "테이스팅 코스+와인 페어링 2인",
+      "sortOrder": 6
+    },
+    {
+      "category": "food",
+      "title": "세트 포르테스 파에야",
+      "status": "estimated",
+      "currency": "EUR",
+      "amountMinor": 9000,
+      "note": null,
+      "sortOrder": 7
+    },
+    {
+      "category": "food",
+      "title": "포르투 그 밖의 식사·카페",
+      "status": "estimated",
+      "currency": "EUR",
+      "amountMinor": 22000,
+      "note": "3일, 도루 투어 점심 제외",
+      "sortOrder": 8
+    },
+    {
+      "category": "food",
+      "title": "바르셀로나 그 밖의 식사·카페",
+      "status": "estimated",
+      "currency": "EUR",
+      "amountMinor": 39000,
+      "note": "4일, 마지막 밤 디너 포함",
+      "sortOrder": 9
+    },
+    {
+      "category": "tour",
+      "title": "사그라다 파밀리아",
+      "status": "paid",
+      "currency": "EUR",
+      "amountMinor": 6000,
+      "note": "결제 금액 확인 후 수정",
+      "sortOrder": 10
+    },
+    {
+      "category": "tour",
+      "title": "도루 밸리 데이투어",
+      "status": "estimated",
+      "currency": "EUR",
+      "amountMinor": 22000,
+      "note": null,
+      "sortOrder": 11
+    },
+    {
+      "category": "tour",
+      "title": "포트와인 셀러 투어",
+      "status": "estimated",
+      "currency": "EUR",
+      "amountMinor": 5000,
+      "note": null,
+      "sortOrder": 12
+    },
+    {
+      "category": "tour",
+      "title": "렐루 서점·클레리구스 탑",
+      "status": "estimated",
+      "currency": "EUR",
+      "amountMinor": 4000,
+      "note": null,
+      "sortOrder": 13
+    },
+    {
+      "category": "tour",
+      "title": "6개 다리 크루즈·1번 트램",
+      "status": "estimated",
+      "currency": "EUR",
+      "amountMinor": 4800,
+      "note": null,
+      "sortOrder": 14
+    },
+    {
+      "category": "tour",
+      "title": "카사 바트요·카사 밀라",
+      "status": "estimated",
+      "currency": "EUR",
+      "amountMinor": 15000,
+      "note": null,
+      "sortOrder": 15
+    },
+    {
+      "category": "tour",
+      "title": "구엘 공원·산 파우",
+      "status": "estimated",
+      "currency": "EUR",
+      "amountMinor": 7200,
+      "note": "각 1인 €18",
+      "sortOrder": 16
+    },
+    {
+      "category": "transport",
+      "title": "포르투 공항 왕복·우버",
+      "status": "estimated",
+      "currency": "EUR",
+      "amountMinor": 10000,
+      "note": null,
+      "sortOrder": 17
+    },
+    {
+      "category": "transport",
+      "title": "바르셀로나 공항 왕복·택시",
+      "status": "estimated",
+      "currency": "EUR",
+      "amountMinor": 14000,
+      "note": null,
+      "sortOrder": 18
+    },
+    {
+      "category": "etc",
+      "title": "여행자 보험 (2인)",
+      "status": "estimated",
+      "currency": "KRW",
+      "amountMinor": 100000,
+      "note": null,
+      "sortOrder": 19
+    },
+    {
+      "category": "etc",
+      "title": "유럽 eSIM (2인)",
+      "status": "estimated",
+      "currency": "KRW",
+      "amountMinor": 60000,
+      "note": null,
+      "sortOrder": 20
+    },
+    {
+      "category": "shopping",
+      "title": "쇼핑·기념품",
+      "status": "estimated",
+      "currency": "EUR",
+      "amountMinor": 30000,
+      "note": "포트와인 등",
+      "sortOrder": 21
+    }
+  ]
+}
