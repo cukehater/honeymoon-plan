@@ -1,10 +1,18 @@
 import type { Metadata, Viewport } from "next";
-import { Gowun_Batang, IBM_Plex_Mono, IBM_Plex_Sans_KR } from "next/font/google";
+import { Montserrat } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const gowun = Gowun_Batang({ variable: "--font-gowun", weight: ["400", "700"], subsets: ["latin"] });
-const plexKr = IBM_Plex_Sans_KR({ variable: "--font-plex-kr", weight: ["400", "500", "600"], subsets: ["latin"] });
-const plexMono = IBM_Plex_Mono({ variable: "--font-plex-mono", weight: ["500"], subsets: ["latin"] });
+// 영문·숫자는 Montserrat, 한글은 Pretendard(KS X 1001 상용 한글 2,350자 서브셋)
+const montserrat = Montserrat({ variable: "--font-montserrat", subsets: ["latin"] });
+const pretendard = localFont({
+  variable: "--font-pretendard",
+  src: [
+    { path: "./fonts/Pretendard-Regular.subset.woff2", weight: "400" },
+    { path: "./fonts/Pretendard-SemiBold.subset.woff2", weight: "600" },
+    { path: "./fonts/Pretendard-Bold.subset.woff2", weight: "700" },
+  ],
+});
 
 export const metadata: Metadata = {
   title: "허니문 플래너",
@@ -15,7 +23,7 @@ export const viewport: Viewport = { viewportFit: "cover" };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="ko" className={`${gowun.variable} ${plexKr.variable} ${plexMono.variable} h-full antialiased`}>
+    <html lang="ko" className={`${montserrat.variable} ${pretendard.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col font-sans">{children}</body>
     </html>
   );

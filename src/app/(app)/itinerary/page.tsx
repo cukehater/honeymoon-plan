@@ -43,7 +43,7 @@ export default async function ItineraryPage() {
         <Fragment key={day.date}>
           {(i === 0 || days[i - 1].city !== day.city) && (
             <div className="mt-2 flex items-center gap-3 after:h-px after:flex-1 after:bg-line">
-              <span className={`font-display text-[15px] font-bold ${cityText(day.city)}`}>{CITY_LABEL[day.city]}</span>
+              <span className={`text-[15px] font-bold ${cityText(day.city)}`}>{CITY_LABEL[day.city]}</span>
             </div>
           )}
           <DayTimeline day={day} index={i} />

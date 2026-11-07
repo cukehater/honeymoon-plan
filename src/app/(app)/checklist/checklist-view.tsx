@@ -72,7 +72,7 @@ export function ChecklistView({ groups, myName }: { groups: Group[]; myName: str
         >
           <h2 className="mb-1.5 flex items-center gap-2 text-[17px]">
             {g.title}
-            {g.urgent && <small className="font-sans text-xs font-semibold text-warn">먼저 할 것</small>}
+            {g.urgent && <small className="text-xs font-semibold text-warn">먼저 할 것</small>}
           </h2>
           {g.items.map((i, idx) => (
             <label

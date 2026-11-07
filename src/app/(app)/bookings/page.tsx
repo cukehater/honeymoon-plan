@@ -31,7 +31,7 @@ export default async function BookingsPage() {
             .filter((b) => b.kind === g.kind)
             .map((b) => (
               <article key={b.id} className="flex flex-col gap-1.5 rounded-[10px] border border-line bg-surface px-4 py-3.5">
-                <h3 className="font-sans text-base font-semibold">{b.title}</h3>
+                <h3 className="text-base font-semibold">{b.title}</h3>
                 <p className="mono text-[13px] text-muted">
                   {localTime(b.startsAt)}
                   {b.endsAt && ` → ${localTime(b.endsAt)}`}
