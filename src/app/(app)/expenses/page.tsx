@@ -52,7 +52,12 @@ export default async function ExpensesPage() {
       </section>
 
       <section className="flex flex-col gap-3">
-        <h2 className="text-xl">날짜별 지출</h2>
+        <div className="flex items-baseline justify-between">
+          <h2 className="text-xl">날짜별 지출</h2>
+          <a href="/api/expenses.csv" download className="inline-flex min-h-11 items-center text-sm">
+            CSV 내려받기
+          </a>
+        </div>
         {dates.length === 0 && <p className="text-sm text-muted">아직 기록한 지출이 없습니다.</p>}
         {dates.map((d) => (
           <div key={d} className="flex flex-col rounded-[10px] border border-line bg-surface">
