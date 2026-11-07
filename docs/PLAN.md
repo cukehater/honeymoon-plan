@@ -35,7 +35,7 @@ SESSION_SECRET="32바이트 이상 무작위 문자열"
    - `ItineraryItem.mapQuery`: 항공·휴식 항목은 null. 나머지는 제목에서 `점심: `, `저녁: ` 같은 접두어와 괄호 안 설명을 뺀 장소명에 도시명(`Porto` 또는 `Barcelona`)을 붙인다.
    - `ItineraryItem`: JSON의 `bookingNote`는 컬럼이 없으므로 쓰지 않는다(`booking` 값으로 충분).
    - `ChecklistItem`: JSON의 `checked: true`는 `checkedById = 1`, `checkedAt = 시드 시각`. `dueNote`가 `10/31 16:00`이면 `dueAt = 2026-10-31T16:00:00Z`. 날짜가 아닌 메모(`출발 24~30시간 전`)는 `detail` 앞에 붙인다.
-   - `User`: JSON의 이름은 임시값이다(`배우자`). 실제 이름은 사용자에게 확인한다.
+   - `User`: 이름은 `경식`, `수민`(사용자 확인 완료).
 6. `pnpm db:seed`를 두 번 실행해 두 번째 실행이 아무것도 바꾸지 않는지 확인한다.
 
 **완료 조건**: 로컬 DB의 행 수가 trip_day 8, itinerary_item 54, day_alert 3, checklist_group 6, checklist_item 34, booking 8, budget_item 21, setting 2, app_user 2다.
@@ -125,5 +125,5 @@ SESSION_SECRET="32바이트 이상 무작위 문자열"
 
 ## 사용자에게 확인할 것
 
-- 로그인 화면에 쓸 배우자 이름
+- 로그인 화면에 쓸 배우자 이름 (확인 완료: 수민)
 - `APP_PASSCODE`로 쓸 비밀번호(사용자가 직접 `.env.local`과 Vercel에 넣는다)
