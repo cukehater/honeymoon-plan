@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import seed from "../../docs/seed-data.json";
-import { summarizeBudget, type BudgetItemRow, type ExpenseRow } from "./budget";
+import { summarizeBudget, summarizeTaxFree, type BudgetItemRow, type ExpenseRow, type TaxFreeRow } from "./budget";
 
 // 시드 순서대로 넣으면 id가 1부터 붙는다(6: 예트먼 €550, 7: 파에야 €90, 21: 쇼핑 €300)
 const budgetItems = seed.budgetItems.map((b, i) => ({ ...b, id: i + 1 })) as BudgetItemRow[];
@@ -74,5 +74,26 @@ describe("summarizeBudget", () => {
   it("never lets the reserve go negative", () => {
     const s = run([eur(400_000, { budgetItemId: 8 })]); // 남은 금액 합이 음수
     expect(s.reserve).toBe(0);
+  });
+});
+
+describe("summarizeTaxFree", () => {
+  const row = (o: Partial<TaxFreeRow>): TaxFreeRow => ({ category: "shopping", amountKrw: 0, paidById: 1, taxFreeMinor: null, taxFreeStatus: null, ...o });
+  it("sums refunds by status and shopping by payer", () => {
+    const s = summarizeTaxFree(
+      [
+        row({ amountKrw: 600_000, taxFreeMinor: 4_500, taxFreeStatus: "form" }),
+        row({ amountKrw: 700_000, taxFreeMinor: 5_000, taxFreeStatus: "refunded" }),
+        row({ amountKrw: 300_000, paidById: 2 }),
+        row({ category: "food", amountKrw: 90_000 }),
+      ],
+      1400,
+    );
+    expect(s.refund).toEqual({ expected: 9_500, refunded: 5_000, byStatus: { form: 4_500, validated: 0, refunded: 5_000 } });
+    expect(s.shoppingByUser).toEqual({ 1: 1_300_000, 2: 300_000 });
+    expect(s.limitKrw).toBe(1_120_000);
+  });
+  it("has no limit without a dollar rate", () => {
+    expect(summarizeTaxFree([], null).limitKrw).toBeNull();
   });
 });

@@ -51,6 +51,8 @@ export default async function NewExpensePage({ searchParams }: PageProps<"/expen
           budgetItemId: null,
           itineraryItemId: item?.id ?? null,
           memo: "",
+          taxFree: "",
+          taxFreeStatus: "",
         }}
       />
     </>

@@ -141,6 +141,7 @@ export async function upsertBudgetItem(_prev: FormState, formData: FormData): Pr
 const SettingInput = z.discriminatedUnion("key", [
   z.object({ key: z.literal("fx_eur_krw"), value: z.coerce.number().positive("환율은 0보다 커야 합니다.").max(100000) }),
   z.object({ key: z.literal("reserve_pct"), value: z.coerce.number().int("예비비 비율은 정수로 입력하세요.").min(0).max(100) }),
+  z.object({ key: z.literal("fx_usd_krw"), value: z.coerce.number().positive("환율은 0보다 커야 합니다.").max(100000) }),
 ]);
 
 export async function updateSetting(_prev: FormState, formData: FormData): Promise<FormState> {

@@ -1,5 +1,5 @@
 // 경비 집계. 화면에서 따로 계산하지 않고 이 함수만 쓴다. 금액은 모두 정수(원, 유로는 센트).
-import type { BudgetStatus, Category, Currency } from "../generated/prisma/enums";
+import type { BudgetStatus, Category, Currency, TaxFreeStatus } from "../generated/prisma/enums";
 
 export type BudgetItemRow = {
   id: number;
@@ -105,3 +105,29 @@ export function summarizeBudget(input: {
 
 // 지출 원화 합계(하루 합계 등)
 export const sumKrw = (expenses: { amountKrw: number }[]) => expenses.reduce((s, e) => s + e.amountKrw, 0);
+
+export const DUTY_FREE_LIMIT_USD = 800;
+
+export type TaxFreeRow = {
+  category: Category;
+  amountKrw: number;
+  paidById: number;
+  taxFreeMinor: number | null;
+  taxFreeStatus: TaxFreeStatus | null;
+};
+
+// 택스리펀드 합계(유로 센트)와 결제한 사람별 쇼핑 합계 대 1인 면세 한도(미화 800달러). usdRate가 없으면 한도는 null.
+export function summarizeTaxFree(expenses: TaxFreeRow[], usdRate: number | null) {
+  const refund = { expected: 0, refunded: 0, byStatus: { form: 0, validated: 0, refunded: 0 } as Record<TaxFreeStatus, number> };
+  const shoppingByUser: Record<number, number> = {};
+  for (const e of expenses) {
+    if (e.taxFreeMinor) {
+      refund.expected += e.taxFreeMinor;
+      if (e.taxFreeStatus) refund.byStatus[e.taxFreeStatus] += e.taxFreeMinor;
+      if (e.taxFreeStatus === "refunded") refund.refunded += e.taxFreeMinor;
+    }
+    if (e.category === "shopping") shoppingByUser[e.paidById] = (shoppingByUser[e.paidById] ?? 0) + e.amountKrw;
+  }
+  const limitKrw = usdRate ? Math.round(DUTY_FREE_LIMIT_USD * usdRate) : null;
+  return { refund, shoppingByUser, limitKrw };
+}

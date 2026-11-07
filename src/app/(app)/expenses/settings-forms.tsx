@@ -22,8 +22,8 @@ function Result({ state }: { state: FormState }) {
   );
 }
 
-export function SettingForm({ name, label, unit, initial }: { name: "fx_eur_krw" | "reserve_pct"; label: string; unit: string; initial: number }) {
-  const [value, setValue] = useState(String(initial));
+export function SettingForm({ name, label, unit, initial }: { name: "fx_eur_krw" | "reserve_pct" | "fx_usd_krw"; label: string; unit: string; initial: number | null }) {
+  const [value, setValue] = useState(initial == null ? "" : String(initial));
   const [state, action, pending] = useSafeAction(updateSetting);
   return (
     <form action={action} className="flex flex-wrap items-end gap-2">

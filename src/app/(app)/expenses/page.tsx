@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { SummaryTiles } from "@/components/summary-tiles";
-import { CATEGORIES, CATEGORY_LABEL, summarizeBudget } from "@/lib/budget";
+import { CATEGORIES, CATEGORY_LABEL, DUTY_FREE_LIMIT_USD, summarizeBudget, summarizeTaxFree } from "@/lib/budget";
 import { db } from "@/lib/db";
 import { centsToInput, formatDate, formatEur, formatKrw } from "@/lib/format";
 import { getSession } from "@/lib/session";
@@ -11,13 +11,15 @@ export const metadata = { title: "경비" };
 
 export default async function ExpensesPage() {
   await getSession();
-  const [budgetItems, expenses, settings] = await Promise.all([
+  const [budgetItems, expenses, settings, users] = await Promise.all([
     db.budgetItem.findMany({ orderBy: { sortOrder: "asc" } }),
     db.expense.findMany({ orderBy: [{ spentOn: "desc" }, { createdAt: "desc" }], include: { paidBy: { select: { name: true } } } }),
     getSettings(),
+    db.user.findMany({ orderBy: { id: "asc" } }),
   ]);
   const s = summarizeBudget({ budgetItems, expenses, ...settings });
   const dates = Object.keys(s.byDate).sort().reverse();
+  const tax = summarizeTaxFree(expenses, settings.usdRate);
 
   return (
     <>
@@ -90,10 +92,48 @@ export default async function ExpensesPage() {
         ))}
       </section>
 
+      <section className="flex flex-col gap-3">
+        <h2 className="text-xl">택스리펀드·면세 한도</h2>
+        <div className="flex flex-col gap-1 rounded-[10px] border border-line bg-surface px-4 py-3.5 text-sm">
+          <span className="flex justify-between">
+            <span className="text-muted">환급 예상</span>
+            <span className="mono">{formatEur(tax.refund.expected)}</span>
+          </span>
+          <span className="flex justify-between text-xs text-muted">
+            <span>서류 받음 · 공항 확인 · 환급 완료</span>
+            <span className="mono">
+              {formatEur(tax.refund.byStatus.form)} · {formatEur(tax.refund.byStatus.validated)} · {formatEur(tax.refund.byStatus.refunded)}
+            </span>
+          </span>
+        </div>
+        <ul className="flex flex-col gap-2 text-sm">
+          {users.map((u) => {
+            const spent = tax.shoppingByUser[u.id] ?? 0;
+            const over = tax.limitKrw != null && spent > tax.limitKrw;
+            return (
+              <li key={u.id} className="flex flex-wrap justify-between gap-x-3">
+                <span>{u.name} 쇼핑</span>
+                <span className="mono">
+                  <span className={over ? "font-semibold text-warn" : ""}>{formatKrw(spent)}</span>
+                  {tax.limitKrw != null && <span className="text-muted"> / {formatKrw(tax.limitKrw)}</span>}
+                </span>
+                {over && <span className="basis-full text-right text-xs font-semibold text-warn">면세 한도 초과 · 입국 때 세관 신고 대상</span>}
+              </li>
+            );
+          })}
+        </ul>
+        <p className="text-xs text-muted">
+          {tax.limitKrw == null
+            ? `1인 면세 한도(미화 ${DUTY_FREE_LIMIT_USD}달러)와 비교하려면 아래에 달러 환율을 입력하세요.`
+            : `항목이 쇼핑인 지출을 결제한 사람별로 더해 1인 면세 한도(미화 ${DUTY_FREE_LIMIT_USD}달러)와 비교합니다.`}
+        </p>
+      </section>
+
       <section className="flex flex-col gap-4">
         <h2 className="text-xl">환율·예비비</h2>
         <SettingForm name="fx_eur_krw" label="€1당 원화" unit="원" initial={settings.fxRate} />
         <SettingForm name="reserve_pct" label="예비비 비율" unit="%" initial={settings.reservePct} />
+        <SettingForm name="fx_usd_krw" label="$1당 원화 (면세 한도 비교용)" unit="원" initial={settings.usdRate} />
       </section>
 
       <section className="flex flex-col gap-3">

@@ -23,8 +23,10 @@ export const ExpenseInput = z
     budgetItemId: optionalId,
     itineraryItemId: optionalId,
     memo: z.string().trim().max(500).transform((s) => s || null),
+    taxFree: z.string().optional(),
+    taxFreeStatus: z.preprocess((v) => (v === "" || v == null ? null : v), z.enum(["form", "validated", "refunded"]).nullable()),
   })
-  .transform(({ amount, ...rest }, ctx) => {
+  .transform(({ amount, taxFree, ...rest }, ctx) => {
     const amountMinor = parseAmount(amount, rest.currency);
     if (amountMinor == null || amountMinor <= 0) {
       ctx.addIssue({
@@ -34,7 +36,13 @@ export const ExpenseInput = z
       });
       return z.NEVER;
     }
-    return { ...rest, amountMinor };
+    // 택스리펀드 환급 예상액(유로)
+    const taxFreeMinor = taxFree?.trim() ? parseAmount(taxFree, "EUR") : null;
+    if (taxFree?.trim() && taxFreeMinor == null) {
+      ctx.addIssue({ code: "custom", path: ["taxFree"], message: "환급 예상액은 유로로 소수 둘째 자리까지 입력하세요." });
+      return z.NEVER;
+    }
+    return { ...rest, amountMinor, taxFreeMinor };
   });
 
 export type ExpenseInputData = z.output<typeof ExpenseInput>;

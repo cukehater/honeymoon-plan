@@ -17,6 +17,8 @@ export type ExpenseFormValues = {
   budgetItemId: number | null;
   itineraryItemId: number | null;
   memo: string;
+  taxFree: string; // 환급 예상액(유로)
+  taxFreeStatus: "" | "form" | "validated" | "refunded";
   amountKrw?: string; // 수정 화면에서만
 };
 
@@ -179,6 +181,36 @@ export function ExpenseForm({ action, initial, users, budgetItems, itineraryTitl
         메모
         <input name="memo" value={v.memo} onChange={(e) => set("memo", e.target.value)} maxLength={500} className={`${input} text-fg`} />
       </label>
+
+      <details open={!!(v.taxFree || v.taxFreeStatus)} className="rounded-lg border border-line px-3">
+        <summary className="flex min-h-11 cursor-pointer items-center text-sm text-muted">택스리펀드 (선택)</summary>
+        <div className="grid grid-cols-2 gap-3 pb-3">
+          <label className="flex flex-col gap-1 text-sm text-muted">
+            환급 예상액 (€)
+            <input
+              name="taxFree"
+              inputMode="decimal"
+              value={v.taxFree}
+              onChange={(e) => set("taxFree", e.target.value)}
+              className={`mono ${input} text-fg`}
+            />
+          </label>
+          <label className="flex flex-col gap-1 text-sm text-muted">
+            상태
+            <select
+              name="taxFreeStatus"
+              value={v.taxFreeStatus}
+              onChange={(e) => set("taxFreeStatus", e.target.value as ExpenseFormValues["taxFreeStatus"])}
+              className={`${input} text-fg`}
+            >
+              <option value="">없음</option>
+              <option value="form">서류 받음</option>
+              <option value="validated">공항 확인</option>
+              <option value="refunded">환급 완료</option>
+            </select>
+          </label>
+        </div>
+      </details>
 
       <div className="grid grid-cols-2 gap-3">
         <label className="flex flex-col gap-1 text-sm text-muted">

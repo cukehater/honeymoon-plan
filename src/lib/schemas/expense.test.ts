@@ -12,6 +12,7 @@ const base = {
   budgetItemId: "",
   itineraryItemId: "",
   memo: "",
+  taxFreeStatus: "",
 };
 
 describe("parseAmount", () => {
@@ -34,6 +35,12 @@ describe("ExpenseInput", () => {
     const r = ExpenseInput.parse(base);
     expect(r).toMatchObject({ amountMinor: 1250, paidById: 1, budgetItemId: null, itineraryItemId: null, memo: null });
     expect(r).not.toHaveProperty("amount");
+  });
+  it("parses an optional tax refund", () => {
+    expect(ExpenseInput.parse({ ...base, taxFree: "", taxFreeStatus: "" })).toMatchObject({ taxFreeMinor: null, taxFreeStatus: null });
+    expect(ExpenseInput.parse({ ...base, taxFree: "18.4", taxFreeStatus: "form" })).toMatchObject({ taxFreeMinor: 1840, taxFreeStatus: "form" });
+    expect(ExpenseInput.safeParse({ ...base, taxFree: "abc" }).success).toBe(false);
+    expect(ExpenseInput.safeParse({ ...base, taxFreeStatus: "lost" }).success).toBe(false);
   });
   it("rejects zero, negative and unknown enum values", () => {
     expect(ExpenseInput.safeParse({ ...base, amount: "0" }).success).toBe(false);

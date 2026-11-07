@@ -197,7 +197,7 @@ model Expense {
   @@map("expense")
 }
 
-// 설정: fx_eur_krw = 1544, reserve_pct = 10 (value는 JSON 문자열)
+// 설정: fx_eur_krw = 1544, reserve_pct = 10, fx_usd_krw = $1당 원(P1 면세 한도 비교, 사용자가 입력) (value는 JSON 문자열)
 model Setting {
   key   String @id
   value String

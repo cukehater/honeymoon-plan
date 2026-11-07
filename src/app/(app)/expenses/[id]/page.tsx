@@ -38,6 +38,8 @@ export default async function EditExpensePage({ params }: PageProps<"/expenses/[
           budgetItemId: expense.budgetItemId,
           itineraryItemId: expense.itineraryItemId,
           memo: expense.memo ?? "",
+          taxFree: expense.taxFreeMinor == null ? "" : centsToInput(expense.taxFreeMinor),
+          taxFreeStatus: expense.taxFreeStatus ?? "",
           amountKrw: String(expense.amountKrw),
         }}
       />
