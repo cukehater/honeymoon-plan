@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ItemEditor } from "@/app/(app)/itinerary/item-editor";
 import type { City, DayAlert, ItineraryItem, TripDay } from "@/generated/prisma/client";
 import { formatDate } from "@/lib/format";
 
@@ -98,6 +99,7 @@ export function DayTimeline({ day, index, detail = false }: Props) {
                     <Link href={`/expenses/new?itineraryItemId=${item.id}`} className="inline-flex min-h-11 items-center">
                       이 항목으로 지출 추가
                     </Link>
+                    <ItemEditor item={item} />
                   </span>
                 )}
               </div>

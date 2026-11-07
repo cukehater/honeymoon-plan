@@ -46,7 +46,7 @@ export default async function HomePage({ searchParams }: PageProps<"/">) {
   const now = resolveNow((await searchParams).now);
   const [days, items, budgetItems, expenses, settings, checklist] = await Promise.all([
     db.tripDay.findMany({ orderBy: { date: "asc" }, include: { alerts: true } }),
-    db.itineraryItem.findMany({ where: { hidden: false }, orderBy: [{ date: "asc" }, { sortOrder: "asc" }] }),
+    db.itineraryItem.findMany({ where: { hidden: false }, orderBy: [{ date: "asc" }, { startTime: "asc" }, { sortOrder: "asc" }] }),
     db.budgetItem.findMany(),
     db.expense.findMany({ select: { spentOn: true, category: true, currency: true, amountMinor: true, amountKrw: true, budgetItemId: true } }),
     getSettings(),

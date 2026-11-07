@@ -13,7 +13,7 @@ export default async function ItineraryPage() {
       orderBy: { date: "asc" },
       include: {
         alerts: true,
-        items: { where: { hidden: false }, orderBy: { sortOrder: "asc" } },
+        items: { where: { hidden: false }, orderBy: [{ startTime: "asc" }, { sortOrder: "asc" }] },
       },
     }),
     db.dayAlert.findMany({ where: { date: null } }),
