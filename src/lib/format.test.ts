@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatDate, formatEur, formatKrw } from "./format";
+import { centsToInput, formatDate, formatEur, formatKrw } from "./format";
 
 describe("format", () => {
   it("formats won", () => {
@@ -16,5 +16,10 @@ describe("format", () => {
   it("formats date with weekday", () => {
     expect(formatDate("2026-12-06")).toBe("12/6 (일)");
     expect(formatDate("2026-11-30")).toBe("11/30 (월)");
+  });
+  it("formats cents for inputs", () => {
+    expect(centsToInput(1250)).toBe("12.50");
+    expect(centsToInput(6000)).toBe("60");
+    expect(centsToInput(7)).toBe("0.07");
   });
 });

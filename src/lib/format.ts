@@ -19,3 +19,9 @@ export function formatDate(date: string) {
   const [y, m, d] = date.split("-").map(Number);
   return `${m}/${d} (${WEEKDAYS[new Date(Date.UTC(y, m - 1, d)).getUTCDay()]})`;
 }
+
+// 입력칸용 유로 문자열. 1250 → "12.50", 6000 → "60"
+export function centsToInput(cents: number) {
+  const rest = cents % 100;
+  return `${Math.floor(cents / 100)}${rest ? `.${String(rest).padStart(2, "0")}` : ""}`;
+}
