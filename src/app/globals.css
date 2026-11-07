@@ -59,6 +59,9 @@
     color: var(--fg);
     font-size: 15px;
     line-height: 1.65;
+    /* 한글은 단어(어절) 단위로 줄바꿈하고, 예약번호처럼 긴 문자열만 중간에서 끊는다 */
+    word-break: keep-all;
+    overflow-wrap: anywhere;
   }
 
   h1,
@@ -72,6 +75,22 @@
 
   a {
     color: var(--azul);
+    text-underline-offset: 0.2em;
+  }
+
+  ::selection {
+    background: var(--azul-soft);
+    color: var(--fg);
+  }
+
+  input,
+  textarea {
+    caret-color: var(--azul);
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    accent-color: var(--ok);
   }
 
   :focus-visible {

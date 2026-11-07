@@ -41,8 +41,10 @@ export function TabBarLinks({ pathname }: { pathname: string | null }) {
                 <Link
                   href={t.href}
                   aria-current={active ? "page" : undefined}
-                  className={`flex min-h-14 items-center justify-center text-[13px] no-underline ${
-                    active ? "font-semibold text-fg" : "text-muted"
+                  className={`relative flex min-h-14 items-center justify-center text-[13px] no-underline ${
+                    active
+                      ? "font-semibold text-fg before:absolute before:inset-x-4 before:top-0 before:h-0.5 before:rounded-b-full before:bg-fg"
+                      : "text-muted hover:text-fg"
                   }`}
                 >
                   {t.label}
