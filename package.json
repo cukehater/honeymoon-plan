@@ -11,7 +11,7 @@
     "test": "vitest run --passWithNoTests",
     "db:migrate": "prisma migrate dev",
     "db:seed": "tsx --env-file-if-exists=.env.local prisma/seed.ts",
-    "db:reset": "prisma migrate reset --force && npm run db:seed"
+    "db:reset": "prisma migrate reset --force && pnpm db:seed"
   },
   "dependencies": {
     "@libsql/client": "^0.18.0",
@@ -35,5 +35,13 @@
     "tsx": "^4.23.15",
     "typescript": "^5",
     "vitest": "^5.1.0"
+  },
+  "packageManager": "pnpm@10.12.4",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@prisma/engines",
+      "esbuild",
+      "prisma"
+    ]
   }
 }

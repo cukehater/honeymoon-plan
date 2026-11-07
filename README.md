@@ -5,26 +5,26 @@
 ## 로컬 개발
 
 ```bash
-npm install
-npx prisma generate   # src/generated/prisma에 클라이언트 생성 (커밋하지 않음)
+pnpm install
+pnpm prisma generate   # src/generated/prisma에 클라이언트 생성 (커밋하지 않음)
 cp .env.example .env.local
 # .env.local에서 APP_PASSCODE를 바꾸고, SESSION_SECRET에 아래 명령의 출력을 넣는다
 openssl rand -hex 32
 
-npm run db:migrate   # 로컬 SQLite(dev.db)에 마이그레이션 적용
-npm run db:seed      # 시드 데이터 넣기 (이미 있으면 아무것도 하지 않음)
-npm run dev          # http://localhost:3000
+pnpm db:migrate   # 로컬 SQLite(dev.db)에 마이그레이션 적용
+pnpm db:seed      # 시드 데이터 넣기 (이미 있으면 아무것도 하지 않음)
+pnpm dev          # http://localhost:3000
 ```
 
 | 명령 | 하는 일 |
 | --- | --- |
-| `npm run dev` | 개발 서버 |
-| `npm run build` | `prisma generate` 후 Next.js 빌드 |
-| `npm run lint` / `npm run typecheck` | ESLint / 타입 검사 |
-| `npm test` | Vitest |
-| `npm run db:migrate` | 로컬 SQLite에 `prisma migrate dev` |
-| `npm run db:seed` | `prisma/seed.ts` 실행 (`TURSO_DATABASE_URL` 기준). `-- --force`는 참고 데이터를 다시 넣는다(지출이 있으면 거부) |
-| `npm run db:reset` | 로컬 DB 초기화 후 시드 |
+| `pnpm dev` | 개발 서버 |
+| `pnpm build` | `prisma generate` 후 Next.js 빌드 |
+| `pnpm lint` / `pnpm typecheck` | ESLint / 타입 검사 |
+| `pnpm test` | Vitest |
+| `pnpm db:migrate` | 로컬 SQLite에 `prisma migrate dev` |
+| `pnpm db:seed` | `prisma/seed.ts` 실행 (`TURSO_DATABASE_URL` 기준). `--force`는 참고 데이터를 다시 넣는다(지출이 있으면 거부) |
+| `pnpm db:reset` | 로컬 DB 초기화 후 시드 |
 
 개발 모드에서는 홈 화면에 `?now=2026-12-06T14:00:00+01:00`처럼 시각을 넘겨 여행 전·중·후 화면을 확인할 수 있습니다.
 
@@ -81,15 +81,15 @@ turso db shell honeymoon-dev  < prisma/migrations/20261107125343_init/migration.
 turso db shell honeymoon-prod < prisma/migrations/20261107125343_init/migration.sql
 ```
 
-나중에 스키마를 바꾸면 로컬에서 `npm run db:migrate -- --name <이름>`으로 새 폴더를 만들고, 그 폴더의 `migration.sql`만 같은 방법으로 적용합니다.
+나중에 스키마를 바꾸면 로컬에서 `pnpm db:migrate --name <이름>`으로 새 폴더를 만들고, 그 폴더의 `migration.sql`만 같은 방법으로 적용합니다.
 
 ### 5. 시드
 
 로컬에서 운영 DB 주소와 토큰을 넘겨 한 번 실행합니다. 명령줄에 넘긴 값이 `.env.local`보다 우선합니다. 이미 데이터가 있으면 아무것도 바꾸지 않습니다.
 
 ```bash
-TURSO_DATABASE_URL="libsql://<honeymoon-dev 주소>"  TURSO_AUTH_TOKEN="<dev 토큰>"  npm run db:seed
-TURSO_DATABASE_URL="libsql://<honeymoon-prod 주소>" TURSO_AUTH_TOKEN="<prod 토큰>" npm run db:seed
+TURSO_DATABASE_URL="libsql://<honeymoon-dev 주소>"  TURSO_AUTH_TOKEN="<dev 토큰>"  pnpm db:seed
+TURSO_DATABASE_URL="libsql://<honeymoon-prod 주소>" TURSO_AUTH_TOKEN="<prod 토큰>" pnpm db:seed
 ```
 
 ### 6. 배포와 확인

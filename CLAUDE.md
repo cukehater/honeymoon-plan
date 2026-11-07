@@ -16,6 +16,7 @@
 - DB: 로컬은 SQLite 파일(`file:./dev.db`), 운영은 Turso(libSQL)
 - Zod(입력 검증), jose(세션 쿠키 서명), Vitest(단위 테스트)
 - 배포: Vercel
+- 패키지 매니저: pnpm (`package-lock.json` 대신 `pnpm-lock.yaml`)
 
 ## 명령어
 
@@ -23,13 +24,13 @@
 
 | 명령 | 하는 일 |
 | --- | --- |
-| `npm run dev` | 개발 서버 |
-| `npm run build` | `prisma generate` 후 Next.js 빌드 |
-| `npm run lint` / `npm run typecheck` | ESLint / `tsc --noEmit` |
-| `npm test` | Vitest |
-| `npm run db:migrate` | 로컬 SQLite에 `prisma migrate dev` |
-| `npm run db:seed` | `prisma/seed.ts` 실행 (`TURSO_DATABASE_URL` 기준) |
-| `npm run db:reset` | 로컬 DB 초기화 후 시드 |
+| `pnpm dev` | 개발 서버 |
+| `pnpm build` | `prisma generate` 후 Next.js 빌드 |
+| `pnpm lint` / `pnpm typecheck` | ESLint / `tsc --noEmit` |
+| `pnpm test` | Vitest |
+| `pnpm db:migrate` | 로컬 SQLite에 `prisma migrate dev` |
+| `pnpm db:seed` | `prisma/seed.ts` 실행 (`TURSO_DATABASE_URL` 기준) |
+| `pnpm db:reset` | 로컬 DB 초기화 후 시드 |
 
 ## 규칙
 
@@ -61,6 +62,6 @@
 ## 작업 방식
 
 - `docs/PLAN.md`의 Phase를 순서대로 진행한다. Phase마다 완료 조건을 확인한 뒤 커밋한다.
-- 커밋 전에 `npm run lint`, `npm run typecheck`, `npm test`를 통과시킨다.
+- 커밋 전에 `pnpm lint`, `pnpm typecheck`, `pnpm test`를 통과시킨다.
 - 범위는 PRD의 P0이다. P1은 PLAN의 마지막 Phase에서만 다룬다.
 - 판단이 필요한 사항(디자인 취향, 범위 변경, 운영 DB 작업)은 멈추고 사용자에게 묻는다.
