@@ -86,15 +86,63 @@ datasource db {
   provider = "sqlite"   // URL은 prisma.config.ts에서 지정
 }
 
-enum City          { paris porto barcelona }
-enum Category      { air stay food tour transport shopping etc }
-enum Currency      { EUR KRW }
-enum ItemKind      { activity meal flight transfer rest }
-enum BookingNeed   { none required done }
-enum BookingKind   { flight stay activity }
-enum BudgetStatus  { paid estimated }
-enum PayMethod     { card cash }
-enum TaxFreeStatus { form validated refunded }
+enum City {
+  paris
+  porto
+  barcelona
+}
+
+enum Category {
+  air
+  stay
+  food
+  tour
+  transport
+  shopping
+  etc
+}
+
+enum Currency {
+  EUR
+  KRW
+}
+
+enum ItemKind {
+  activity
+  meal
+  flight
+  transfer
+  rest
+}
+
+enum BookingNeed {
+  none
+  required
+  done
+}
+
+enum BookingKind {
+  flight
+  stay
+  activity
+}
+
+enum BudgetStatus {
+  paid
+  estimated
+}
+
+enum PayMethod {
+  card
+  cash
+}
+
+enum TaxFreeStatus {
+  form
+  validated
+  refunded
+}
+
 
 // 사용자 2명
 model User {
