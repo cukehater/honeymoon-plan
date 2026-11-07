@@ -3,7 +3,7 @@ import { ChevronRight, MapPin, TriangleAlert } from "lucide-react";
 import { LogoutButton } from "@/components/logout-button";
 import { PhotoHero } from "@/components/photo-hero";
 import { SummaryTiles } from "@/components/summary-tiles";
-import { CITY_NAME, CITY_PHOTO, KIND_ICON, mapUrl } from "@/components/travel";
+import { CITY_NAME, KIND_ICON, dayPhoto, mapUrl } from "@/components/travel";
 import { Badge, Card, IconTile, ProgressBar, SectionTitle } from "@/components/ui";
 import type { DayAlert, ItineraryItem } from "@/generated/prisma/client";
 import { summarizeBudget, sumKrw } from "@/lib/budget";
@@ -85,11 +85,13 @@ export default async function HomePage({ searchParams }: PageProps<"/">) {
 
     return (
       <>
-        <PhotoHero src={CITY_PHOTO[today.city]} alt={`${CITY_NAME[today.city]} 풍경`} top={<HeroTop couple={couple} />}>
-          <span className="mono text-[13px] font-semibold opacity-90">
-            Day {String(index + 1).padStart(2, "0")} · {formatDate(today.date)} · {localNow(now, today.tz).time} 현지
-          </span>
-          <h1 className="text-[32px] leading-tight">{CITY_NAME[today.city]}</h1>
+        <PhotoHero src={dayPhoto(days, today.date)} alt={`${CITY_NAME[today.city]} 풍경`} top={<HeroTop couple={couple} />}>
+          <h1 className="text-[32px] leading-tight">
+            Day {index + 1} · {CITY_NAME[today.city]}
+          </h1>
+          <p className="mono text-[14px] font-semibold opacity-90">
+            {formatDate(today.date)} · 현지 {localNow(now, today.tz).time} · {days.length}일 중 {index + 1}일째
+          </p>
           <p className="text-[15px] opacity-90">{today.title}</p>
         </PhotoHero>
 
@@ -154,8 +156,6 @@ export default async function HomePage({ searchParams }: PageProps<"/">) {
           </div>
           <ChevronRight size={22} className="text-muted" aria-hidden />
         </Link>
-
-        <SummaryTiles s={summary} href="/expenses" />
       </>
     );
   }
@@ -171,9 +171,9 @@ export default async function HomePage({ searchParams }: PageProps<"/">) {
           height={340}
           top={<HeroTop couple={couple} />}
         >
-          <span className="text-[15px] font-semibold opacity-90">포르투 · 바르셀로나 신혼여행</span>
           <h1 className="mono text-[52px] leading-none font-bold tracking-tight">D-{dday}</h1>
-          <span className="mono text-[14px] opacity-90">2026.11.30 – 12.08 · 8박 9일</span>
+          <p className="text-[16px] font-semibold">포르투 · 바르셀로나 신혼여행</p>
+          <p className="mono text-[14px] opacity-90">2026.11.30 – 12.08 · 8박 9일</p>
         </PhotoHero>
 
         <Card className="relative -mt-9 shadow-[0_12px_32px_-12px_rgb(16_19_23/0.25)]">
@@ -191,8 +191,6 @@ export default async function HomePage({ searchParams }: PageProps<"/">) {
             <ProgressBar value={done} max={checklist.length} tone="ok" label="체크리스트 진행" />
           </Link>
         </Card>
-
-        <SummaryTiles s={summary} href="/expenses" />
 
         <Card>
           <SectionTitle
@@ -214,6 +212,8 @@ export default async function HomePage({ searchParams }: PageProps<"/">) {
             ))}
           </ol>
         </Card>
+
+        <SummaryTiles s={summary} href="/expenses" />
       </>
     );
   }
@@ -221,10 +221,10 @@ export default async function HomePage({ searchParams }: PageProps<"/">) {
   return (
     <>
       <PhotoHero src="/images/barcelona.webp" alt="바르셀로나 사그라다 파밀리아" top={<HeroTop couple={couple} />}>
-        <span className="mono text-[14px] font-semibold opacity-90">
-          {formatDate(first.date)} – {formatDate(last.date)}
-        </span>
         <h1 className="text-[32px] leading-tight">여행을 마쳤어요</h1>
+        <p className="mono text-[14px] font-semibold opacity-90">
+          {formatDate(first.date)} – {formatDate(last.date)}
+        </p>
       </PhotoHero>
       <div className="relative -mt-9">
         <SummaryTiles s={summary} href="/expenses" />

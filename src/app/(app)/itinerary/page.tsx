@@ -54,7 +54,7 @@ export default async function ItineraryPage() {
         </p>
       ))}
       {days.map((day, i) => (
-        <DayTimeline key={day.date} day={day} index={i} />
+        <DayTimeline key={day.date} day={day} index={i} cityStart={i === 0 || days[i - 1].city !== day.city} />
       ))}
     </>
   );

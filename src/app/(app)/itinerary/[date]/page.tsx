@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { ChevronLeft } from "lucide-react";
 import { DayAlerts, DayTimeline } from "@/components/day-timeline";
 import { PhotoHero } from "@/components/photo-hero";
-import { CITY_NAME, CITY_PHOTO } from "@/components/travel";
+import { CITY_NAME, dayPhoto } from "@/components/travel";
 import { Card } from "@/components/ui";
 import { sumKrw } from "@/lib/budget";
 import { db } from "@/lib/db";
@@ -22,7 +22,7 @@ export default async function DayPage({ params }: PageProps<"/itinerary/[date]">
         items: { orderBy: [{ startTime: "asc" }, { sortOrder: "asc" }] },
       },
     }),
-    db.tripDay.findMany({ select: { date: true }, orderBy: { date: "asc" } }),
+    db.tripDay.findMany({ select: { date: true, city: true }, orderBy: { date: "asc" } }),
     db.expense.findMany({ where: { spentOn: date }, select: { amountKrw: true } }),
   ]);
   if (!day) notFound();
@@ -32,7 +32,7 @@ export default async function DayPage({ params }: PageProps<"/itinerary/[date]">
   return (
     <>
       <PhotoHero
-        src={CITY_PHOTO[day.city]}
+        src={dayPhoto(dates, day.date)}
         alt={`${CITY_NAME[day.city]} 풍경`}
         height={240}
         top={
@@ -45,10 +45,10 @@ export default async function DayPage({ params }: PageProps<"/itinerary/[date]">
           </Link>
         }
       >
-        <span className="mono text-[13px] font-semibold opacity-90">
-          Day {String(index + 1).padStart(2, "0")} · {formatDate(day.date)} · {CITY_NAME[day.city]}
-        </span>
         <h1 className="text-[26px] leading-tight">{day.title}</h1>
+        <p className="mono text-[14px] font-semibold opacity-90">
+          Day {index + 1} · {formatDate(day.date)} · {CITY_NAME[day.city]}
+        </p>
       </PhotoHero>
 
       <Card className="relative -mt-9 flex items-center justify-between shadow-[0_12px_32px_-12px_rgb(16_19_23/0.25)]">

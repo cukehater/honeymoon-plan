@@ -20,10 +20,10 @@ export function LogoutButton() {
           await logout();
         });
       }}
-      className="press inline-flex min-h-11 items-center gap-1.5 rounded-full bg-black/35 px-3.5 text-[13px] font-semibold text-white backdrop-blur-md disabled:opacity-60"
+      aria-label={pending ? "로그아웃 중" : "로그아웃"}
+      className="press inline-flex size-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-md disabled:opacity-60"
     >
-      <LogOut size={16} aria-hidden />
-      {pending ? "나가는 중…" : "로그아웃"}
+      <LogOut size={18} aria-hidden />
     </button>
   );
 }

@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { type ReactNode, useState, useTransition } from "react";
 import type { ItemKind } from "@/generated/prisma/enums";
-import { Pencil, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
 import { field, input, primaryButton, secondaryButton } from "@/components/form-styles";
 import { useSafeAction } from "@/lib/use-safe-action";
 import { createItineraryItem, setItineraryItemHidden, updateItineraryItem } from "./actions";
@@ -46,15 +46,15 @@ export function HideButton({ id, hidden, label }: { id: number; hidden: boolean;
   );
 }
 
-export function ItemEditor({ item }: { item: { id: number; startTime: string; description: string | null } }) {
+export function ItemEditor({ item, children }: { item: { id: number; startTime: string; description: string | null }; children: ReactNode }) {
   const [startTime, setStartTime] = useState(item.startTime);
   const [description, setDescription] = useState(item.description ?? "");
   const [state, action, pending] = useSafeAction(updateItineraryItem);
   return (
-    <details className="group open:basis-full">
-      <summary className={`${secondaryButton} cursor-pointer list-none [&::-webkit-details-marker]:hidden`}>
-        <Pencil size={14} aria-hidden />
-        편집
+    <details className="group">
+      <summary className="press -mx-2 cursor-pointer list-none rounded-[12px] px-2 py-1 hover:bg-surface-2 group-open:bg-surface-2 [&::-webkit-details-marker]:hidden">
+        {children}
+        <span className="sr-only">, 눌러서 시각·메모 편집</span>
       </summary>
       <form action={action} className="mt-3 flex flex-col gap-3">
         <input type="hidden" name="id" value={item.id} />

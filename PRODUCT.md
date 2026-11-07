@@ -46,13 +46,15 @@ web
 
 - 이름: 허니문 플래너. 한국어 UI.
 - 문체: 기존 일정표처럼 짧은 해요체 안내("편한 신발로.", "꼭 확인하세요").
-- 디자인 기준은 `docs/reference/honeymoon.html`이다. 포르투는 코발트 블루, 바르셀로나는 오커로 구분한다.
-- 글꼴: 한글 Pretendard, 영문 Montserrat(사용자 지정).
+- 디자인 방향(2026-11-07 개편, 사용자 선택): 여행 앱의 업계 표준 형태. 기준 앱은 트리플, 에어비앤비 여행 탭, 토스, 애플 지갑·트립잇이고 이들의 완성도를 목표로 한다. 세부는 `DESIGN.md`.
+- 글꼴: 한글 Pretendard, 영문 Montserrat(사용자 지정, 개편 후에도 유지).
+- 도시 사진은 실제 사진만 쓴다(`public/images/CREDITS.md`). 숙소·장소 사진이 아닌 것을 그 장소처럼 쓰지 않는다.
 
 ## Evidence on Hand
 
 - `docs/seed-data.json`: 일정 54개, 주의사항 3개, 체크리스트 6그룹 34개, 예약 8건, 예산 21개.
-- `docs/reference/honeymoon.html`: 기존 일정표(문구, 구성, 색 토큰).
+- `docs/reference/honeymoon.html`: 기존 일정표(문구와 내용의 원본. 개편 뒤 디자인 기준은 아님).
+- `public/images/`: 포르투 2장, 바르셀로나(사그라다 파밀리아) 1장의 Unsplash 사진.
 - 실제 지출 데이터는 아직 없다. 지출, 후기, 사진을 지어내지 않는다.
 
 ## Product Principles

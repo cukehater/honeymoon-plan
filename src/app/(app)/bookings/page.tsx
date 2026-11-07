@@ -1,7 +1,6 @@
-import Image from "next/image";
-import { Landmark, MapPin, Phone, Plane } from "lucide-react";
+import { BedDouble, Landmark, MapPin, Phone, Plane } from "lucide-react";
 import { CopyCode } from "@/components/copy-button";
-import { CITY_PHOTO, mapUrl } from "@/components/travel";
+import { mapUrl } from "@/components/travel";
 import { IconTile, PageHeader } from "@/components/ui";
 import type { Booking } from "@/generated/prisma/client";
 import { db } from "@/lib/db";
@@ -62,15 +61,13 @@ function FlightPass({ b }: { b: Booking }) {
 }
 
 function StayCard({ b }: { b: Booking }) {
-  const photo = b.address?.includes("Barcelona") ? CITY_PHOTO.barcelona : CITY_PHOTO.porto;
   return (
-    <article className="overflow-hidden rounded-[var(--radius-card)] bg-surface">
-      <div className="relative h-32">
-        <Image src={photo} alt="" fill sizes="(max-width: 576px) 100vw, 576px" className="object-cover" />
-        <div className="photo-scrim absolute inset-0" />
-        <h3 className="absolute inset-x-5 bottom-3 text-[17px] text-white">{b.title}</h3>
-      </div>
+    <article className="rounded-[var(--radius-card)] bg-surface">
       <div className="flex flex-col gap-4 p-5">
+        <div className="flex items-center gap-3">
+          <IconTile icon={BedDouble} tone="accent" size={44} />
+          <h3 className="min-w-0 text-[17px]">{b.title}</h3>
+        </div>
         <dl className="grid grid-cols-2 gap-3">
           <div className="rounded-[14px] bg-surface-2 p-3">
             <dt className="text-[12px] font-semibold text-muted">체크인</dt>
