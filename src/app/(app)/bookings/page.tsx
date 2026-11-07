@@ -3,6 +3,7 @@ import { CopyCode } from "@/components/copy-button";
 import { mapUrl } from "@/components/day-timeline";
 import { db } from "@/lib/db";
 import { formatDate } from "@/lib/format";
+import { getSession } from "@/lib/session";
 
 export const metadata = { title: "예약" };
 
@@ -18,6 +19,7 @@ function localTime(iso: string) {
 }
 
 export default async function BookingsPage() {
+  await getSession();
   const bookings = await db.booking.findMany({ orderBy: [{ startsAt: "asc" }, { id: "asc" }] });
   return (
     <>

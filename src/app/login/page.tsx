@@ -1,9 +1,11 @@
+import { connection } from "next/server";
 import { db } from "@/lib/db";
 import { LoginForm } from "./login-form";
 
 export const metadata = { title: "로그인" };
 
 export default async function LoginPage() {
+  await connection();
   const users = await db.user.findMany({ orderBy: { id: "asc" } });
   return (
     <main className="mx-auto flex w-full max-w-sm flex-1 flex-col justify-center gap-6 px-5 py-12">

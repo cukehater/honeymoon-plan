@@ -12,7 +12,11 @@ const TABS = [
 ];
 
 export function TabBar() {
-  const pathname = usePathname();
+  return <TabBarLinks pathname={usePathname()} />;
+}
+
+// pathname이 null이면 활성 탭 없이 그린다(Suspense fallback용)
+export function TabBarLinks({ pathname }: { pathname: string | null }) {
   return (
     <nav
       aria-label="주 메뉴"
@@ -20,7 +24,7 @@ export function TabBar() {
     >
       <ul className="mx-auto flex max-w-3xl">
         {TABS.map((t) => {
-          const active = t.href === "/" ? pathname === "/" : pathname.startsWith(t.href);
+          const active = t.href === "/" ? pathname === "/" : !!pathname?.startsWith(t.href);
           return (
             <li key={t.href} className="flex-1">
               <Link

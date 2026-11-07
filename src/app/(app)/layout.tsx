@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { TabBar } from "@/components/tab-bar";
+import { Suspense } from "react";
+import { TabBar, TabBarLinks } from "@/components/tab-bar";
 
 export default function AppLayout({ children }: LayoutProps<"/">) {
   return (
@@ -13,7 +14,9 @@ export default function AppLayout({ children }: LayoutProps<"/">) {
       >
         + 지출 추가
       </Link>
-      <TabBar />
+      <Suspense fallback={<TabBarLinks pathname={null} />}>
+        <TabBar />
+      </Suspense>
     </>
   );
 }

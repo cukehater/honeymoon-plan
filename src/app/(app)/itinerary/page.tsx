@@ -2,10 +2,12 @@ import { Fragment } from "react";
 import { CITY_LABEL, DayAlerts, DayTimeline, cityText } from "@/components/day-timeline";
 import { db } from "@/lib/db";
 import { formatDate } from "@/lib/format";
+import { getSession } from "@/lib/session";
 
 export const metadata = { title: "일정" };
 
 export default async function ItineraryPage() {
+  await getSession();
   const [days, tripAlerts] = await Promise.all([
     db.tripDay.findMany({
       orderBy: { date: "asc" },

@@ -3,8 +3,10 @@ import { notFound } from "next/navigation";
 import { DayTimeline } from "@/components/day-timeline";
 import { db } from "@/lib/db";
 import { formatKrw } from "@/lib/format";
+import { getSession } from "@/lib/session";
 
 export default async function DayPage({ params }: PageProps<"/itinerary/[date]">) {
+  await getSession();
   const { date } = await params;
   const [day, dates, spent] = await Promise.all([
     db.tripDay.findUnique({
