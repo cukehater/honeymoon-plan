@@ -12,7 +12,7 @@ export function LoginForm({ users }: { users: { id: number; name: string }[] }) 
         {users.map((u) => (
           <label
             key={u.id}
-            className="flex min-h-11 flex-1 cursor-pointer items-center justify-center rounded-lg border px-4 has-[:checked]:border-current has-[:checked]:font-bold"
+            className="flex min-h-11 flex-1 cursor-pointer items-center justify-center rounded-lg border border-line bg-surface px-4 has-[:checked]:border-current has-[:checked]:font-bold"
           >
             <input
               type="radio"
@@ -33,18 +33,18 @@ export function LoginForm({ users }: { users: { id: number; name: string }[] }) 
           name="passcode"
           autoComplete="current-password"
           required
-          className="min-h-11 rounded-lg border px-3 text-base"
+          className="min-h-11 rounded-lg border border-line bg-surface px-3 text-base"
         />
       </label>
       {state?.error && (
-        <p role="alert" className="text-sm text-red-600 dark:text-red-400">
+        <p role="alert" className="text-sm text-warn">
           {state.error}
         </p>
       )}
       <button
         type="submit"
         disabled={pending}
-        className="min-h-11 rounded-lg bg-foreground font-bold text-background disabled:opacity-60"
+        className="min-h-11 rounded-lg bg-fg font-bold text-bg disabled:opacity-60"
       >
         {pending ? "확인 중…" : "들어가기"}
       </button>

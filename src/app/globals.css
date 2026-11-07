@@ -1,26 +1,89 @@
 @import "tailwindcss";
 
+/* 색 토큰: docs/reference/honeymoon.html의 :root 값 */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --fg: #1b2333;
+  --muted: #5d6779;
+  --line: #dde2ea;
+  --azul: #1f4fa3;
+  --azul-soft: #e7eefb;
+  --ocre: #b06a12;
+  --ocre-soft: #fbf0df;
+  --warn: #a3361f;
+  --warn-soft: #fbeae5;
+  --ok: #2c7a4b;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --bg: #11151d;
+    --surface: #181e29;
+    --fg: #e7ebf2;
+    --muted: #9aa3b4;
+    --line: #2a3242;
+    --azul: #7ea6ec;
+    --azul-soft: #1a2740;
+    --ocre: #e3a556;
+    --ocre-soft: #2e2414;
+    --warn: #f08b73;
+    --warn-soft: #331c17;
+    --ok: #6fcf97;
+    color-scheme: dark;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-azul: var(--azul);
+  --color-azul-soft: var(--azul-soft);
+  --color-ocre: var(--ocre);
+  --color-ocre-soft: var(--ocre-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-ok: var(--ok);
+  --font-display: var(--font-gowun), "Nanum Myeongjo", serif;
+  --font-sans: var(--font-plex-kr), "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, Menlo, monospace;
+}
+
+@layer base {
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-wrap: balance;
+    line-height: 1.3;
+  }
+
+  a {
+    color: var(--azul);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--azul);
+    outline-offset: 2px;
+  }
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
 }
