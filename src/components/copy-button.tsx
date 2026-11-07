@@ -25,7 +25,7 @@ export function CopyCode({ code }: { code: string }) {
       <button
         type="button"
         onClick={copy}
-        className="min-h-11 rounded-md border border-line px-3 text-sm"
+        className="min-h-11 rounded-lg border border-line px-3 text-sm"
         aria-label={`예약번호 ${code} 복사`}
       >
         복사

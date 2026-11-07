@@ -1,0 +1,559 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-07T13:46:52+00:00",
+  "title": "Design System: 허니문 플래너",
+  "extensions": {
+    "colorMeta": {
+      "azulejo-cobalt": {
+        "role": "primary",
+        "displayName": "Azulejo Cobalt",
+        "canonical": "oklch(44.5% 0.146 260.7)",
+        "tonalRamp": [
+          "oklch(15% 0.099 260.7)",
+          "oklch(26% 0.112 260.7)",
+          "oklch(37% 0.125 260.7)",
+          "oklch(48% 0.138 260.7)",
+          "oklch(60% 0.140 260.7)",
+          "oklch(72% 0.126 260.7)",
+          "oklch(84% 0.112 260.7)",
+          "oklch(95% 0.099 260.7)"
+        ]
+      },
+      "azulejo-cobalt-soft": {
+        "role": "primary",
+        "displayName": "Azulejo Cobalt Soft",
+        "canonical": "oklch(94.8% 0.019 263.0)",
+        "tonalRamp": [
+          "oklch(15% 0.013 263.0)",
+          "oklch(26% 0.015 263.0)",
+          "oklch(37% 0.016 263.0)",
+          "oklch(48% 0.018 263.0)",
+          "oklch(60% 0.018 263.0)",
+          "oklch(72% 0.016 263.0)",
+          "oklch(84% 0.015 263.0)",
+          "oklch(95% 0.013 263.0)"
+        ]
+      },
+      "gracia-ochre": {
+        "role": "secondary",
+        "displayName": "Gràcia Ochre",
+        "canonical": "oklch(53.7% 0.115 64.3)",
+        "tonalRamp": [
+          "oklch(15% 0.078 64.3)",
+          "oklch(26% 0.089 64.3)",
+          "oklch(37% 0.099 64.3)",
+          "oklch(48% 0.109 64.3)",
+          "oklch(60% 0.111 64.3)",
+          "oklch(72% 0.100 64.3)",
+          "oklch(84% 0.089 64.3)",
+          "oklch(95% 0.078 64.3)"
+        ]
+      },
+      "gracia-ochre-soft": {
+        "role": "secondary",
+        "displayName": "Gràcia Ochre Soft",
+        "canonical": "oklch(95.9% 0.025 78.9)",
+        "tonalRamp": [
+          "oklch(15% 0.017 78.9)",
+          "oklch(26% 0.020 78.9)",
+          "oklch(37% 0.022 78.9)",
+          "oklch(48% 0.024 78.9)",
+          "oklch(60% 0.024 78.9)",
+          "oklch(72% 0.022 78.9)",
+          "oklch(84% 0.020 78.9)",
+          "oklch(95% 0.017 78.9)"
+        ]
+      },
+      "brick-warning": {
+        "role": "tertiary",
+        "displayName": "Brick Warning",
+        "canonical": "oklch(48.9% 0.148 33.6)",
+        "tonalRamp": [
+          "oklch(15% 0.101 33.6)",
+          "oklch(26% 0.114 33.6)",
+          "oklch(37% 0.127 33.6)",
+          "oklch(48% 0.140 33.6)",
+          "oklch(60% 0.142 33.6)",
+          "oklch(72% 0.128 33.6)",
+          "oklch(84% 0.114 33.6)",
+          "oklch(95% 0.101 33.6)"
+        ]
+      },
+      "brick-warning-soft": {
+        "role": "tertiary",
+        "displayName": "Brick Warning Soft",
+        "canonical": "oklch(94.9% 0.020 37.0)",
+        "tonalRamp": [
+          "oklch(15% 0.013 37.0)",
+          "oklch(26% 0.015 37.0)",
+          "oklch(37% 0.017 37.0)",
+          "oklch(48% 0.019 37.0)",
+          "oklch(60% 0.019 37.0)",
+          "oklch(72% 0.017 37.0)",
+          "oklch(84% 0.015 37.0)",
+          "oklch(95% 0.013 37.0)"
+        ]
+      },
+      "olive-done": {
+        "role": "tertiary",
+        "displayName": "Olive Done",
+        "canonical": "oklch(50.1% 0.103 153.6)",
+        "tonalRamp": [
+          "oklch(15% 0.070 153.6)",
+          "oklch(26% 0.079 153.6)",
+          "oklch(37% 0.088 153.6)",
+          "oklch(48% 0.097 153.6)",
+          "oklch(60% 0.099 153.6)",
+          "oklch(72% 0.089 153.6)",
+          "oklch(84% 0.079 153.6)",
+          "oklch(95% 0.070 153.6)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "oklch(97.5% 0.005 258.3)",
+        "tonalRamp": [
+          "oklch(15% 0.003 258.3)",
+          "oklch(26% 0.003 258.3)",
+          "oklch(37% 0.004 258.3)",
+          "oklch(48% 0.004 258.3)",
+          "oklch(60% 0.004 258.3)",
+          "oklch(72% 0.004 258.3)",
+          "oklch(84% 0.003 258.3)",
+          "oklch(95% 0.003 258.3)"
+        ]
+      },
+      "card-white": {
+        "role": "neutral",
+        "displayName": "Card White",
+        "canonical": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "oklch(15% 0.000 89.9)",
+          "oklch(26% 0.000 89.9)",
+          "oklch(37% 0.000 89.9)",
+          "oklch(48% 0.000 89.9)",
+          "oklch(60% 0.000 89.9)",
+          "oklch(72% 0.000 89.9)",
+          "oklch(84% 0.000 89.9)",
+          "oklch(95% 0.000 89.9)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(25.6% 0.033 263.7)",
+        "tonalRamp": [
+          "oklch(15% 0.022 263.7)",
+          "oklch(26% 0.025 263.7)",
+          "oklch(37% 0.028 263.7)",
+          "oklch(48% 0.031 263.7)",
+          "oklch(60% 0.031 263.7)",
+          "oklch(72% 0.028 263.7)",
+          "oklch(84% 0.025 263.7)",
+          "oklch(95% 0.022 263.7)"
+        ]
+      },
+      "slate-muted": {
+        "role": "neutral",
+        "displayName": "Slate Muted",
+        "canonical": "oklch(51.2% 0.031 262.2)",
+        "tonalRamp": [
+          "oklch(15% 0.021 262.2)",
+          "oklch(26% 0.024 262.2)",
+          "oklch(37% 0.027 262.2)",
+          "oklch(48% 0.029 262.2)",
+          "oklch(60% 0.030 262.2)",
+          "oklch(72% 0.027 262.2)",
+          "oklch(84% 0.024 262.2)",
+          "oklch(95% 0.021 262.2)"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "oklch(91.1% 0.012 259.8)",
+        "tonalRamp": [
+          "oklch(15% 0.008 259.8)",
+          "oklch(26% 0.009 259.8)",
+          "oklch(37% 0.010 259.8)",
+          "oklch(48% 0.011 259.8)",
+          "oklch(60% 0.012 259.8)",
+          "oklch(72% 0.010 259.8)",
+          "oklch(84% 0.009 259.8)",
+          "oklch(95% 0.008 259.8)"
+        ]
+      },
+      "azulejo-cobalt-night": {
+        "role": "primary",
+        "displayName": "Azulejo Cobalt (Night)",
+        "canonical": "oklch(72.4% 0.112 261.2)",
+        "tonalRamp": [
+          "oklch(15% 0.076 261.2)",
+          "oklch(26% 0.086 261.2)",
+          "oklch(37% 0.096 261.2)",
+          "oklch(48% 0.105 261.2)",
+          "oklch(60% 0.107 261.2)",
+          "oklch(72% 0.096 261.2)",
+          "oklch(84% 0.086 261.2)",
+          "oklch(95% 0.076 261.2)"
+        ]
+      },
+      "azulejo-cobalt-soft-night": {
+        "role": "primary",
+        "displayName": "Azulejo Cobalt Soft (Night)",
+        "canonical": "oklch(27.4% 0.050 262.6)",
+        "tonalRamp": [
+          "oklch(15% 0.034 262.6)",
+          "oklch(26% 0.038 262.6)",
+          "oklch(37% 0.043 262.6)",
+          "oklch(48% 0.047 262.6)",
+          "oklch(60% 0.048 262.6)",
+          "oklch(72% 0.043 262.6)",
+          "oklch(84% 0.038 262.6)",
+          "oklch(95% 0.034 262.6)"
+        ]
+      },
+      "gracia-ochre-night": {
+        "role": "secondary",
+        "displayName": "Gràcia Ochre (Night)",
+        "canonical": "oklch(76.6% 0.121 70.9)",
+        "tonalRamp": [
+          "oklch(15% 0.082 70.9)",
+          "oklch(26% 0.093 70.9)",
+          "oklch(37% 0.103 70.9)",
+          "oklch(48% 0.114 70.9)",
+          "oklch(60% 0.116 70.9)",
+          "oklch(72% 0.104 70.9)",
+          "oklch(84% 0.093 70.9)",
+          "oklch(95% 0.082 70.9)"
+        ]
+      },
+      "gracia-ochre-soft-night": {
+        "role": "secondary",
+        "displayName": "Gràcia Ochre Soft (Night)",
+        "canonical": "oklch(26.7% 0.031 78.6)",
+        "tonalRamp": [
+          "oklch(15% 0.021 78.6)",
+          "oklch(26% 0.024 78.6)",
+          "oklch(37% 0.026 78.6)",
+          "oklch(48% 0.029 78.6)",
+          "oklch(60% 0.030 78.6)",
+          "oklch(72% 0.027 78.6)",
+          "oklch(84% 0.024 78.6)",
+          "oklch(95% 0.021 78.6)"
+        ]
+      },
+      "brick-warning-night": {
+        "role": "tertiary",
+        "displayName": "Brick Warning (Night)",
+        "canonical": "oklch(73.9% 0.129 34.3)",
+        "tonalRamp": [
+          "oklch(15% 0.087 34.3)",
+          "oklch(26% 0.099 34.3)",
+          "oklch(37% 0.110 34.3)",
+          "oklch(48% 0.121 34.3)",
+          "oklch(60% 0.123 34.3)",
+          "oklch(72% 0.111 34.3)",
+          "oklch(84% 0.099 34.3)",
+          "oklch(95% 0.087 34.3)"
+        ]
+      },
+      "brick-warning-soft-night": {
+        "role": "tertiary",
+        "displayName": "Brick Warning Soft (Night)",
+        "canonical": "oklch(25.6% 0.038 33.0)",
+        "tonalRamp": [
+          "oklch(15% 0.026 33.0)",
+          "oklch(26% 0.029 33.0)",
+          "oklch(37% 0.032 33.0)",
+          "oklch(48% 0.036 33.0)",
+          "oklch(60% 0.036 33.0)",
+          "oklch(72% 0.033 33.0)",
+          "oklch(84% 0.029 33.0)",
+          "oklch(95% 0.026 33.0)"
+        ]
+      },
+      "olive-done-night": {
+        "role": "tertiary",
+        "displayName": "Olive Done (Night)",
+        "canonical": "oklch(78.1% 0.123 156.5)",
+        "tonalRamp": [
+          "oklch(15% 0.083 156.5)",
+          "oklch(26% 0.094 156.5)",
+          "oklch(37% 0.105 156.5)",
+          "oklch(48% 0.116 156.5)",
+          "oklch(60% 0.118 156.5)",
+          "oklch(72% 0.106 156.5)",
+          "oklch(84% 0.094 156.5)",
+          "oklch(95% 0.083 156.5)"
+        ]
+      },
+      "paper-night": {
+        "role": "neutral",
+        "displayName": "Paper (Night)",
+        "canonical": "oklch(19.5% 0.017 264.0)",
+        "tonalRamp": [
+          "oklch(15% 0.012 264.0)",
+          "oklch(26% 0.013 264.0)",
+          "oklch(37% 0.015 264.0)",
+          "oklch(48% 0.016 264.0)",
+          "oklch(60% 0.017 264.0)",
+          "oklch(72% 0.015 264.0)",
+          "oklch(84% 0.013 264.0)",
+          "oklch(95% 0.012 264.0)"
+        ]
+      },
+      "card-night": {
+        "role": "neutral",
+        "displayName": "Card (Night)",
+        "canonical": "oklch(23.4% 0.023 262.4)",
+        "tonalRamp": [
+          "oklch(15% 0.016 262.4)",
+          "oklch(26% 0.018 262.4)",
+          "oklch(37% 0.020 262.4)",
+          "oklch(48% 0.022 262.4)",
+          "oklch(60% 0.022 262.4)",
+          "oklch(72% 0.020 262.4)",
+          "oklch(84% 0.018 262.4)",
+          "oklch(95% 0.016 262.4)"
+        ]
+      },
+      "ink-night": {
+        "role": "neutral",
+        "displayName": "Ink (Night)",
+        "canonical": "oklch(93.9% 0.010 261.8)",
+        "tonalRamp": [
+          "oklch(15% 0.007 261.8)",
+          "oklch(26% 0.008 261.8)",
+          "oklch(37% 0.009 261.8)",
+          "oklch(48% 0.010 261.8)",
+          "oklch(60% 0.010 261.8)",
+          "oklch(72% 0.009 261.8)",
+          "oklch(84% 0.008 261.8)",
+          "oklch(95% 0.007 261.8)"
+        ]
+      },
+      "slate-muted-night": {
+        "role": "neutral",
+        "displayName": "Slate Muted (Night)",
+        "canonical": "oklch(71.4% 0.027 263.3)",
+        "tonalRamp": [
+          "oklch(15% 0.018 263.3)",
+          "oklch(26% 0.021 263.3)",
+          "oklch(37% 0.023 263.3)",
+          "oklch(48% 0.025 263.3)",
+          "oklch(60% 0.026 263.3)",
+          "oklch(72% 0.023 263.3)",
+          "oklch(84% 0.021 263.3)",
+          "oklch(95% 0.018 263.3)"
+        ]
+      },
+      "hairline-night": {
+        "role": "neutral",
+        "displayName": "Hairline (Night)",
+        "canonical": "oklch(31.7% 0.031 264.0)",
+        "tonalRamp": [
+          "oklch(15% 0.021 264.0)",
+          "oklch(26% 0.024 264.0)",
+          "oklch(37% 0.026 264.0)",
+          "oklch(48% 0.029 264.0)",
+          "oklch(60% 0.030 264.0)",
+          "oklch(72% 0.027 264.0)",
+          "oklch(84% 0.024 264.0)",
+          "oklch(95% 0.021 264.0)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "홈의 D-day 한 줄."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "화면 제목."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "구역·그룹·하루 일정 제목."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "본문과 일정 항목 제목."
+      },
+      "body-small": {
+        "displayName": "Body Small",
+        "purpose": "설명과 메모."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "타일 라벨, 태그."
+      },
+      "numeric": {
+        "displayName": "Numeric",
+        "purpose": "시각·날짜·금액(tabular figures)."
+      }
+    },
+    "shadows": [
+      {
+        "name": "floating-action",
+        "value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+        "purpose": "떠 있는 '지출 추가' 버튼 전용."
+      }
+    ],
+    "motion": [
+      {
+        "name": "progress-width",
+        "value": "width 150ms ease",
+        "purpose": "체크리스트 진행 막대. prefers-reduced-motion이면 끔."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "content-max",
+        "value": "768px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "화면당 하나뿐인 주 동작(저장, 들어가기, 추가).",
+      "html": "<button class=\"ds-btn-primary\">저장</button>",
+      "css": ".ds-btn-primary{font-family:var(--font-sans, Montserrat, Pretendard, sans-serif);min-height:44px;padding:0 16px;border:0;border-radius:8px;background:var(--fg,#1b2333);color:var(--bg,#f5f7fa);font-size:15px;font-weight:700;cursor:pointer} .ds-btn-primary:hover{opacity:.9} .ds-btn-primary:focus-visible{outline:2px solid var(--azul,#1f4fa3);outline-offset:2px} .ds-btn-primary:disabled{opacity:.6}"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "복사, 숨기기 같은 보조 동작.",
+      "html": "<button class=\"ds-btn-outline\">복사</button>",
+      "css": ".ds-btn-outline{font-family:var(--font-sans, Montserrat, Pretendard, sans-serif);min-height:44px;padding:0 12px;border:1px solid var(--line,#dde2ea);border-radius:8px;background:transparent;color:var(--fg,#1b2333);font-size:14px;cursor:pointer} .ds-btn-outline:hover{border-color:var(--muted,#5d6779)} .ds-btn-outline:focus-visible{outline:2px solid var(--azul,#1f4fa3);outline-offset:2px}"
+    },
+    {
+      "name": "Danger Button",
+      "kind": "button",
+      "refersTo": "button-danger",
+      "description": "삭제 전용. 누르면 한 번 더 확인.",
+      "html": "<button class=\"ds-btn-danger\">삭제</button>",
+      "css": ".ds-btn-danger{font-family:var(--font-sans, Montserrat, Pretendard, sans-serif);min-height:44px;width:100%;border:1px solid var(--warn,#a3361f);border-radius:8px;background:transparent;color:var(--warn,#a3361f);font-size:14px;font-weight:600;cursor:pointer} .ds-btn-danger:focus-visible{outline:2px solid var(--azul,#1f4fa3);outline-offset:2px}"
+    },
+    {
+      "name": "Choice Chips",
+      "kind": "chip",
+      "refersTo": "chip-selected",
+      "description": "지출 입력의 항목·결제수단 선택. 선택되면 잉크 면.",
+      "html": "<div class=\"ds-chips\"><label class=\"ds-chip\"><input type=\"radio\" name=\"c\">항공</label><label class=\"ds-chip\"><input type=\"radio\" name=\"c\" checked>식비</label><label class=\"ds-chip\"><input type=\"radio\" name=\"c\">쇼핑</label></div>",
+      "css": ".ds-chips{display:flex;flex-wrap:wrap;gap:8px;font-family:var(--font-sans, Montserrat, Pretendard, sans-serif)} .ds-chip{display:flex;align-items:center;min-height:44px;padding:0 16px;border:1px solid var(--line,#dde2ea);border-radius:9999px;background:var(--surface,#fff);color:var(--fg,#1b2333);font-size:14px;cursor:pointer} .ds-chip input{position:absolute;opacity:0;width:1px;height:1px} .ds-chip:has(input:checked){background:var(--fg,#1b2333);border-color:var(--fg,#1b2333);color:var(--bg,#f5f7fa)} .ds-chip:has(input:focus-visible){outline:2px solid var(--azul,#1f4fa3);outline-offset:2px}"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "폼 입력칸. 글자 16px로 아이폰 확대 방지.",
+      "html": "<label class=\"ds-field\">메모<input class=\"ds-input\" placeholder=\"\"></label>",
+      "css": ".ds-field{display:flex;flex-direction:column;gap:4px;font-family:var(--font-sans, Montserrat, Pretendard, sans-serif);font-size:14px;color:var(--muted,#5d6779)} .ds-input{min-height:44px;padding:0 12px;border:1px solid var(--line,#dde2ea);border-radius:8px;background:var(--surface,#fff);color:var(--fg,#1b2333);font:inherit;font-size:16px;caret-color:var(--azul,#1f4fa3)} .ds-input:focus-visible{outline:2px solid var(--azul,#1f4fa3);outline-offset:2px}"
+    },
+    {
+      "name": "Summary Tiles",
+      "kind": "card",
+      "refersTo": "card-total",
+      "description": "경비 요약. 총액 타일만 잉크 면.",
+      "html": "<div class=\"ds-tiles\"><div class=\"ds-tile\"><span>결제 완료</span><b>4,238,191원</b></div><div class=\"ds-tile ds-tile-total\"><span>총 예상 경비</span><b>9,126,845원</b></div></div>",
+      "css": ".ds-tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px;font-family:var(--font-sans, Montserrat, Pretendard, sans-serif)} .ds-tile{display:flex;flex-direction:column;gap:2px;padding:14px 16px;border:1px solid var(--line,#dde2ea);border-radius:10px;background:var(--surface,#fff);color:var(--fg,#1b2333)} .ds-tile span{font-size:12px;color:var(--muted,#5d6779)} .ds-tile b{font-size:20px;font-weight:400;font-variant-numeric:tabular-nums} .ds-tile-total{background:var(--fg,#1b2333);border-color:var(--fg,#1b2333);color:var(--bg,#f5f7fa)} .ds-tile-total span{color:inherit;opacity:.75}"
+    },
+    {
+      "name": "Tab Bar",
+      "kind": "nav",
+      "refersTo": "tab-bar",
+      "description": "하단 고정 탭 다섯 칸. 활성 탭은 위쪽 2px 막대.",
+      "html": "<nav class=\"ds-tabs\"><a>홈</a><a aria-current=\"page\">일정</a><a>경비</a><a>체크리스트</a><a>예약</a></nav>",
+      "css": ".ds-tabs{display:flex;border-top:1px solid var(--line,#dde2ea);background:var(--surface,#fff);font-family:var(--font-sans, Montserrat, Pretendard, sans-serif)} .ds-tabs a{position:relative;flex:1;display:flex;align-items:center;justify-content:center;min-height:56px;font-size:13px;color:var(--muted,#5d6779);text-decoration:none;cursor:pointer} .ds-tabs a:hover{color:var(--fg,#1b2333)} .ds-tabs a[aria-current=page]{color:var(--fg,#1b2333);font-weight:600} .ds-tabs a[aria-current=page]::before{content:'';position:absolute;top:0;left:16px;right:16px;height:2px;border-radius:0 0 9999px 9999px;background:var(--fg,#1b2333)}"
+    },
+    {
+      "name": "Timeline Item",
+      "kind": "custom",
+      "refersTo": "date-badge-porto",
+      "description": "시각 열 + 내용 열. 강조 항목은 오커 연한 면, 태그는 의미별 색.",
+      "html": "<ol class=\"ds-tl\"><li><span class=\"ds-t\">15:30</span><div><b>테일러스 포트와인 셀러<i class=\"ds-tag ds-rsv\">예약 필요</i></b><p>셀러는 18:15까지, 시음 포함.</p></div></li><li class=\"ds-key\"><span class=\"ds-t\">16:45</span><div><b>모루 정원 일몰</b><p>12월 초 일몰은 17시 조금 넘어서.</p></div></li></ol>",
+      "css": ".ds-tl{list-style:none;margin:0;padding:0;font-family:var(--font-sans, Montserrat, Pretendard, sans-serif);color:var(--fg,#1b2333)} .ds-tl li{display:grid;grid-template-columns:52px 1fr;gap:10px;padding:12px 0;border-top:1px solid var(--line,#dde2ea)} .ds-tl li:first-child{border-top:0} .ds-t{font-size:13px;color:var(--muted,#5d6779);font-variant-numeric:tabular-nums} .ds-tl b{font-weight:600} .ds-tl p{margin:2px 0 0;font-size:14px;color:var(--muted,#5d6779)} .ds-key{background:var(--ocre-soft,#fbf0df);border-radius:8px;padding-inline:12px!important;border-top-color:transparent!important} .ds-tag{display:inline-block;margin-left:6px;padding:0 6px;border-radius:4px;font-size:11px;font-style:normal;font-weight:600;vertical-align:2px} .ds-rsv{background:var(--warn-soft,#fbeae5);color:var(--warn,#a3361f)}"
+    },
+    {
+      "name": "Day Alert",
+      "kind": "custom",
+      "refersTo": "tag-booking-required",
+      "description": "날짜별 주의사항 띠.",
+      "html": "<div class=\"ds-alert\"><b>12/1(화)은 포르투갈 공휴일</b> 일부 상점·식당은 쉬거나 단축 영업해요.</div>",
+      "css": ".ds-alert{font-family:var(--font-sans, Montserrat, Pretendard, sans-serif);font-size:14px;padding:12px 16px;border-left:3px solid var(--warn,#a3361f);border-radius:0 8px 8px 0;background:var(--warn-soft,#fbeae5);color:var(--fg,#1b2333)} .ds-alert b{color:var(--warn,#a3361f)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "두 사람의 여행 수첩",
+    "overview": "하얀 종이 위에 시각과 메모를 차분히 적어 둔 수첩입니다. 화면은 차분하고 정돈되어 있고, 길 위에서 급하게 열어 봐도 무엇을 먼저 볼지 바로 알 수 있습니다. 장식 대신 여백, 얇은 선, 면의 톤으로 구조를 만듭니다. 색은 정보에 쓰입니다. 포르투와 바르셀로나를 구분하는 두 도시 색, 주의와 완료를 알리는 두 신호색이 전부입니다.\n\n이 수첩은 `docs/reference/honeymoon.html`에서 출발했습니다. 그 일정표의 색 토큰, 날짜 배지, 시각과 제목의 2열 타임라인, 주의사항 띠를 그대로 이어받고, 휴대폰 앱에 필요한 하단 탭 바, 떠 있는 \"지출 추가\" 버튼, 큰 숫자 입력을 더했습니다. 라이트와 다크를 모두 지원하며 다크는 밤의 종이(짙은 남색 면)에 같은 구조를 옮깁니다.",
+    "keyCharacteristics": [
+      "종이처럼 평평한 면과 1px 선. 그림자는 떠 있는 버튼 하나에만 있습니다.",
+      "도시 색은 구분에만 씁니다(포르투 코발트, 바르셀로나 오커).",
+      "숫자와 시각은 자릿수를 맞춰(tabular figures) 표처럼 읽힙니다.",
+      "모바일 우선, 한 손 조작. 모든 터치 영역 44px 이상.",
+      "한글은 어절 단위로 줄을 바꿉니다."
+    ],
+    "rules": [
+      {
+        "name": "The City Color Rule",
+        "body": "코발트와 오커는 도시를 구분할 때(그리고 코발트는 링크·포커스에)만 씁니다. 장식이나 강조용으로 끌어 쓰지 않습니다.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Signals Rule",
+        "body": "벽돌색은 \"주의·초과·오류\", 올리브색은 \"완료·진행\"만 뜻합니다. 같은 의미에는 늘 같은 색, 그리고 색만으로 뜻을 전하지 않도록 글자 라벨을 함께 둡니다.",
+        "section": "colors"
+      },
+      {
+        "name": "The 4.5 Rule",
+        "body": "글자와 그 바탕의 대비는 라이트·다크 모두 4.5:1 이상입니다. 연한 바탕(-soft) 위 도시 색 글자도 예외가 아닙니다.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tabular Rule",
+        "body": "금액, 시각, 날짜, 진행 수(1/34)는 항상 tabular figures로 씁니다. 세로로 늘어선 숫자는 자릿수가 맞아야 합니다.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Family Rule",
+        "body": "글꼴은 Montserrat와 Pretendard 한 쌍뿐입니다. 제목도 숫자도 같은 가족을 쓰고, 다른 글꼴을 들이지 않습니다.",
+        "section": "typography"
+      },
+      {
+        "name": "The Keep-All Rule",
+        "body": "한글은 어절 단위로 줄을 바꿉니다(`word-break: keep-all`). 예약번호처럼 띄어쓰기 없는 긴 문자열만 중간에서 끊습니다.",
+        "section": "typography"
+      },
+      {
+        "name": "The Paper Rule",
+        "body": "카드, 타일, 입력칸, 탭 바는 그림자 없이 테두리와 면의 톤으로만 구분합니다. 그림자는 내용 위에 실제로 떠 있는 요소에만 씁니다.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** 도시를 구분할 때 포르투는 `azulejo-cobalt`, 바르셀로나는 `gracia-ochre`를 씁니다.",
+      "**Do** 금액·시각·날짜에 tabular figures를 켭니다.",
+      "**Do** 카드와 타일은 1px hairline과 10px 모서리로, 그림자 없이 만듭니다.",
+      "**Do** 모든 누를 수 있는 요소를 44px 이상으로, 하단 고정 요소에는 safe-area를 더합니다.",
+      "**Do** 상태를 색과 글자로 함께 알립니다(\"예약 필요\", \"한도 초과\")."
+    ],
+    "donts": [
+      "**Don't** 코발트·오커를 장식이나 일반 강조에 쓰지 않습니다(The City Color Rule).",
+      "**Don't** 떠 있는 \"지출 추가\" 버튼 외의 요소에 그림자를 넣지 않습니다(The Paper Rule).",
+      "**Don't** Montserrat·Pretendard 외의 글꼴을 들이지 않습니다.",
+      "**Don't** 벽돌색을 주의·초과·오류가 아닌 곳에, 올리브색을 완료·진행이 아닌 곳에 쓰지 않습니다.",
+      "**Don't** 연한 바탕 위에 대비 4.5:1 미만의 글자를 두지 않습니다."
+    ]
+  }
+}
