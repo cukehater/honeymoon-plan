@@ -37,7 +37,7 @@ export const CATEGORY_LABEL: Record<Category, string> = {
   stay: "숙소",
   food: "식비",
   tour: "관광·투어",
-  transport: "현지 교통",
+  transport: "교통",
   shopping: "쇼핑",
   etc: "기타",
 };
