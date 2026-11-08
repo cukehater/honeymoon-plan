@@ -129,7 +129,7 @@ export default async function BookingsPage() {
     { title: "항공", list: bookings.filter((b) => b.kind === "flight"), Card: FlightPass },
     { title: "숙소", list: bookings.filter((b) => b.kind === "stay"), Card: StayCard },
     { title: "관광", list: bookings.filter((b) => b.kind === "activity"), Card: ActivityCard },
-  ];
+  ].filter((g) => g.list.length > 0);
   return (
     <>
       <PageHeader title="예약" />

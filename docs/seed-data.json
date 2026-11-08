@@ -1037,16 +1037,6 @@
       "address": "Passeig de Gràcia 132, 08008 Barcelona, Spain",
       "phone": "+34 932 553 000",
       "detail": "아고다 예약, 환불 불가. 체크인·체크아웃 시각은 호텔 정책 확인 필요(임시값)"
-    },
-    {
-      "kind": "activity",
-      "title": "사그라다 파밀리아",
-      "refCode": null,
-      "startsAt": "2026-12-06T15:00:00+01:00",
-      "detail": "예약 완료. 14:40까지 입구 도착",
-      "endsAt": null,
-      "address": null,
-      "phone": null
     }
   ],
   "budgetItems": [
