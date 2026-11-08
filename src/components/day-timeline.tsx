@@ -86,6 +86,7 @@ function ItemText({ item }: { item: ItineraryItem }) {
             하이라이트
           </Badge>
         )}
+        {item.kind === "meal" && <Badge>추천</Badge>}
         {item.booking === "required" && <Badge tone="caution">예약 필요</Badge>}
         {item.booking === "done" && <Badge tone="ok">예약 완료</Badge>}
       </span>

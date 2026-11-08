@@ -52,10 +52,7 @@ function FlightPass({ b }: { b: Booking }) {
         <span className={`${notch} -left-[30px]`} />
         <span className={`${notch} -right-[30px]`} />
       </div>
-      <div className="flex flex-col gap-2 px-5 py-4">
-        {b.refCode && <CopyCode code={b.refCode} />}
-        {b.detail && <p className="text-[14px] text-muted">{b.detail}</p>}
-      </div>
+      {b.detail && <p className="px-5 py-4 text-[14px] text-muted">{b.detail}</p>}
     </article>
   );
 }
