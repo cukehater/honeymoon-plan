@@ -38,7 +38,7 @@ SESSION_SECRET="32바이트 이상 무작위 문자열"
    - `User`: 이름은 `경식`, `수민`(사용자 확인 완료).
 6. `pnpm db:seed`를 두 번 실행해 두 번째 실행이 아무것도 바꾸지 않는지 확인한다.
 
-**완료 조건**: 로컬 DB의 행 수가 trip_day 8, itinerary_item 54, day_alert 3, checklist_group 6, checklist_item 34, booking 8, budget_item 21, setting 2, app_user 2다.
+**완료 조건**: 로컬 DB의 행 수가 trip_day 8, itinerary_item 54, day_alert 3, checklist_group 6, checklist_item 34, booking 8, budget_item 21, setting 2, app_user 2다. (2026-11-08: 사그라다 파밀리아 예약을 시드에서 빼서 booking은 7)
 
 ## Phase 2. 로그인과 접근 제한
 
@@ -77,6 +77,8 @@ SESSION_SECRET="32바이트 이상 무작위 문자열"
    - 연결 규칙: 지출이 `budgetItemId`를 가지면 그 예산 항목의 실제 지출로 친다. 예산 항목별 예상 = max(예산 원화, 연결된 지출 합). 연결 없는 지출은 그대로 더한다.
    - 예비비 = (유로로 잡힌 `estimated` 예산 중 category가 `air`가 아닌 항목들의 남은 금액 합, 0 미만이면 0) × 비율 × 환율. 남은 금액 = 예산 − 연결된 지출.
    - 모든 원화는 `Math.round`.
+> 2026-11-08 변경: 예산·예비비·택스리펀드를 제거했다. 경비는 실제 지출만 기록하고 `summarizeExpenses`로 집계한다(PRD "경비 계산 규칙"). 아래 1~6의 예산 관련 내용은 당시 기록이다.
+
 2. `src/lib/budget.test.ts`: 시드 데이터, 지출 0건, 환율 1,544원, 예비비 10% 기준으로 아래 값이 나와야 한다.
 
 | 값 | 기대값 |
@@ -120,7 +122,7 @@ SESSION_SECRET="32바이트 이상 무작위 문자열"
 
 1. F15 CSV 내보내기: `GET /api/expenses.csv`, UTF-8 BOM, 세션 확인.
 2. F12 일정 편집: 시간·메모 수정, 항목 숨김·추가.
-3. F13 택스리펀드: 지출에 환급 예상액·상태 입력, 경비 화면에 환급 합계와 1인 미화 800달러 면세 한도 비교.
+3. F13 택스리펀드: 지출에 환급 예상액·상태 입력, 경비 화면에 환급 합계와 1인 미화 800달러 면세 한도 비교. (2026-11-08 사용자 요청으로 제거)
 4. F14 오프라인 읽기: 서비스 워커로 일정·예약 화면 캐시.
 
 ## 사용자에게 확인할 것
