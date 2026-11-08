@@ -20,9 +20,8 @@ export default async function NewExpensePage({ searchParams }: PageProps<"/expen
   const { userId } = await getSession();
   const { itineraryItemId } = await searchParams;
   const linkedId = Number(itineraryItemId);
-  const [users, budgetItems, days, item] = await Promise.all([
+  const [users, days, item] = await Promise.all([
     db.user.findMany({ orderBy: { id: "asc" } }),
-    db.budgetItem.findMany({ orderBy: { sortOrder: "asc" }, select: { id: true, title: true, category: true } }),
     db.tripDay.findMany({ orderBy: { date: "asc" } }),
     Number.isInteger(linkedId) && linkedId > 0
       ? db.itineraryItem.findUnique({ where: { id: linkedId }, include: { day: true } })
@@ -39,7 +38,6 @@ export default async function NewExpensePage({ searchParams }: PageProps<"/expen
       <ExpenseForm
         action={createExpense}
         users={users}
-        budgetItems={budgetItems}
         itineraryTitle={item?.title}
         initial={{
           spentOn,
@@ -49,11 +47,8 @@ export default async function NewExpensePage({ searchParams }: PageProps<"/expen
           amount: "",
           method: "card",
           paidById: userId,
-          budgetItemId: null,
           itineraryItemId: item?.id ?? null,
           memo: "",
-          taxFree: "",
-          taxFreeStatus: "",
         }}
       />
     </>

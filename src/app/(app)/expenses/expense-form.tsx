@@ -17,11 +17,8 @@ export type ExpenseFormValues = {
   amount: string;
   method: "card" | "cash";
   paidById: number;
-  budgetItemId: number | null;
   itineraryItemId: number | null;
   memo: string;
-  taxFree: string; // 환급 예상액(유로)
-  taxFreeStatus: "" | "form" | "validated" | "refunded";
   amountKrw?: string; // 수정 화면에서만
 };
 
@@ -29,7 +26,6 @@ type Props = {
   action: (prev: FormState, formData: FormData) => Promise<FormState>;
   initial: ExpenseFormValues;
   users: { id: number; name: string }[];
-  budgetItems: { id: number; title: string; category: Category }[];
   itineraryTitle?: string;
   expenseId?: number;
 };
@@ -66,14 +62,13 @@ function Segmented<T extends string | number>({
   );
 }
 
-export function ExpenseForm({ action, initial, users, budgetItems, itineraryTitle, expenseId }: Props) {
+export function ExpenseForm({ action, initial, users, itineraryTitle, expenseId }: Props) {
   // 제어 컴포넌트로 두어 저장이 실패해도 입력값이 남는다
   const [v, setV] = useState(initial);
   const set = <K extends keyof ExpenseFormValues>(k: K, value: ExpenseFormValues[K]) => setV((s) => ({ ...s, [k]: value }));
   const [state, formAction, pending] = useSafeAction(action);
   const [deleting, startDelete] = useTransition();
   const [deleteError, setDeleteError] = useState("");
-  const linkable = budgetItems.filter((b) => b.category === v.category);
 
   return (
     <form action={formAction} className="flex flex-col gap-4">
@@ -141,7 +136,7 @@ export function ExpenseForm({ action, initial, users, budgetItems, itineraryTitl
                     name="category"
                     value={c}
                     checked={v.category === c}
-                    onChange={() => setV((s) => ({ ...s, category: c, budgetItemId: null }))}
+                    onChange={() => set("category", c)}
                     className="sr-only"
                   />
                   <I size={22} aria-hidden />
@@ -151,25 +146,6 @@ export function ExpenseForm({ action, initial, users, budgetItems, itineraryTitl
             })}
           </div>
         </fieldset>
-
-        {linkable.length > 0 && (
-          <label className={field}>
-            예산 항목 연결 (선택)
-            <select
-              name="budgetItemId"
-              value={v.budgetItemId ?? ""}
-              onChange={(e) => set("budgetItemId", e.target.value ? Number(e.target.value) : null)}
-              className={input}
-            >
-              <option value="">연결 안 함</option>
-              {linkable.map((b) => (
-                <option key={b.id} value={b.id}>
-                  {b.title}
-                </option>
-              ))}
-            </select>
-          </label>
-        )}
 
         <Segmented
           name="method"
@@ -205,30 +181,6 @@ export function ExpenseForm({ action, initial, users, budgetItems, itineraryTitl
           </label>
         </div>
       </section>
-
-      <details open={!!(v.taxFree || v.taxFreeStatus)} className="rounded-[var(--radius-card)] bg-surface px-5">
-        <summary className="flex min-h-14 cursor-pointer items-center text-[15px] font-semibold">택스리펀드 (선택)</summary>
-        <div className="grid grid-cols-2 gap-3 pb-5">
-          <label className={field}>
-            환급 예상액 (€)
-            <input name="taxFree" inputMode="decimal" value={v.taxFree} onChange={(e) => set("taxFree", e.target.value)} className={`mono ${input}`} />
-          </label>
-          <label className={field}>
-            상태
-            <select
-              name="taxFreeStatus"
-              value={v.taxFreeStatus}
-              onChange={(e) => set("taxFreeStatus", e.target.value as ExpenseFormValues["taxFreeStatus"])}
-              className={input}
-            >
-              <option value="">없음</option>
-              <option value="form">서류 받음</option>
-              <option value="validated">공항 확인</option>
-              <option value="refunded">환급 완료</option>
-            </select>
-          </label>
-        </div>
-      </details>
 
       {expenseId && (
         <>

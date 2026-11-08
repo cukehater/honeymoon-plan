@@ -6,11 +6,10 @@ import { SummaryTiles } from "@/components/summary-tiles";
 import { CITY_NAME, KIND_ICON, dayPhoto, mapUrl } from "@/components/travel";
 import { Badge, Card, IconTile, ProgressBar, SectionTitle } from "@/components/ui";
 import type { DayAlert, ItineraryItem } from "@/generated/prisma/client";
-import { summarizeBudget, sumKrw } from "@/lib/budget";
+import { summarizeExpenses, sumKrw } from "@/lib/budget";
 import { db } from "@/lib/db";
 import { formatDate, formatKrw } from "@/lib/format";
 import { getSession } from "@/lib/session";
-import { getSettings } from "@/lib/settings";
 import { currentTripDay, findNowAndNext, localNow, toInstant } from "@/lib/trip-time";
 
 // 개발 중에만 ?now=2026-12-06T14:00:00+01:00 으로 현재 시각을 바꿔 화면을 확인한다
@@ -58,16 +57,14 @@ function HeroTop({ couple }: { couple: string }) {
 export default async function HomePage({ searchParams }: PageProps<"/">) {
   await getSession();
   const now = resolveNow((await searchParams).now);
-  const [days, items, budgetItems, expenses, settings, checklist, users] = await Promise.all([
+  const [days, items, expenses, checklist, users] = await Promise.all([
     db.tripDay.findMany({ orderBy: { date: "asc" }, include: { alerts: true } }),
     db.itineraryItem.findMany({ where: { hidden: false }, orderBy: [{ date: "asc" }, { startTime: "asc" }, { sortOrder: "asc" }] }),
-    db.budgetItem.findMany(),
-    db.expense.findMany({ select: { spentOn: true, category: true, currency: true, amountMinor: true, amountKrw: true, budgetItemId: true } }),
-    getSettings(),
+    db.expense.findMany({ select: { spentOn: true, category: true, amountKrw: true } }),
     db.checklistItem.findMany({ select: { checkedById: true } }),
     db.user.findMany({ orderBy: { id: "asc" } }),
   ]);
-  const summary = summarizeBudget({ budgetItems, expenses, ...settings });
+  const summary = summarizeExpenses(expenses);
   const first = days[0];
   const last = days[days.length - 1];
   const today = currentTripDay(days, now);
