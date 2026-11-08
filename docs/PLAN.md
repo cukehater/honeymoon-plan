@@ -38,7 +38,7 @@ SESSION_SECRET="32바이트 이상 무작위 문자열"
    - `User`: 이름은 `경식`, `수민`(사용자 확인 완료).
 6. `pnpm db:seed`를 두 번 실행해 두 번째 실행이 아무것도 바꾸지 않는지 확인한다.
 
-**완료 조건**: 로컬 DB의 행 수가 trip_day 8, itinerary_item 54, day_alert 3, checklist_group 6, checklist_item 34, booking 8, budget_item 21, setting 2, app_user 2다. (2026-11-08: 사그라다 파밀리아 예약을 시드에서 빼서 booking은 7)
+**완료 조건**: 로컬 DB의 행 수가 trip_day 8, itinerary_item 54, day_alert 3, checklist_group 6, checklist_item 34, booking 8, budget_item 21, setting 2, app_user 2다. (2026-11-08: 사그라다 파밀리아 예약을 시드에서 빼서 booking은 7. 식당 예약 체크 항목 4개를 빼서 checklist_item은 30. 2026-11-08 바르셀로나 일정 개편으로 itinerary_item 53, checklist_item 31. 음악당을 빼서 itinerary_item 51, checklist_item 30)
 
 ## Phase 2. 로그인과 접근 제한
 
