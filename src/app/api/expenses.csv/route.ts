@@ -11,9 +11,9 @@ export async function GET(request: NextRequest) {
   if (!(await verifySession(request.cookies.get(SESSION_COOKIE)?.value))) {
     return new Response("Unauthorized", { status: 401 });
   }
-  const expenses = await db.expense.findMany({
-    orderBy: [{ spentOn: "asc" }, { createdAt: "asc" }],
-    include: { paidBy: { select: { name: true } } },
+  const expenses = await db.query.expense.findMany({
+    orderBy: (e, { asc }) => [asc(e.spentOn), asc(e.createdAt)],
+    with: { paidBy: { columns: { name: true } } },
   });
   const csv = toCsv([
     ["날짜", "도시", "항목", "내용", "통화", "금액", "환율", "원화", "결제수단", "결제한 사람", "메모"],

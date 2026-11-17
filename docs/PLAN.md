@@ -6,16 +6,15 @@
 
 1. `create-next-app`으로 TypeScript, App Router, Tailwind CSS, ESLint, `src/` 디렉터리, import alias `@/*`를 켜서 만든다.
 2. 의존성을 설치한다.
-   - 런타임: `@prisma/client`, `@prisma/adapter-libsql`, `@libsql/client`, `zod`, `jose`
-   - 개발: `prisma`, `vitest`, `tsx`
+   - 런타임: `drizzle-orm`, `@neondatabase/serverless`, `zod`, `jose`
+   - 개발: `drizzle-kit`, `vitest`, `tsx`
 3. `tsconfig.json`에 `"strict": true`를 확인한다.
-4. `package.json` scripts를 `CLAUDE.md`의 명령어 표대로 만든다. `build`는 `prisma generate && next build`.
-5. `.env.example`을 만들고 `.gitignore`에 `.env*`(예외 `.env.example`), `*.db`, `src/generated/`를 넣는다.
+4. `package.json` scripts를 `CLAUDE.md`의 명령어 표대로 만든다. `build`는 `next build`.
+5. `.env.example`을 만들고 `.gitignore`에 `.env*`(예외 `.env.example`)를 넣는다.
 
 ```
-DATABASE_URL="file:./dev.db"
-TURSO_DATABASE_URL="file:./dev.db"
-TURSO_AUTH_TOKEN=""
+DATABASE_URL="postgresql://...-pooler.../neondb?sslmode=require"
+DATABASE_URL_UNPOOLED="postgresql://.../neondb?sslmode=require"
 APP_PASSCODE="change-me"
 SESSION_SECRET="32바이트 이상 무작위 문자열"
 ```
@@ -24,11 +23,11 @@ SESSION_SECRET="32바이트 이상 무작위 문자열"
 
 ## Phase 1. DB 스키마와 시드
 
-1. `prisma/schema.prisma`에 PRD의 스키마를 그대로 옮긴다.
-2. `prisma.config.ts`를 만든다. 스키마 경로와 마이그레이션용 URL(`DATABASE_URL`)을 지정한다. 형식은 설치된 Prisma 7 문서를 따른다.
-3. `src/lib/db.ts`에 Prisma 클라이언트를 만든다. libSQL 어댑터에 `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN`을 넘기고, 개발 모드에서는 `globalThis`에 캐시한다.
-4. `pnpm db:migrate --name init`으로 첫 마이그레이션을 만든다. `prisma/migrations/`는 커밋한다.
-5. `prisma/seed.ts`를 만든다. `docs/seed-data.json`을 읽어 아래 규칙으로 넣는다.
+1. `src/db/schema.ts`에 Drizzle 스키마를 만든다.
+2. `drizzle.config.ts`를 만든다. 스키마 경로와 마이그레이션용 URL(`DATABASE_URL_UNPOOLED`)을 지정한다.
+3. `src/lib/db.ts`에 Drizzle 클라이언트를 만든다. `drizzle-orm/neon-serverless`에 `DATABASE_URL`을 넘기고, 개발 모드에서는 `globalThis`에 캐시한다.
+4. `pnpm db:generate --name init`으로 첫 마이그레이션을 만든다. `drizzle/`은 커밋한다.
+5. `src/db/seed.ts`를 만든다. `docs/seed-data.json`을 읽어 아래 규칙으로 넣는다.
    - 실행 순서: `User` → `Setting` → `TripDay` → `DayAlert` → `ItineraryItem` → `ChecklistGroup`/`ChecklistItem` → `Booking` → `BudgetItem`. 하나의 트랜잭션.
    - `TripDay`에 이미 행이 있으면 아무것도 하지 않고 종료한다. `--force`를 주면 참고 데이터를 지우고 다시 넣는다. 단 `Expense`가 1건이라도 있으면 `--force`도 거부한다(실제 지출 보호).
    - `Setting`: `fx_eur_krw`는 `"1544"`, `reserve_pct`는 `"10"`(JSON 문자열).
@@ -111,7 +110,7 @@ SESSION_SECRET="32바이트 이상 무작위 문자열"
 1. 접근성 점검: 포커스 표시, 버튼 이름, 명도 대비.
 2. 375px, 414px, 데스크톱 폭에서 모든 화면을 확인한다.
 3. 오류 화면: `error.tsx`, `not-found.tsx`, DB 연결 실패 시 다시 시도 안내.
-4. `README.md`에 배포 절차를 적는다(PRD "배포 순서" 기준). Turso DB 생성, 토큰 발급, Vercel 환경 변수 등록, `turso db shell`로 마이그레이션 적용, 운영 시드 실행은 사용자가 직접 한다. 필요한 명령을 README에 그대로 붙여 넣을 수 있게 정리한다.
+4. `README.md`에 배포 절차를 적는다(PRD "배포 순서" 기준). Neon 프로젝트 생성, Vercel 환경 변수 등록, 마이그레이션 적용, 시드 실행은 사용자가 직접 한다. 필요한 명령을 README에 그대로 붙여 넣을 수 있게 정리한다.
 5. `pnpm build`가 로컬에서 통과하는지 확인한다.
 
 **완료 조건**: `lint`, `typecheck`, `test`, `build`가 모두 통과한다. README만 보고 배포할 수 있다.

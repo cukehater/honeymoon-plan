@@ -1,5 +1,7 @@
+import { eq } from "drizzle-orm";
 import { notFound } from "next/navigation";
 import { PageHeader } from "@/components/ui";
+import { expense as expenseTable } from "@/db/schema";
 import { db } from "@/lib/db";
 import { centsToInput } from "@/lib/format";
 import { getSession } from "@/lib/session";
@@ -13,8 +15,8 @@ export default async function EditExpensePage({ params }: PageProps<"/expenses/[
   const id = Number((await params).id);
   if (!Number.isInteger(id) || id <= 0) notFound();
   const [expense, users] = await Promise.all([
-    db.expense.findUnique({ where: { id }, include: { itineraryItem: true } }),
-    db.user.findMany({ orderBy: { id: "asc" } }),
+    db.query.expense.findFirst({ where: eq(expenseTable.id, id), with: { itineraryItem: true } }),
+    db.query.user.findMany({ orderBy: (u, { asc }) => asc(u.id) }),
   ]);
   if (!expense) notFound();
 

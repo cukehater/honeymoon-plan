@@ -1,4 +1,5 @@
-import type { Category, ItemKind } from "@/generated/prisma/enums";
+import { eq } from "drizzle-orm";
+import { itineraryItem, type Category, type ItemKind } from "@/db/schema";
 import { PageHeader } from "@/components/ui";
 import { db } from "@/lib/db";
 import { getSession } from "@/lib/session";
@@ -21,10 +22,10 @@ export default async function NewExpensePage({ searchParams }: PageProps<"/expen
   const { itineraryItemId } = await searchParams;
   const linkedId = Number(itineraryItemId);
   const [users, days, item] = await Promise.all([
-    db.user.findMany({ orderBy: { id: "asc" } }),
-    db.tripDay.findMany({ orderBy: { date: "asc" } }),
+    db.query.user.findMany({ orderBy: (u, { asc }) => asc(u.id) }),
+    db.query.tripDay.findMany({ orderBy: (d, { asc }) => asc(d.date) }),
     Number.isInteger(linkedId) && linkedId > 0
-      ? db.itineraryItem.findUnique({ where: { id: linkedId }, include: { day: true } })
+      ? db.query.itineraryItem.findFirst({ where: eq(itineraryItem.id, linkedId), with: { day: true } })
       : null,
   ]);
   // 날짜·도시: 연결한 일정 → 오늘 여행일 → (여행 전후) 한국 날짜와 첫날 도시

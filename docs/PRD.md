@@ -4,7 +4,7 @@
 
 ## 개요와 목표
 
-포르투·바르셀로나 신혼여행(2026.11.30~12.08) 일정을 두 사람이 휴대폰으로 함께 보는 웹앱으로 만들고, 경비는 SQLite DB(Turso)에 실제 지출을 기록해 총액과 항목별 지출을 바로 확인하게 한다. 출발이 11/30이라 **11/27까지 배포**를 마감으로 둔다.
+포르투·바르셀로나 신혼여행(2026.11.30~12.08) 일정을 두 사람이 휴대폰으로 함께 보는 웹앱으로 만들고, 경비는 Postgres DB(Neon)에 실제 지출을 기록해 총액과 항목별 지출을 바로 확인하게 한다. 출발이 11/30이라 **11/27까지 배포**를 마감으로 둔다.
 
 지금 일정은 HTML 페이지 하나(`docs/reference/honeymoon.html`)로 되어 있고, 체크 상태와 경비 수정값이 각자 브라우저에만 저장된다. 그래서 두 사람이 같은 상태를 볼 수 없고, 여행 중 실제 지출을 쌓아 둘 곳이 없다.
 
@@ -70,217 +70,9 @@
 
 시간은 현지 시각으로 저장하고 날짜마다 시간대를 둔다. 포르투는 `Europe/Lisbon`(UTC+0), 바르셀로나는 `Europe/Madrid`(UTC+1)라 12/4 이동일에 1시간 차이가 생긴다. 다음 일정 계산은 이 시간대를 기준으로 한다.
 
-스키마의 기준은 Prisma 스키마(`prisma/schema.prisma`)다. SQLite에는 날짜·소수 타입이 없어서 현지 날짜는 `'2026-11-30'` 같은 문자열로, 유로 금액은 센트 단위 정수(`amountMinor`)로 저장해 소수점 오차를 막는다. SQLite는 Prisma enum 값을 DB에서 강제하지 않으므로 입력값은 Zod로 한 번 더 검증한다.
+스키마의 기준은 Drizzle 스키마(`src/db/schema.ts`)다. 현지 날짜는 시간대 변환이 끼지 않도록 `'2026-11-30'` 같은 문자열로, 유로 금액은 센트 단위 정수(`amountMinor`)로 저장해 소수점 오차를 막는다. Postgres가 enum 값을 DB에서 강제하지만, 사용자에게 알맞은 오류를 보여주도록 입력값은 Zod로 먼저 검증한다.
 
-```prisma
-// prisma/schema.prisma — Prisma ORM 7, SQLite(Turso)
-
-generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
-}
-
-datasource db {
-  provider = "sqlite"   // URL은 prisma.config.ts에서 지정
-}
-
-enum City {
-  paris
-  porto
-  barcelona
-}
-
-enum Category {
-  air
-  stay
-  food
-  tour
-  transport
-  shopping
-  etc
-}
-
-enum Currency {
-  EUR
-  KRW
-}
-
-enum ItemKind {
-  activity
-  meal
-  flight
-  transfer
-  rest
-}
-
-enum BookingNeed {
-  none
-  required
-  done
-}
-
-enum BookingKind {
-  flight
-  stay
-  activity
-}
-
-enum BudgetStatus {
-  paid
-  estimated
-}
-
-enum PayMethod {
-  card
-  cash
-}
-
-enum TaxFreeStatus {
-  form
-  validated
-  refunded
-}
-
-
-// 사용자 2명
-model User {
-  id              Int             @id
-  name            String
-  checkedItems    ChecklistItem[]
-  paidExpenses    Expense[]       @relation("paidBy")
-  createdExpenses Expense[]       @relation("createdBy")
-  @@map("app_user")
-}
-
-// 여행 날짜 (11/30~12/7, 8행)
-model TripDay {
-  date   String          @id          // '2026-11-30'
-  city   City
-  tz     String                       // 'Europe/Lisbon' | 'Europe/Madrid'
-  title  String
-  note   String?
-  alerts DayAlert[]
-  items  ItineraryItem[]
-  @@map("trip_day")
-}
-
-// 날짜별 주의사항 (환승 65분, 공휴일). date가 null이면 여행 전체
-model DayAlert {
-  id    Int      @id @default(autoincrement())
-  date  String?
-  day   TripDay? @relation(fields: [date], references: [date])
-  title String
-  body  String
-  @@map("day_alert")
-}
-
-model ItineraryItem {
-  id          Int         @id @default(autoincrement())
-  date        String
-  day         TripDay     @relation(fields: [date], references: [date])
-  startTime   String      @map("start_time")   // '15:00' 현지 시각
-  title       String
-  description String?
-  kind        ItemKind
-  booking     BookingNeed @default(none)
-  isKey       Boolean     @default(false) @map("is_key")
-  mapQuery    String?     @map("map_query")    // 구글 지도 검색어
-  sortOrder   Int         @map("sort_order")
-  hidden      Boolean     @default(false)
-  expenses    Expense[]
-  @@index([date, sortOrder])
-  @@map("itinerary_item")
-}
-
-model ChecklistGroup {
-  id        Int             @id @default(autoincrement())
-  title     String
-  urgent    Boolean         @default(false)
-  sortOrder Int             @map("sort_order")
-  items     ChecklistItem[]
-  @@map("checklist_group")
-}
-
-model ChecklistItem {
-  id          Int            @id @default(autoincrement())
-  groupId     Int            @map("group_id")
-  group       ChecklistGroup @relation(fields: [groupId], references: [id])
-  title       String
-  detail      String?
-  dueAt       DateTime?      @map("due_at")
-  checkedById Int?           @map("checked_by")
-  checkedBy   User?          @relation(fields: [checkedById], references: [id])
-  checkedAt   DateTime?      @map("checked_at")
-  sortOrder   Int            @map("sort_order")
-  @@map("checklist_item")
-}
-
-model Booking {
-  id       Int         @id @default(autoincrement())
-  kind     BookingKind
-  title    String
-  refCode  String?     @map("ref_code")
-  startsAt String      @map("starts_at")   // 현지 오프셋 포함 ISO 8601
-  endsAt   String?     @map("ends_at")
-  address  String?
-  phone    String?
-  detail   String?
-  @@map("booking")
-}
-
-// 계획: 결제 완료 또는 예상 금액
-model BudgetItem {
-  id          Int          @id @default(autoincrement())
-  category    Category
-  title       String
-  status      BudgetStatus
-  currency    Currency
-  amountMinor Int          @map("amount_minor")   // EUR은 센트, KRW는 원
-  note        String?
-  sortOrder   Int          @map("sort_order")
-  expenses    Expense[]
-  @@map("budget_item")
-}
-
-// 실제 지출
-model Expense {
-  id              Int            @id @default(autoincrement())
-  spentOn         String         @map("spent_on")        // '2026-12-05'
-  city            City
-  category        Category
-  title           String
-  currency        Currency
-  amountMinor     Int            @map("amount_minor")
-  fxRate          Float          @map("fx_rate")         // KRW이면 1
-  amountKrw       Int            @map("amount_krw")      // 카드 청구 후 수정 가능
-  method          PayMethod
-  paidById        Int            @map("paid_by")
-  paidBy          User           @relation("paidBy", fields: [paidById], references: [id])
-  budgetItemId    Int?           @map("budget_item_id")
-  budgetItem      BudgetItem?    @relation(fields: [budgetItemId], references: [id])
-  itineraryItemId Int?           @map("itinerary_item_id")
-  itineraryItem   ItineraryItem? @relation(fields: [itineraryItemId], references: [id])
-  taxFreeMinor    Int?           @map("tax_free_minor")  // P1: 환급 예상액(유로 센트)
-  taxFreeStatus   TaxFreeStatus? @map("tax_free_status")
-  memo            String?
-  createdById     Int            @map("created_by")
-  createdBy       User           @relation("createdBy", fields: [createdById], references: [id])
-  createdAt       DateTime       @default(now()) @map("created_at")
-  updatedAt       DateTime       @updatedAt @map("updated_at")
-  @@index([spentOn])
-  @@index([category])
-  @@map("expense")
-}
-
-// 설정: fx_eur_krw = 1544 (value는 JSON 문자열). reserve_pct·fx_usd_krw는 더 이상 쓰지 않음
-model Setting {
-  key   String @id
-  value String
-  @@map("setting")
-}
-```
-
-**시드 데이터.** 지금 HTML 페이지 내용을 그대로 옮긴다. 여행 날짜 8행, 일정 항목 51개, 주의사항 3개, 체크리스트 6그룹 30개, 예약 7건이다(예산 항목 21개도 들어 있지만 화면에서 쓰지 않는다). 추출본은 `docs/seed-data.json`에 있다. 시드는 `prisma/seed.ts` 하나로 만들고 여러 번 실행해도 같은 결과가 나오게 한다.
+**시드 데이터.** 지금 HTML 페이지 내용을 그대로 옮긴다. 여행 날짜 8행, 일정 항목 51개, 주의사항 3개, 체크리스트 6그룹 30개, 예약 7건이다(예산 항목 21개도 들어 있지만 화면에서 쓰지 않는다). 추출본은 `docs/seed-data.json`에 있다. 시드는 `src/db/seed.ts` 하나로 만들고 여러 번 실행해도 같은 결과가 나오게 한다.
 
 여권번호와 카드번호는 어느 테이블에도 저장하지 않는다.
 
@@ -309,22 +101,22 @@ model Setting {
 
 ## 기술 스택과 배포
 
-Next.js(App Router)와 TypeScript로 만들어 Vercel에 배포하고, DB는 SQLite를 쓴다. Vercel 함수의 파일 시스템은 일시적이라 SQLite 파일에 쓴 내용이 남지 않는다([Vercel 안내](https://vercel.com/kb/guide/is-sqlite-supported-in-vercel)). 그래서 운영에서는 SQLite 호환 호스팅 DB인 Turso(libSQL)를 쓰고, 로컬 개발에서는 같은 스키마로 SQLite 파일을 쓴다.
+Next.js(App Router)와 TypeScript로 만들어 Vercel에 배포하고, DB는 Neon(서버리스 Postgres)을 쓴다. 로컬 개발과 운영이 같은 Neon DB 하나를 쓴다.
 
 ```
 휴대폰 브라우저 ──HTTPS──▶ Vercel · Next.js App Router
                            ├─ Middleware: 세션 쿠키 확인, 없으면 /login
-                           ├─ Server Components: 화면 조회 ──읽기──▶ Turso (SQLite)
-                           └─ Server Actions: 저장, Zod 검증 ──쓰기──▶ Turso (SQLite)
+                           ├─ Server Components: 화면 조회 ──읽기──▶ Neon (Postgres)
+                           └─ Server Actions: 저장, Zod 검증 ──쓰기──▶ Neon (Postgres)
 GitHub 푸시 ──배포──▶ Vercel (main = 운영, PR = 미리보기)
 ```
 
 | 영역 | 선택 | 메모 |
 | --- | --- | --- |
 | 프레임워크 | Next.js App Router, TypeScript strict | 조회는 Server Components, 쓰기는 Server Actions |
-| DB | SQLite (운영: Turso, 로컬: 파일) | 같은 스키마 |
-| ORM | Prisma ORM 7 + `@prisma/adapter-libsql` | 스키마는 `prisma/schema.prisma`, 접속 설정은 `prisma.config.ts`, 클라이언트는 `src/generated/prisma`에 생성 |
-| 마이그레이션 | 로컬 SQLite에서 `prisma migrate dev`, 운영은 Turso CLI로 SQL 적용 | Turso에서는 Prisma Migrate를 직접 쓸 수 없다 |
+| DB | Neon Postgres | 로컬과 운영이 같은 DB |
+| ORM | Drizzle ORM + `@neondatabase/serverless` | 스키마는 `src/db/schema.ts`, drizzle-kit 설정은 `drizzle.config.ts` |
+| 마이그레이션 | `drizzle-kit generate`로 SQL을 만들어 커밋하고 `drizzle-kit migrate`로 적용 | DB가 하나뿐이라 `drizzle-kit push`는 쓰지 않는다 |
 | 입력 검증 | Zod | 폼과 Server Action이 같은 스키마를 쓴다 |
 | 스타일 | Tailwind CSS | 지금 페이지의 색을 CSS 변수로 옮긴다 |
 | 인증 | 공유 비밀번호 + 서명된 쿠키(`jose`) | 사용자가 2명뿐이라 외부 인증 서비스는 쓰지 않는다 |
@@ -335,19 +127,18 @@ GitHub 푸시 ──배포──▶ Vercel (main = 운영, PR = 미리보기)
 
 | 이름 | 용도 |
 | --- | --- |
-| `DATABASE_URL` | Prisma CLI가 마이그레이션을 만들 때 쓰는 로컬 SQLite 주소(`file:./dev.db`) |
-| `TURSO_DATABASE_URL` | 앱이 접속하는 DB 주소(`libsql://…`). 로컬 개발에서는 `file:./dev.db` |
-| `TURSO_AUTH_TOKEN` | Turso 접속 토큰. 로컬에서는 비워 둠 |
+| `DATABASE_URL` | 앱이 접속하는 Neon 주소(pooled, `-pooler` 호스트) |
+| `DATABASE_URL_UNPOOLED` | drizzle-kit이 마이그레이션에 쓰는 Neon 직접 연결 주소 |
 | `APP_PASSCODE` | 두 사람이 공유하는 로그인 비밀번호 |
 | `SESSION_SECRET` | 세션 쿠키 서명 키(32바이트 이상 무작위 값) |
 
 **배포 순서**
 
 1. GitHub 저장소를 만들고 Vercel 프로젝트에 연결한다.
-2. Turso에서 유럽 리전에 운영 DB와 개발용 DB를 만들고 각각 접속 토큰을 발급한다.
-3. Vercel에 환경 변수를 등록한다. Production에는 운영 DB를, Preview에는 개발용 DB를 연결해 미리보기가 실제 경비 기록을 건드리지 않게 한다.
+2. Neon에서 유럽 리전에 프로젝트를 만든다.
+3. Vercel에 환경 변수를 등록한다. 로컬 `.env.local`과 같은 DB를 가리킨다.
 4. Vercel 함수 리전을 DB와 같은 유럽 지역으로 맞춘다.
-5. 로컬 SQLite에서 `prisma migrate dev`로 마이그레이션 SQL을 만들고, `turso db shell <DB이름> < prisma/migrations/<폴더>/migration.sql`로 운영 DB에 적용한다. 이어서 `prisma/seed.ts`를 한 번 실행한다.
+5. `pnpm db:migrate`로 `drizzle/`의 마이그레이션을 적용하고, `pnpm db:seed`를 한 번 실행한다.
 6. main에 푸시해 배포하고, 두 사람 휴대폰에서 로그인과 지출 기록을 확인한다.
 
 ## 비기능 요구사항
@@ -357,11 +148,11 @@ GitHub 푸시 ──배포──▶ Vercel (main = 운영, PR = 미리보기)
 | 항목 | 기준 |
 | --- | --- |
 | 모바일 | 폭 375px에서 가로 스크롤 없음. 터치 영역 44px 이상. 하단 탭 바는 아이폰 홈 표시줄 영역을 피한다. |
-| 성능 | 4G에서 홈 화면 LCP 2.5초 이내. 지출 저장 응답 1초 이내. Turso DB와 Vercel 함수는 같은 유럽 리전에 둔다. |
+| 성능 | 4G에서 홈 화면 LCP 2.5초 이내. 지출 저장 응답 1초 이내. Neon DB와 Vercel 함수는 같은 유럽 리전에 둔다. |
 | 콜드 스타트 | 서버리스 함수의 첫 요청은 늦어질 수 있으니 저장 버튼에 로딩 상태를 보여주고, 실패 시 입력값을 유지한 채 다시 시도하게 한다. |
 | 통신 끊김 | P0: 저장 실패를 분명히 알리고 입력값을 잃지 않는다. P1: 일정·예약 화면을 오프라인으로 읽는다. |
 | 보안 | 모든 페이지와 Server Action은 세션 쿠키를 확인한다. 쿠키는 httpOnly, Secure, SameSite=Lax. 로그인 5회 실패 시 10분 대기. `robots: noindex`. |
 | 개인정보 | 예약번호·주소만 저장하고 여권번호·카드번호는 저장하지 않는다. |
-| 백업 | Turso의 시점 복원을 쓴다(플랜별 보존 기간 확인). 여행 끝난 뒤 CSV로 한 번 내보낸다. |
+| 백업 | Neon의 시점 복원을 쓴다(플랜별 보존 기간 확인). 여행 끝난 뒤 CSV로 한 번 내보낸다. |
 | 언어·표기 | 한국어 UI. 원화는 `1,544원`, 유로는 `€60`처럼 표기한다. 시각은 모두 현지 시각이고 필요하면 한국 시각을 함께 보여준다. |
 | 접근성 | 명도 대비 4.5:1 이상, 키보드 포커스 표시, 색만으로 의미를 전달하지 않는다. |

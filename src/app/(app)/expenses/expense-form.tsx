@@ -4,7 +4,7 @@ import { useState, useTransition } from "react";
 import { Link2, Trash2 } from "lucide-react";
 import { field, input, primaryButton } from "@/components/form-styles";
 import { CATEGORY_ICON, CITY_NAME } from "@/components/travel";
-import type { Category, City } from "@/generated/prisma/enums";
+import type { Category, City } from "@/db/schema";
 import { CATEGORIES, CATEGORY_LABEL } from "@/lib/budget";
 import { useSafeAction } from "@/lib/use-safe-action";
 import { deleteExpense, type FormState } from "./actions";

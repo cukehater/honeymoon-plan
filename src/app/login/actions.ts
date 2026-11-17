@@ -3,7 +3,9 @@
 import { createHash, timingSafeEqual } from "node:crypto";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { eq } from "drizzle-orm";
 import { z } from "zod";
+import { user as userTable } from "@/db/schema";
 import { db } from "@/lib/db";
 import { createSession } from "@/lib/session";
 
@@ -41,7 +43,7 @@ export async function login(_prev: LoginState, formData: FormData): Promise<Logi
 
   const expected = process.env.APP_PASSCODE;
   if (!expected) throw new Error("APP_PASSCODE is not set");
-  const user = await db.user.findUnique({ where: { id: parsed.data.userId } });
+  const user = await db.query.user.findFirst({ where: eq(userTable.id, parsed.data.userId) });
 
   if (!user || !sameSecret(parsed.data.passcode, expected)) {
     // 잠금이 풀린 뒤에는 0부터 다시 센다.

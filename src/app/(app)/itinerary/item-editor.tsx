@@ -1,7 +1,7 @@
 "use client";
 
 import { type ReactNode, useState, useTransition } from "react";
-import type { ItemKind } from "@/generated/prisma/enums";
+import type { ItemKind } from "@/db/schema";
 import { Plus } from "lucide-react";
 import { field, input, primaryButton, secondaryButton } from "@/components/form-styles";
 import { useSafeAction } from "@/lib/use-safe-action";

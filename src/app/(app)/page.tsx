@@ -5,7 +5,7 @@ import { PhotoHero } from "@/components/photo-hero";
 import { SummaryTiles } from "@/components/summary-tiles";
 import { CITY_NAME, KIND_ICON, dayPhoto, mapUrl } from "@/components/travel";
 import { Badge, Card, IconTile, ProgressBar, SectionTitle } from "@/components/ui";
-import type { DayAlert, ItineraryItem } from "@/generated/prisma/client";
+import type { DayAlert, ItineraryItem } from "@/db/schema";
 import { summarizeExpenses, sumKrw } from "@/lib/budget";
 import { db } from "@/lib/db";
 import { formatDate, formatKrw } from "@/lib/format";
@@ -58,11 +58,14 @@ export default async function HomePage({ searchParams }: PageProps<"/">) {
   await getSession();
   const now = resolveNow((await searchParams).now);
   const [days, items, expenses, checklist, users] = await Promise.all([
-    db.tripDay.findMany({ orderBy: { date: "asc" }, include: { alerts: true } }),
-    db.itineraryItem.findMany({ where: { hidden: false }, orderBy: [{ date: "asc" }, { startTime: "asc" }, { sortOrder: "asc" }] }),
-    db.expense.findMany({ select: { spentOn: true, category: true, amountKrw: true } }),
-    db.checklistItem.findMany({ select: { checkedById: true } }),
-    db.user.findMany({ orderBy: { id: "asc" } }),
+    db.query.tripDay.findMany({ orderBy: (d, { asc }) => asc(d.date), with: { alerts: true } }),
+    db.query.itineraryItem.findMany({
+      where: (i, { eq }) => eq(i.hidden, false),
+      orderBy: (i, { asc }) => [asc(i.date), asc(i.startTime), asc(i.sortOrder)],
+    }),
+    db.query.expense.findMany({ columns: { spentOn: true, category: true, amountKrw: true } }),
+    db.query.checklistItem.findMany({ columns: { checkedById: true } }),
+    db.query.user.findMany({ orderBy: (u, { asc }) => asc(u.id) }),
   ]);
   const summary = summarizeExpenses(expenses);
   const first = days[0];

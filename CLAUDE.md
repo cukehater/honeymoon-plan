@@ -4,7 +4,7 @@
 
 ## 먼저 읽을 문서
 
-- `docs/PRD.md`: 요구사항, 화면, 데이터 모델(Prisma 스키마 전문), 계산 규칙, 배포 방법
+- `docs/PRD.md`: 요구사항, 화면, 데이터 모델, 계산 규칙, 배포 방법
 - `docs/PLAN.md`: 작업 순서와 단계별 완료 조건. 이 순서대로 진행한다.
 - `docs/seed-data.json`: 시드 데이터. 일정 51개, 체크리스트 30개, 예약 7건 (예산 21개는 남아 있으나 쓰지 않음)
 - `docs/reference/honeymoon.html`: 현재 쓰고 있는 단일 HTML 일정표. 디자인(색, 타이포, 구성)의 기준
@@ -12,8 +12,8 @@
 ## 스택
 
 - Next.js App Router, TypeScript strict, Tailwind CSS
-- Prisma ORM 7 + `@prisma/adapter-libsql` + `@libsql/client`
-- DB: 로컬은 SQLite 파일(`file:./dev.db`), 운영은 Turso(libSQL)
+- Drizzle ORM + `drizzle-kit` + `@neondatabase/serverless`
+- DB: Neon(Postgres). 로컬 개발과 운영이 같은 DB 하나를 쓴다
 - Zod(입력 검증), jose(세션 쿠키 서명), Vitest(단위 테스트)
 - 배포: Vercel
 - 패키지 매니저: pnpm (`package-lock.json` 대신 `pnpm-lock.yaml`)
@@ -25,21 +25,20 @@
 | 명령 | 하는 일 |
 | --- | --- |
 | `pnpm dev` | 개발 서버 |
-| `pnpm build` | `prisma generate` 후 Next.js 빌드 |
+| `pnpm build` | Next.js 빌드 |
 | `pnpm lint` / `pnpm typecheck` | ESLint / `tsc --noEmit` |
 | `pnpm test` | Vitest |
-| `pnpm db:migrate` | 로컬 SQLite에 `prisma migrate dev` |
-| `pnpm db:seed` | `prisma/seed.ts` 실행 (`TURSO_DATABASE_URL` 기준) |
-| `pnpm db:reset` | 로컬 DB 초기화 후 시드 |
+| `pnpm db:generate` | 스키마 변경을 `drizzle/`에 SQL 마이그레이션으로 생성 |
+| `pnpm db:migrate` | `drizzle/` 마이그레이션을 DB에 적용 |
+| `pnpm db:seed` | `src/db/seed.ts` 실행 (`DATABASE_URL` 기준) |
 
 ## 규칙
 
-**DB와 Prisma**
-- 스키마 원본은 `docs/PRD.md`의 Prisma 스키마다. 바꿔야 하면 PRD도 같이 고친다.
-- Prisma 클라이언트는 `src/lib/db.ts` 한 곳에서만 만든다(libSQL 어댑터, 개발 중 hot reload 대비 전역 싱글턴).
-- Prisma Migrate는 Turso에 직접 쓸 수 없다. 마이그레이션은 로컬 SQLite에서 `prisma migrate dev`로 만들고, 운영 반영은 사용자가 `turso db shell`로 한다. 운영 DB에 명령을 직접 실행하지 않는다.
-- Prisma 7은 설정(`prisma.config.ts`), 생성기(`prisma-client`), import 경로가 6과 다르다. 코드를 쓰기 전에 설치된 버전의 공식 문서로 확인한다. 어댑터 클래스 이름도 버전에 따라 다를 수 있으니 패키지의 export를 확인한다.
-- SQLite는 enum 값을 강제하지 않는다. 쓰기 전에 반드시 Zod로 검증한다.
+**DB와 Drizzle**
+- 스키마 원본은 `src/db/schema.ts`다. 테이블 타입과 enum 타입도 여기서 export한다.
+- Drizzle 클라이언트는 `src/lib/db.ts` 한 곳에서만 만든다(`drizzle-orm/neon-serverless`, 개발 중 hot reload 대비 전역 싱글턴).
+- 로컬과 운영이 같은 DB다. 스키마를 바꾸면 `pnpm db:generate`로 마이그레이션 SQL을 만들어 커밋하고, 적용(`pnpm db:migrate`)과 시드는 사용자 확인을 받고 실행한다. `drizzle-kit push`는 쓰지 않는다.
+- 쓰기 전에 입력은 반드시 Zod로 검증한다.
 
 **돈과 시간**
 - 금액은 정수로만 다룬다. 유로는 센트(`amountMinor`), 원화는 원. 부동소수점 금액 계산 금지.
@@ -48,7 +47,7 @@
 - 일정 시각은 현지 시각 문자열이다. 날짜별 시간대는 `TripDay.tz`(`Europe/Lisbon`, `Europe/Madrid`)를 쓴다. "지금"과 "다음 일정" 계산은 이 시간대 기준이다.
 
 **서버 코드**
-- 읽기는 Server Component에서 Prisma로 직접 조회한다. 쓰기는 Server Action만 쓴다. `"use server"` 파일은 `src/app/**/actions.ts`.
+- 읽기는 Server Component에서 Drizzle로 직접 조회한다. 쓰기는 Server Action만 쓴다. `"use server"` 파일은 `src/app/**/actions.ts`.
 - 모든 Server Action은 첫 줄에서 세션을 확인하고, Zod로 입력을 검증하고, 끝에 `revalidatePath`를 호출한다.
 - 비밀번호, 세션 키, DB 토큰은 환경 변수로만 다룬다. `.env*`는 커밋하지 않는다(`.env.example`만 커밋).
 - 여권번호, 카드번호는 어디에도 저장하지 않는다.

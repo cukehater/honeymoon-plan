@@ -13,13 +13,13 @@ import { Card } from "./ui";
 // 일정 탭의 하루 화면. /itinerary(오늘·첫날)와 /itinerary/[date]가 함께 쓴다.
 export async function DayView({ date }: { date: string }) {
   const [day, days, spent, tripAlerts] = await Promise.all([
-    db.tripDay.findUnique({
-      where: { date },
-      include: { alerts: true, items: { orderBy: [{ startTime: "asc" }, { sortOrder: "asc" }] } },
+    db.query.tripDay.findFirst({
+      where: (d, { eq }) => eq(d.date, date),
+      with: { alerts: true, items: { orderBy: (i, { asc }) => [asc(i.startTime), asc(i.sortOrder)] } },
     }),
-    db.tripDay.findMany({ select: { date: true, city: true, tz: true }, orderBy: { date: "asc" } }),
-    db.expense.findMany({ where: { spentOn: date }, select: { amountKrw: true } }),
-    db.dayAlert.findMany({ where: { date: null } }),
+    db.query.tripDay.findMany({ columns: { date: true, city: true, tz: true }, orderBy: (d, { asc }) => asc(d.date) }),
+    db.query.expense.findMany({ where: (e, { eq }) => eq(e.spentOn, date), columns: { amountKrw: true } }),
+    db.query.dayAlert.findMany({ where: (a, { isNull }) => isNull(a.date) }),
   ]);
   if (!day) notFound();
   const index = days.findIndex((d) => d.date === date);

@@ -2,7 +2,7 @@ import { BedDouble, Landmark, MapPin, Phone, Plane } from "lucide-react";
 import { CopyCode } from "@/components/copy-button";
 import { mapUrl } from "@/components/travel";
 import { IconTile, PageHeader } from "@/components/ui";
-import type { Booking } from "@/generated/prisma/client";
+import type { Booking } from "@/db/schema";
 import { db } from "@/lib/db";
 import { formatDate } from "@/lib/format";
 import { getSession } from "@/lib/session";
@@ -121,7 +121,7 @@ function ActivityCard({ b }: { b: Booking }) {
 
 export default async function BookingsPage() {
   await getSession();
-  const bookings = await db.booking.findMany({ orderBy: [{ startsAt: "asc" }, { id: "asc" }] });
+  const bookings = await db.query.booking.findMany({ orderBy: (b, { asc }) => [asc(b.startsAt), asc(b.id)] });
   const groups = [
     { title: "항공", list: bookings.filter((b) => b.kind === "flight"), Card: FlightPass },
     { title: "숙소", list: bookings.filter((b) => b.kind === "stay"), Card: StayCard },

@@ -1,4 +1,4 @@
-import type { City, ItemKind } from "../generated/prisma/enums";
+import type { City, ItemKind } from "../db/schema";
 
 const CITY_NAME: Record<City, string> = { paris: "Paris", porto: "Porto", barcelona: "Barcelona" };
 

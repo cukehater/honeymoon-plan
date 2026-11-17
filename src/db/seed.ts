@@ -2,17 +2,28 @@
 // --force: 참고 데이터를 지우고 다시 넣는다. 단 Expense가 1건이라도 있으면 거부한다.
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { db } from "../src/lib/db";
-import { toMapQuery } from "../src/lib/map-query";
-import type {
-  BookingKind,
-  BookingNeed,
-  BudgetStatus,
-  Category,
-  City,
-  Currency,
-  ItemKind,
-} from "../src/generated/prisma/client";
+import { count } from "drizzle-orm";
+import { db } from "../lib/db";
+import { toMapQuery } from "../lib/map-query";
+import {
+  booking,
+  budgetItem,
+  checklistGroup,
+  checklistItem,
+  dayAlert,
+  expense,
+  itineraryItem,
+  setting,
+  tripDay,
+  user,
+  type BookingKind,
+  type BookingNeed,
+  type BudgetStatus,
+  type Category,
+  type City,
+  type Currency,
+  type ItemKind,
+} from "./schema";
 
 type SeedData = {
   users: { id: number; name: string }[];
@@ -73,15 +84,16 @@ function parseDueNote(note: string): Date | null {
 async function main() {
   const force = process.argv.includes("--force");
   const data: SeedData = JSON.parse(
-    readFileSync(join(import.meta.dirname, "../docs/seed-data.json"), "utf8"),
+    readFileSync(join(import.meta.dirname, "../../docs/seed-data.json"), "utf8"),
   );
 
-  if ((await db.tripDay.count()) > 0) {
+  const [days] = await db.select({ n: count() }).from(tripDay);
+  if (days.n > 0) {
     if (!force) {
       console.log("이미 시드 데이터가 있습니다. 다시 넣으려면 --force");
       return;
     }
-    const expenses = await db.expense.count();
+    const [{ n: expenses }] = await db.select({ n: count() }).from(expense);
     if (expenses > 0) {
       throw new Error(`지출 ${expenses}건이 있어 --force를 거부합니다.`);
     }
@@ -90,30 +102,22 @@ async function main() {
   const cityOf = new Map(data.tripDays.map((d) => [d.date, d.city]));
   const now = new Date();
 
-  await db.$transaction(async (tx) => {
+  await db.transaction(async (tx) => {
     if (force) {
-      await tx.checklistItem.deleteMany();
-      await tx.checklistGroup.deleteMany();
-      await tx.itineraryItem.deleteMany();
-      await tx.dayAlert.deleteMany();
-      await tx.tripDay.deleteMany();
-      await tx.booking.deleteMany();
-      await tx.budgetItem.deleteMany();
-      await tx.setting.deleteMany();
-      await tx.user.deleteMany();
+      for (const t of [checklistItem, checklistGroup, itineraryItem, dayAlert, tripDay, booking, budgetItem, setting, user]) {
+        await tx.delete(t);
+      }
     }
 
-    await tx.user.createMany({ data: data.users });
-    await tx.setting.createMany({
-      data: [
-        { key: "fx_eur_krw", value: JSON.stringify(data.settings.fx_eur_krw) },
-        { key: "reserve_pct", value: JSON.stringify(data.settings.reserve_pct) },
-      ],
-    });
-    await tx.tripDay.createMany({ data: data.tripDays });
-    await tx.dayAlert.createMany({ data: data.dayAlerts });
-    await tx.itineraryItem.createMany({
-      data: data.itineraryItems.map((i) => ({
+    await tx.insert(user).values(data.users);
+    await tx.insert(setting).values([
+      { key: "fx_eur_krw", value: JSON.stringify(data.settings.fx_eur_krw) },
+      { key: "reserve_pct", value: JSON.stringify(data.settings.reserve_pct) },
+    ]);
+    await tx.insert(tripDay).values(data.tripDays);
+    await tx.insert(dayAlert).values(data.dayAlerts);
+    await tx.insert(itineraryItem).values(
+      data.itineraryItems.map((i) => ({
         date: i.date,
         startTime: i.startTime,
         title: i.title,
@@ -124,32 +128,30 @@ async function main() {
         sortOrder: i.sortOrder,
         mapQuery: toMapQuery(i.title, i.kind, cityOf.get(i.date)!),
       })),
-    });
+    );
     for (const g of data.checklistGroups) {
-      await tx.checklistGroup.create({
-        data: {
-          title: g.title,
-          urgent: g.urgent,
-          sortOrder: g.sortOrder,
-          items: {
-            create: g.items.map((i) => {
-              const dueAt = i.dueNote ? parseDueNote(i.dueNote) : null;
-              const memo = i.dueNote && !dueAt ? i.dueNote : null;
-              return {
-                title: i.title,
-                detail: memo ? [memo, i.detail].filter(Boolean).join(" · ") : i.detail,
-                dueAt,
-                checkedById: i.checked ? 1 : null,
-                checkedAt: i.checked ? now : null,
-                sortOrder: i.sortOrder,
-              };
-            }),
-          },
-        },
-      });
+      const [group] = await tx
+        .insert(checklistGroup)
+        .values({ title: g.title, urgent: g.urgent, sortOrder: g.sortOrder })
+        .returning({ id: checklistGroup.id });
+      await tx.insert(checklistItem).values(
+        g.items.map((i) => {
+          const dueAt = i.dueNote ? parseDueNote(i.dueNote) : null;
+          const memo = i.dueNote && !dueAt ? i.dueNote : null;
+          return {
+            groupId: group.id,
+            title: i.title,
+            detail: memo ? [memo, i.detail].filter(Boolean).join(" · ") : i.detail,
+            dueAt,
+            checkedById: i.checked ? 1 : null,
+            checkedAt: i.checked ? now : null,
+            sortOrder: i.sortOrder,
+          };
+        }),
+      );
     }
-    await tx.booking.createMany({ data: data.bookings });
-    await tx.budgetItem.createMany({ data: data.budgetItems });
+    await tx.insert(booking).values(data.bookings);
+    await tx.insert(budgetItem).values(data.budgetItems);
   });
 
   console.log("시드 완료");
@@ -160,4 +162,4 @@ main()
     console.error(e);
     process.exitCode = 1;
   })
-  .finally(() => db.$disconnect());
+  .finally(() => db.$client.end());

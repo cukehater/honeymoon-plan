@@ -15,7 +15,10 @@ export const metadata = { title: "경비" };
 export default async function ExpensesPage() {
   await getSession();
   const [expenses, settings] = await Promise.all([
-    db.expense.findMany({ orderBy: [{ spentOn: "desc" }, { createdAt: "desc" }], include: { paidBy: { select: { name: true } } } }),
+    db.query.expense.findMany({
+      orderBy: (e, { desc }) => [desc(e.spentOn), desc(e.createdAt)],
+      with: { paidBy: { columns: { name: true } } },
+    }),
     getSettings(),
   ]);
   const s = summarizeExpenses(expenses);

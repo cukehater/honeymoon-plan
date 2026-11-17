@@ -9,7 +9,7 @@ import {
   TrainFront,
   Utensils,
 } from "lucide-react";
-import type { Category, City, ItemKind } from "@/generated/prisma/enums";
+import type { Category, City, ItemKind } from "@/db/schema";
 import type { Icon, Tone } from "./ui";
 
 export const CITY_NAME: Record<City, string> = { paris: "파리", porto: "포르투", barcelona: "바르셀로나" };

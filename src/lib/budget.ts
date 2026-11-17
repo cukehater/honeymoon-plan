@@ -1,5 +1,5 @@
 // 경비 집계. 화면에서 따로 계산하지 않고 이 함수만 쓴다. 금액은 모두 정수(원, 유로는 센트).
-import type { Category } from "../generated/prisma/enums";
+import type { Category } from "../db/schema";
 
 export type ExpenseRow = {
   spentOn: string;

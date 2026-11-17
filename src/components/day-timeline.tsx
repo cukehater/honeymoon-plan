@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { MapPin, Receipt, Sparkles, TriangleAlert } from "lucide-react";
 import { ItemEditor } from "@/app/(app)/itinerary/item-editor";
-import type { DayAlert, ItineraryItem, TripDay } from "@/generated/prisma/client";
+import type { DayAlert, ItineraryItem, TripDay } from "@/db/schema";
 import { KIND_ICON, KIND_LABEL, mapUrl } from "./travel";
 import { Badge } from "./ui";
 

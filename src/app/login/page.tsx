@@ -7,7 +7,7 @@ export const metadata = { title: "로그인" };
 
 export default async function LoginPage() {
   await connection();
-  const users = await db.user.findMany({ orderBy: { id: "asc" } });
+  const users = await db.query.user.findMany({ orderBy: (u, { asc }) => asc(u.id) });
   return (
     <main className="relative flex min-h-dvh flex-1 flex-col">
       <div className="relative h-[46dvh] min-h-64">
