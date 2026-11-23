@@ -61,6 +61,7 @@ type SeedData = {
     address: string | null;
     phone: string | null;
     detail: string | null;
+    url: string | null;
   }[];
   budgetItems: {
     category: Category;

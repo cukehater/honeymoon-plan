@@ -103,6 +103,7 @@ export const booking = pgTable("booking", {
   address: text("address"),
   phone: text("phone"),
   detail: text("detail"),
+  url: text("url"), // 예약 확인 페이지
 });
 
 // 계획: 결제 완료 또는 예상 금액

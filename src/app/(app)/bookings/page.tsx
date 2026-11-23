@@ -1,4 +1,4 @@
-import { BedDouble, Landmark, MapPin, Phone, Plane } from "lucide-react";
+import { BedDouble, ExternalLink, Landmark, MapPin, Phone, Plane } from "lucide-react";
 import { CopyCode } from "@/components/copy-button";
 import { mapUrl } from "@/components/travel";
 import { IconTile, PageHeader } from "@/components/ui";
@@ -18,6 +18,15 @@ function parseFlight(title: string) {
   const [route, ...rest] = title.split(" · ");
   const [from, to] = route.split("→").map((s) => s.trim());
   return { from, to: to ?? "", flight: rest.join(" · ") };
+}
+
+function SiteLink({ url }: { url: string }) {
+  return (
+    <a href={url} target="_blank" rel="noopener noreferrer" className="press flex min-h-11 items-center gap-2 text-[14px] font-semibold no-underline">
+      <ExternalLink size={18} className="shrink-0" aria-hidden />
+      예약 사이트 열기
+    </a>
+  );
 }
 
 // 탑승권 가장자리 반원 홈
@@ -53,6 +62,11 @@ function FlightPass({ b }: { b: Booking }) {
         <span className={`${notch} -right-[30px]`} />
       </div>
       {b.detail && <p className="px-5 py-4 text-[14px] text-muted">{b.detail}</p>}
+      {b.url && (
+        <div className="px-5 pb-3">
+          <SiteLink url={b.url} />
+        </div>
+      )}
     </article>
   );
 }
@@ -96,6 +110,7 @@ function StayCard({ b }: { b: Booking }) {
           </a>
         )}
         {b.detail && <p className="text-[14px] leading-relaxed text-muted">{b.detail}</p>}
+        {b.url && <SiteLink url={b.url} />}
       </div>
     </article>
   );
@@ -114,7 +129,14 @@ function ActivityCard({ b }: { b: Booking }) {
         </div>
       </div>
       {b.refCode && <CopyCode code={b.refCode} />}
+      {b.address && (
+        <a href={mapUrl(b.address)} target="_blank" rel="noopener noreferrer" className="press flex min-h-11 items-start gap-2 text-[14px] font-semibold no-underline">
+          <MapPin size={18} className="mt-0.5 shrink-0" aria-hidden />
+          {b.address}
+        </a>
+      )}
       {b.detail && <p className="rounded-[14px] bg-ok-soft px-4 py-3 text-[14px] font-semibold text-ok">{b.detail}</p>}
+      {b.url && <SiteLink url={b.url} />}
     </article>
   );
 }

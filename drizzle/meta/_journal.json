@@ -8,6 +8,13 @@
       "when": 1794923799071,
       "tag": "0000_init",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1795353764441,
+      "tag": "0001_small_mentallo",
+      "breakpoints": true
     }
   ]
 }

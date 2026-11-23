@@ -477,11 +477,11 @@
     },
     {
       "date": "2026-12-05",
-      "startTime": "15:15",
+      "startTime": "14:45",
       "title": "사그라다 파밀리아",
-      "description": "14:55까지 입구 도착(보안검색, 큰 가방과 금속 장식은 줄이기). 점심 장소에서 도보 5분. 오디오가이드 포함 약 1시간 30분~2시간. 오후 햇살이 서쪽 '수난의 파사드' 쪽 스테인드글라스를 통과해 실내가 주황·붉은빛으로 물드는 시간대. 토요일은 18시에 닫아요. 착장: 성당 복장 규정: 어깨를 가리고 짧은 반바지·치마는 금지, 모자는 벗기. 겨울 차림이면 문제없어요. 실내는 서늘하니 겉옷 입은 채로. 빛을 담는 사진에는 흰색·베이지 같은 밝은 옷이 따뜻한 색감을 잘 받아요.",
+      "description": "14:30까지 입구 도착(보안검색, 큰 가방과 금속 장식은 줄이기). 점심 장소에서 도보 5분. 오디오가이드 포함 약 1시간 30분~2시간. 오후 햇살이 서쪽 '수난의 파사드' 쪽 스테인드글라스를 통과해 실내가 주황·붉은빛으로 물드는 시간대. 토요일은 18시에 닫아요. 착장: 성당 복장 규정: 어깨를 가리고 짧은 반바지·치마는 금지, 모자는 벗기. 겨울 차림이면 문제없어요. 실내는 서늘하니 겉옷 입은 채로. 빛을 담는 사진에는 흰색·베이지 같은 밝은 옷이 따뜻한 색감을 잘 받아요.",
       "kind": "activity",
-      "booking": "required",
+      "booking": "done",
       "bookingNote": "사전 예매",
       "isKey": true,
       "sortOrder": 4
@@ -806,10 +806,10 @@
           "sortOrder": 5
         },
         {
-          "title": "사그라다 파밀리아 · 12/5 15:15",
+          "title": "사그라다 파밀리아 · 12/5 14:45",
           "detail": "현장 판매 거의 없음. 공식 사이트에서 예매 후 입장권 QR을 두 사람 휴대폰에 저장.",
           "dueNote": null,
-          "checked": false,
+          "checked": true,
           "sortOrder": 6
         },
         {
@@ -915,7 +915,8 @@
       "endsAt": "2026-11-30T18:30:00+01:00",
       "address": null,
       "phone": null,
-      "detail": "인천 T2 → CDG 2E · 대한항공 KE901 운항"
+      "detail": "인천 T2 → CDG 2E · 대한항공 KE901 운항",
+      "url": null
     },
     {
       "kind": "flight",
@@ -925,7 +926,8 @@
       "endsAt": "2026-11-30T21:55:00+00:00",
       "address": null,
       "phone": null,
-      "detail": "CDG 2F → 포르투"
+      "detail": "CDG 2F → 포르투",
+      "url": null
     },
     {
       "kind": "flight",
@@ -935,7 +937,8 @@
       "endsAt": "2026-12-04T13:00:00+01:00",
       "address": null,
       "phone": null,
-      "detail": "포르투 → 바르셀로나 T1"
+      "detail": "포르투 → 바르셀로나 T1",
+      "url": null
     },
     {
       "kind": "flight",
@@ -945,7 +948,8 @@
       "endsAt": "2026-12-07T19:55:00+01:00",
       "address": null,
       "phone": null,
-      "detail": "바르셀로나 T1 → CDG 2G · HOP! 운항"
+      "detail": "바르셀로나 T1 → CDG 2G · HOP! 운항",
+      "url": null
     },
     {
       "kind": "flight",
@@ -955,7 +959,8 @@
       "endsAt": "2026-12-08T17:20:00+09:00",
       "address": null,
       "phone": null,
-      "detail": "CDG 2E → 인천 T2 · 대한항공 KE902 운항"
+      "detail": "CDG 2E → 인천 T2 · 대한항공 KE902 운항",
+      "url": null
     },
     {
       "kind": "stay",
@@ -965,7 +970,8 @@
       "endsAt": "2026-12-04T11:00:00+00:00",
       "address": "Rua Trindade Coelho 10, 2 FRT, 4050-618 Porto, Portugal",
       "detail": "열쇠보관함 셀프 체크인. 호스트 Porto Velho Apartamentos. 무료 취소 10/31 16:00까지",
-      "phone": null
+      "phone": null,
+      "url": "https://www.airbnb.co.kr/trips"
     },
     {
       "kind": "stay",
@@ -975,7 +981,52 @@
       "endsAt": "2026-12-07T12:00:00+01:00",
       "address": "Passeig de Gràcia 132, 08008 Barcelona, Spain",
       "phone": "+34 932 553 000",
-      "detail": "아고다 예약, 환불 불가. 체크인·체크아웃 시각은 호텔 정책 확인 필요(임시값)"
+      "detail": "아고다 예약, 환불 불가. 체크인·체크아웃 시각은 호텔 정책 확인 필요(임시값)",
+      "url": "https://www.agoda.com/ko-kr/account/bookings.html"
+    },
+    {
+      "kind": "activity",
+      "title": "렐루 서점 (Livraria Lello)",
+      "refCode": "110825537",
+      "startsAt": "2026-12-01T09:00:00+00:00",
+      "endsAt": null,
+      "address": "R. das Carmelitas 144, 4050-161 Porto, Portugal",
+      "phone": null,
+      "detail": "성인 2 · 메일 첨부 PDF 바우처로 입장",
+      "url": "https://www.livrarialello.pt/"
+    },
+    {
+      "kind": "activity",
+      "title": "테일러스 포트와인 셀러 셀프 투어",
+      "refCode": null,
+      "startsAt": "2026-12-01T15:20:00+00:00",
+      "endsAt": null,
+      "address": "Rua do Choupelo 250, 4400-088 Vila Nova de Gaia, Portugal",
+      "phone": null,
+      "detail": "성인 2 · 바우처는 와그(WAUG) 앱",
+      "url": "https://abr.ge/o2swh07"
+    },
+    {
+      "kind": "activity",
+      "title": "도루 밸리 와이너리 투어 (로투스 투어)",
+      "refCode": null,
+      "startsAt": "2026-12-02T08:30:00+00:00",
+      "endsAt": "2026-12-02T17:00:00+00:00",
+      "address": "Pilares da Ponte Pênsil, Porto, Portugal",
+      "phone": null,
+      "detail": "08:20까지 집합 · 현장 지불 €130 현금만 · 17:00 포르투 대성당 해산",
+      "url": "https://www.myrealtrip.com/offers/3519726"
+    },
+    {
+      "kind": "activity",
+      "title": "사그라다 파밀리아",
+      "refCode": "110976440",
+      "startsAt": "2026-12-05T14:45:00+01:00",
+      "endsAt": null,
+      "address": "C/ Marina, 08013 Barcelona, Spain",
+      "phone": null,
+      "detail": "공식 앱에서 티켓 받기 · 여권 필수",
+      "url": "https://sagradafamilia.org/"
     }
   ],
   "budgetItems": [
