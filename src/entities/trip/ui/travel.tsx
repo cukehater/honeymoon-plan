@@ -19,7 +19,7 @@ export const CITY_NAME: Record<CityType, string> = {
   barcelona: '바르셀로나',
 }
 
-// 사진 출처는 public/images/CREDITS.md. 첫 장이 도시 대표 사진이다.
+// 첫 장이 도시 대표 사진이다.
 const CITY_PHOTOS: Record<CityType, string[]> = {
   paris: ['/images/porto-dusk.webp'],
   porto: ['/images/porto.webp', '/images/porto-azulejo.webp', '/images/porto-dusk.webp'],

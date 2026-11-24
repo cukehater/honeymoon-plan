@@ -1,4 +1,4 @@
-// docs/seed-data.json을 DB에 넣는다. 이미 데이터가 있으면 아무것도 하지 않는다.
+// seed-data.json을 DB에 넣는다. 이미 데이터가 있으면 아무것도 하지 않는다.
 // --force: 참고 데이터를 지우고 다시 넣는다. 단 Expense가 1건이라도 있으면 거부한다.
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
@@ -30,7 +30,7 @@ import {
 
 type SeedDataType = {
   users: { id: number; name: string }[]
-  // eslint-disable-next-line @typescript-eslint/naming-convention -- docs/seed-data.json의 키 이름을 그대로 쓴다
+  // eslint-disable-next-line @typescript-eslint/naming-convention -- seed-data.json의 키 이름을 그대로 쓴다
   settings: { fx_eur_krw: number; reserve_pct: number }
   tripDays: { date: string; city: CityType; tz: string; title: string; note: string | null }[]
   dayAlerts: { date: string | null; title: string; body: string }[]
@@ -89,7 +89,7 @@ const parseDueNote = (note: string): Date | null => {
 const main = async () => {
   const force = process.argv.includes('--force')
   const data: SeedDataType = JSON.parse(
-    readFileSync(join(import.meta.dirname, '../../../docs/seed-data.json'), 'utf8'),
+    readFileSync(join(import.meta.dirname, 'seed-data.json'), 'utf8'),
   )
 
   const [days] = await db.select({ n: count() }).from(tripDay)
