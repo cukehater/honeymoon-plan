@@ -15,15 +15,15 @@ openssl rand -hex 32
 pnpm dev          # http://localhost:3000
 ```
 
-| 명령 | 하는 일 |
-| --- | --- |
-| `pnpm dev` | 개발 서버 |
-| `pnpm build` | Next.js 빌드 |
-| `pnpm lint` / `pnpm typecheck` | ESLint / 타입 검사 |
-| `pnpm test` | Vitest |
-| `pnpm db:generate` | `src/db/schema.ts` 변경을 `drizzle/`에 SQL 마이그레이션으로 생성 |
-| `pnpm db:migrate` | `drizzle/` 마이그레이션을 DB에 적용 |
-| `pnpm db:seed` | `src/db/seed.ts` 실행 (`DATABASE_URL` 기준). `--force`는 참고 데이터를 다시 넣는다(지출이 있으면 거부) |
+| 명령                           | 하는 일                                                                                                       |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------- |
+| `pnpm dev`                     | 개발 서버                                                                                                     |
+| `pnpm build`                   | Next.js 빌드                                                                                                  |
+| `pnpm lint` / `pnpm typecheck` | ESLint / 타입 검사                                                                                            |
+| `pnpm test`                    | Vitest                                                                                                        |
+| `pnpm db:generate`             | `src/shared/db/schema.ts` 변경을 `drizzle/`에 SQL 마이그레이션으로 생성                                       |
+| `pnpm db:migrate`              | `drizzle/` 마이그레이션을 DB에 적용                                                                           |
+| `pnpm db:seed`                 | `src/shared/db/seed.ts` 실행 (`DATABASE_URL` 기준). `--force`는 참고 데이터를 다시 넣는다(지출이 있으면 거부) |
 
 개발 모드에서는 홈 화면에 `?now=2026-12-06T14:00:00+01:00`처럼 시각을 넘겨 여행 전·중·후 화면을 확인할 수 있습니다.
 
@@ -47,12 +47,12 @@ pnpm dev          # http://localhost:3000
 
 `.env.local`과 Vercel Project Settings → Environment Variables(Production, Preview)에 같은 값을 넣습니다. Vercel 마켓플레이스의 Neon 연동을 쓰면 두 DB 주소는 자동으로 들어갑니다.
 
-| 이름 | 값 |
-| --- | --- |
-| `DATABASE_URL` | Neon pooled 주소 |
+| 이름                    | 값                                                   |
+| ----------------------- | ---------------------------------------------------- |
+| `DATABASE_URL`          | Neon pooled 주소                                     |
 | `DATABASE_URL_UNPOOLED` | Neon direct 주소 (마이그레이션용, 앱 실행에는 안 씀) |
-| `APP_PASSCODE` | 두 사람이 쓸 비밀번호 |
-| `SESSION_SECRET` | `openssl rand -hex 32` 출력 |
+| `APP_PASSCODE`          | 두 사람이 쓸 비밀번호                                |
+| `SESSION_SECRET`        | `openssl rand -hex 32` 출력                          |
 
 Project Settings → Functions에서 함수 리전을 DB와 같은 유럽 지역(예: Frankfurt `fra1`)으로 맞춥니다.
 
@@ -62,7 +62,7 @@ Project Settings → Functions에서 함수 리전을 DB와 같은 유럽 지역
 pnpm db:migrate
 ```
 
-나중에 스키마를 바꾸면 `src/db/schema.ts`를 고치고 `pnpm db:generate --name <이름>`으로 `drizzle/`에 SQL을 만든 뒤, 내용을 확인하고 `pnpm db:migrate`로 적용합니다. 스키마를 바로 밀어 넣는 `drizzle-kit push`는 쓰지 않습니다.
+나중에 스키마를 바꾸면 `src/shared/db/schema.ts`를 고치고 `pnpm db:generate --name <이름>`으로 `drizzle/`에 SQL을 만든 뒤, 내용을 확인하고 `pnpm db:migrate`로 적용합니다. 스키마를 바로 밀어 넣는 `drizzle-kit push`는 쓰지 않습니다.
 
 ### 5. 시드
 

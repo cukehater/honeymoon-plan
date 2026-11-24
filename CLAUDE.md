@@ -17,42 +17,49 @@
 - Zod(입력 검증), jose(세션 쿠키 서명), Vitest(단위 테스트)
 - 배포: Vercel
 - 패키지 매니저: pnpm (`package-lock.json` 대신 `pnpm-lock.yaml`)
+- Node 26 (`.nvmrc`)
+- 구조: FSD. 루트 `app/`의 page·layout·route는 `src/`를 재수출만 한다. 코드는 `src/{_app,_pages,widgets,features,entities,shared}`에 두고 import는 아래 레이어로만, 슬라이스는 `index.ts`로만 노출한다(`pnpm steiger`로 검사)
 
 ## 명령어
 
 이 표는 PLAN.md의 Phase 0에서 `package.json` scripts로 맞춰 둔다.
 
-| 명령 | 하는 일 |
-| --- | --- |
-| `pnpm dev` | 개발 서버 |
-| `pnpm build` | Next.js 빌드 |
-| `pnpm lint` / `pnpm typecheck` | ESLint / `tsc --noEmit` |
-| `pnpm test` | Vitest |
-| `pnpm db:generate` | 스키마 변경을 `drizzle/`에 SQL 마이그레이션으로 생성 |
-| `pnpm db:migrate` | `drizzle/` 마이그레이션을 DB에 적용 |
-| `pnpm db:seed` | `src/db/seed.ts` 실행 (`DATABASE_URL` 기준) |
+| 명령                                         | 하는 일                                              |
+| -------------------------------------------- | ---------------------------------------------------- |
+| `pnpm dev`                                   | 개발 서버                                            |
+| `pnpm build`                                 | Next.js 빌드                                         |
+| `pnpm lint` / `pnpm typecheck`               | ESLint / `tsc --noEmit`                              |
+| `pnpm test`                                  | Vitest                                               |
+| `pnpm format` / `pnpm steiger` / `pnpm knip` | Prettier / FSD 구조 검사 / 미사용 코드 검사          |
+| `pnpm db:generate`                           | 스키마 변경을 `drizzle/`에 SQL 마이그레이션으로 생성 |
+| `pnpm db:migrate`                            | `drizzle/` 마이그레이션을 DB에 적용                  |
+| `pnpm db:seed`                               | `src/shared/db/seed.ts` 실행 (`DATABASE_URL` 기준)   |
 
 ## 규칙
 
 **DB와 Drizzle**
-- 스키마 원본은 `src/db/schema.ts`다. 테이블 타입과 enum 타입도 여기서 export한다.
-- Drizzle 클라이언트는 `src/lib/db.ts` 한 곳에서만 만든다(`drizzle-orm/neon-serverless`, 개발 중 hot reload 대비 전역 싱글턴).
+
+- 스키마 원본은 `src/shared/db/schema.ts`다. 테이블 타입과 enum 타입도 여기서 export한다.
+- Drizzle 클라이언트는 `src/shared/db/client.ts` 한 곳에서만 만든다(`drizzle-orm/neon-serverless`, 개발 중 hot reload 대비 전역 싱글턴).
 - 로컬과 운영이 같은 DB다. 스키마를 바꾸면 `pnpm db:generate`로 마이그레이션 SQL을 만들어 커밋하고, 적용(`pnpm db:migrate`)과 시드는 사용자 확인을 받고 실행한다. `drizzle-kit push`는 쓰지 않는다.
 - 쓰기 전에 입력은 반드시 Zod로 검증한다.
 
 **돈과 시간**
+
 - 금액은 정수로만 다룬다. 유로는 센트(`amountMinor`), 원화는 원. 부동소수점 금액 계산 금지.
 - 유로 지출은 저장할 때의 환율(`fxRate`)과 원화 금액(`amountKrw`)을 함께 저장한다.
-- 경비 집계는 `src/lib/budget.ts`의 순수 함수에서만 계산한다. 화면에서 따로 계산하지 않는다.
+- 경비 집계는 `src/entities/expense/model/budget.ts`의 순수 함수에서만 계산한다. 화면에서 따로 계산하지 않는다.
 - 일정 시각은 현지 시각 문자열이다. 날짜별 시간대는 `TripDay.tz`(`Europe/Lisbon`, `Europe/Madrid`)를 쓴다. "지금"과 "다음 일정" 계산은 이 시간대 기준이다.
 
 **서버 코드**
-- 읽기는 Server Component에서 Drizzle로 직접 조회한다. 쓰기는 Server Action만 쓴다. `"use server"` 파일은 `src/app/**/actions.ts`.
+
+- 읽기는 Server Component에서 Drizzle로 직접 조회한다. 쓰기는 Server Action만 쓴다. `"use server"` 파일은 `src/_pages/*/api/*.ts`.
 - 모든 Server Action은 첫 줄에서 세션을 확인하고, Zod로 입력을 검증하고, 끝에 `revalidatePath`를 호출한다.
 - 비밀번호, 세션 키, DB 토큰은 환경 변수로만 다룬다. `.env*`는 커밋하지 않는다(`.env.example`만 커밋).
 - 여권번호, 카드번호는 어디에도 저장하지 않는다.
 
 **UI**
+
 - 한국어 UI. 원화 `1,544원`, 유로 `€60` 형식. 숫자는 `tabular-nums`.
 - 모바일 우선. 375px에서 가로 스크롤 없음, 터치 영역 44px 이상, 하단 탭 바는 `env(safe-area-inset-bottom)`을 반영한다.
 - 라이트·다크 모드 모두 지원. 포르투는 코발트 블루, 바르셀로나는 오커(색 값은 reference HTML의 `:root` 토큰).

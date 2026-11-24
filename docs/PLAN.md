@@ -23,11 +23,11 @@ SESSION_SECRET="32바이트 이상 무작위 문자열"
 
 ## Phase 1. DB 스키마와 시드
 
-1. `src/db/schema.ts`에 Drizzle 스키마를 만든다.
+1. `src/shared/db/schema.ts`에 Drizzle 스키마를 만든다.
 2. `drizzle.config.ts`를 만든다. 스키마 경로와 마이그레이션용 URL(`DATABASE_URL_UNPOOLED`)을 지정한다.
-3. `src/lib/db.ts`에 Drizzle 클라이언트를 만든다. `drizzle-orm/neon-serverless`에 `DATABASE_URL`을 넘기고, 개발 모드에서는 `globalThis`에 캐시한다.
+3. `src/shared/db/client.ts`에 Drizzle 클라이언트를 만든다. `drizzle-orm/neon-serverless`에 `DATABASE_URL`을 넘기고, 개발 모드에서는 `globalThis`에 캐시한다.
 4. `pnpm db:generate --name init`으로 첫 마이그레이션을 만든다. `drizzle/`은 커밋한다.
-5. `src/db/seed.ts`를 만든다. `docs/seed-data.json`을 읽어 아래 규칙으로 넣는다.
+5. `src/shared/db/seed.ts`를 만든다. `docs/seed-data.json`을 읽어 아래 규칙으로 넣는다.
    - 실행 순서: `User` → `Setting` → `TripDay` → `DayAlert` → `ItineraryItem` → `ChecklistGroup`/`ChecklistItem` → `Booking` → `BudgetItem`. 하나의 트랜잭션.
    - `TripDay`에 이미 행이 있으면 아무것도 하지 않고 종료한다. `--force`를 주면 참고 데이터를 지우고 다시 넣는다. 단 `Expense`가 1건이라도 있으면 `--force`도 거부한다(실제 지출 보호).
    - `Setting`: `fx_eur_krw`는 `"1544"`, `reserve_pct`는 `"10"`(JSON 문자열).
@@ -41,7 +41,7 @@ SESSION_SECRET="32바이트 이상 무작위 문자열"
 
 ## Phase 2. 로그인과 접근 제한
 
-1. `src/lib/session.ts`: `jose`로 `{ userId }`를 HS256 서명한 쿠키(`session`, httpOnly, Secure, SameSite=Lax, 30일)를 만들고 검증한다.
+1. `src/shared/lib/session/session.ts`: `jose`로 `{ userId }`를 HS256 서명한 쿠키(`session`, httpOnly, Secure, SameSite=Lax, 30일)를 만들고 검증한다.
 2. `/login` 페이지와 `login` Server Action: 비밀번호를 `APP_PASSCODE`와 비교하고, 사용자 2명 중 하나를 고르게 한다. IP 기준 5회 실패 시 10분 동안 거부한다(메모리 기준이면 충분).
 3. 세션이 없으면 `/login`으로 보내는 요청 가로채기 파일을 만든다. Next.js 16 이상이면 `proxy.ts`, 그 전 버전이면 `middleware.ts`다. 설치된 버전에 맞춘다.
 4. `getSession()` 헬퍼를 만들고 모든 Server Action 첫 줄에서 호출한다.
@@ -53,8 +53,8 @@ SESSION_SECRET="32바이트 이상 무작위 문자열"
 
 1. 디자인 토큰: `docs/reference/honeymoon.html`의 `:root` 색 토큰(라이트·다크)과 글꼴(Gowun Batang, IBM Plex Sans KR, IBM Plex Mono)을 `globals.css`와 `next/font`로 옮긴다.
 2. 공통 레이아웃: 하단 탭 바(홈, 일정, 경비, 체크리스트, 예약)와 떠 있는 "지출 추가" 버튼. 둘 다 safe-area를 반영한다.
-3. `src/lib/format.ts`: `formatKrw(1544) → "1,544원"`, `formatEur(6000) → "€60"`(센트 입력), 날짜 `"12/6 (일)"`.
-4. `src/lib/trip-time.ts`: 날짜의 `tz`로 현재 현지 시각을 구하고 "지금 진행 중/다음 일정"을 찾는다. 테스트를 붙인다(12/4 리스본→마드리드 이동일 포함).
+3. `src/shared/lib/format/format.ts`: `formatKrw(1544) → "1,544원"`, `formatEur(6000) → "€60"`(센트 입력), 날짜 `"12/6 (일)"`.
+4. `src/shared/lib/trip-time/trip-time.ts`: 날짜의 `tz`로 현재 현지 시각을 구하고 "지금 진행 중/다음 일정"을 찾는다. 테스트를 붙인다(12/4 리스본→마드리드 이동일 포함).
 5. `/itinerary`: 날짜 칩 메뉴(가로 스크롤), 도시 구분선, 날짜별 타임라인. reference HTML의 구성(시각, 제목, 설명, 태그, 강조 항목)을 따른다.
 6. `/itinerary/[date]`: 그날 주의사항 상단 표시, 항목별 구글 지도 링크(`https://www.google.com/maps/search/?api=1&query=` + 인코딩한 `mapQuery`)와 "이 항목으로 지출 추가" 링크, 그날 지출 합계.
 7. `/bookings`: 항공·숙소·관광 카드. 예약번호 복사 버튼(`navigator.clipboard` 실패 시 텍스트 선택), 주소 지도 링크, 전화번호는 텍스트로 보이게 하고 `tel:` 링크를 함께 둔다.
@@ -71,25 +71,27 @@ SESSION_SECRET="32바이트 이상 무작위 문자열"
 
 ## Phase 5. 경비
 
-1. `src/lib/budget.ts`: PRD "경비 계산 규칙"을 순수 함수로 구현한다.
+1. `src/entities/expense/model/budget.ts`: PRD "경비 계산 규칙"을 순수 함수로 구현한다.
    - 입력: 예산 항목 목록, 지출 목록, 환율, 예비비 비율. 출력: 결제 완료 합, 추가 예상 합, 예비비, 총액, 1인당, 항목(category)별 예산·실제·예상, 날짜별 지출 합.
    - 연결 규칙: 지출이 `budgetItemId`를 가지면 그 예산 항목의 실제 지출로 친다. 예산 항목별 예상 = max(예산 원화, 연결된 지출 합). 연결 없는 지출은 그대로 더한다.
    - 예비비 = (유로로 잡힌 `estimated` 예산 중 category가 `air`가 아닌 항목들의 남은 금액 합, 0 미만이면 0) × 비율 × 환율. 남은 금액 = 예산 − 연결된 지출.
    - 모든 원화는 `Math.round`.
+
 > 2026-11-08 변경: 예산·예비비·택스리펀드를 제거했다. 경비는 실제 지출만 기록하고 `summarizeExpenses`로 집계한다(PRD "경비 계산 규칙"). 아래 1~6의 예산 관련 내용은 당시 기록이다.
 
-2. `src/lib/budget.test.ts`: 시드 데이터, 지출 0건, 환율 1,544원, 예비비 10% 기준으로 아래 값이 나와야 한다.
+2. `src/entities/expense/model/budget.test.ts`: 시드 데이터, 지출 0건, 환율 1,544원, 예비비 10% 기준으로 아래 값이 나와야 한다.
 
-| 값 | 기대값 |
-| --- | --- |
-| 결제 완료 | 4,238,191원 (항공 2,685,370 + 에어비앤비 478,062 + 카사 푸스터 982,119 + 사그라다 €60 = 92,640) |
-| 추가 예상 (예비비 제외) | 4,507,904원 |
-| 예비비 | 380,750원 (현지 예상 €2,466 × 10% × 1,544) |
-| 총 예상 경비 | 9,126,845원 |
-| 1인당 | 4,563,423원 |
+| 값                      | 기대값                                                                                          |
+| ----------------------- | ----------------------------------------------------------------------------------------------- |
+| 결제 완료               | 4,238,191원 (항공 2,685,370 + 에어비앤비 478,062 + 카사 푸스터 982,119 + 사그라다 €60 = 92,640) |
+| 추가 예상 (예비비 제외) | 4,507,904원                                                                                     |
+| 예비비                  | 380,750원 (현지 예상 €2,466 × 10% × 1,544)                                                      |
+| 총 예상 경비            | 9,126,845원                                                                                     |
+| 1인당                   | 4,563,423원                                                                                     |
 
-   지출을 넣는 테스트도 추가한다: 예산보다 적게 쓴 경우, 넘게 쓴 경우, 연결 없는 지출, 원화 지출, `amountKrw`를 직접 고친 지출.
-3. Zod 스키마 `src/lib/schemas/expense.ts`: 금액은 양수, 유로는 소수 둘째 자리까지 입력받아 센트 정수로 변환.
+지출을 넣는 테스트도 추가한다: 예산보다 적게 쓴 경우, 넘게 쓴 경우, 연결 없는 지출, 원화 지출, `amountKrw`를 직접 고친 지출.
+
+3. Zod 스키마 `src/entities/expense/model/expense-input.ts`: 금액은 양수, 유로는 소수 둘째 자리까지 입력받아 센트 정수로 변환.
 4. Server Actions: `createExpense`(현재 `fx_eur_krw`로 `fxRate`, `amountKrw` 계산), `updateExpense`(사용자가 `amountKrw`를 직접 고쳤으면 재계산하지 않음), `deleteExpense`, `upsertBudgetItem`, `updateSetting`.
 5. `/expenses/new`: 큰 금액 입력(숫자 키패드 `inputMode="decimal"`), 통화 토글(기본 EUR), 항목 칩, 결제수단, 결제한 사람(기본: 로그인 사용자), 메모. 날짜와 도시는 오늘 여행일로 자동 채우고 바꿀 수 있다. 쿼리로 `itineraryItemId`가 오면 연결한다. 저장 실패 시 입력값 유지.
 6. `/expenses`: 요약 타일 4개(결제 완료, 추가 예상, 1인당, 총액), 항목별 예산 대비 실제 막대, 날짜별 지출 목록(탭하면 수정), 환율·예비비 설정, 예산 항목 편집.

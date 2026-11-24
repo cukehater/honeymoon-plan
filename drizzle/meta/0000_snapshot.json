@@ -233,12 +233,8 @@
           "name": "checklist_item_group_id_checklist_group_id_fk",
           "tableFrom": "checklist_item",
           "tableTo": "checklist_group",
-          "columnsFrom": [
-            "group_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["group_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -246,12 +242,8 @@
           "name": "checklist_item_checked_by_app_user_id_fk",
           "tableFrom": "checklist_item",
           "tableTo": "app_user",
-          "columnsFrom": [
-            "checked_by"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["checked_by"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -297,12 +289,8 @@
           "name": "day_alert_date_trip_day_date_fk",
           "tableFrom": "day_alert",
           "tableTo": "trip_day",
-          "columnsFrom": [
-            "date"
-          ],
-          "columnsTo": [
-            "date"
-          ],
+          "columnsFrom": ["date"],
+          "columnsTo": ["date"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -476,12 +464,8 @@
           "name": "expense_paid_by_app_user_id_fk",
           "tableFrom": "expense",
           "tableTo": "app_user",
-          "columnsFrom": [
-            "paid_by"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["paid_by"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -489,12 +473,8 @@
           "name": "expense_budget_item_id_budget_item_id_fk",
           "tableFrom": "expense",
           "tableTo": "budget_item",
-          "columnsFrom": [
-            "budget_item_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["budget_item_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -502,12 +482,8 @@
           "name": "expense_itinerary_item_id_itinerary_item_id_fk",
           "tableFrom": "expense",
           "tableTo": "itinerary_item",
-          "columnsFrom": [
-            "itinerary_item_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["itinerary_item_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -515,12 +491,8 @@
           "name": "expense_created_by_app_user_id_fk",
           "tableFrom": "expense",
           "tableTo": "app_user",
-          "columnsFrom": [
-            "created_by"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["created_by"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -635,12 +607,8 @@
           "name": "itinerary_item_date_trip_day_date_fk",
           "tableFrom": "itinerary_item",
           "tableTo": "trip_day",
-          "columnsFrom": [
-            "date"
-          ],
-          "columnsTo": [
-            "date"
-          ],
+          "columnsFrom": ["date"],
+          "columnsTo": ["date"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -750,86 +718,47 @@
     "public.BookingKind": {
       "name": "BookingKind",
       "schema": "public",
-      "values": [
-        "flight",
-        "stay",
-        "activity"
-      ]
+      "values": ["flight", "stay", "activity"]
     },
     "public.BookingNeed": {
       "name": "BookingNeed",
       "schema": "public",
-      "values": [
-        "none",
-        "required",
-        "done"
-      ]
+      "values": ["none", "required", "done"]
     },
     "public.BudgetStatus": {
       "name": "BudgetStatus",
       "schema": "public",
-      "values": [
-        "paid",
-        "estimated"
-      ]
+      "values": ["paid", "estimated"]
     },
     "public.Category": {
       "name": "Category",
       "schema": "public",
-      "values": [
-        "air",
-        "stay",
-        "food",
-        "tour",
-        "transport",
-        "shopping",
-        "etc"
-      ]
+      "values": ["air", "stay", "food", "tour", "transport", "shopping", "etc"]
     },
     "public.City": {
       "name": "City",
       "schema": "public",
-      "values": [
-        "paris",
-        "porto",
-        "barcelona"
-      ]
+      "values": ["paris", "porto", "barcelona"]
     },
     "public.Currency": {
       "name": "Currency",
       "schema": "public",
-      "values": [
-        "EUR",
-        "KRW"
-      ]
+      "values": ["EUR", "KRW"]
     },
     "public.ItemKind": {
       "name": "ItemKind",
       "schema": "public",
-      "values": [
-        "activity",
-        "meal",
-        "flight",
-        "transfer",
-        "rest"
-      ]
+      "values": ["activity", "meal", "flight", "transfer", "rest"]
     },
     "public.PayMethod": {
       "name": "PayMethod",
       "schema": "public",
-      "values": [
-        "card",
-        "cash"
-      ]
+      "values": ["card", "cash"]
     },
     "public.TaxFreeStatus": {
       "name": "TaxFreeStatus",
       "schema": "public",
-      "values": [
-        "form",
-        "validated",
-        "refunded"
-      ]
+      "values": ["form", "validated", "refunded"]
     }
   },
   "schemas": {},
