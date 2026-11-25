@@ -18,7 +18,6 @@ export type ExpenseFormValuesType = {
   currency: 'EUR' | 'KRW'
   amount: string
   method: 'card' | 'cash'
-  paidById: number
   itineraryItemId: number | null
   memo: string
   amountKrw?: string // 수정 화면에서만
@@ -27,12 +26,11 @@ export type ExpenseFormValuesType = {
 type PropsType = {
   action: (prev: FormStateType, formData: FormData) => Promise<FormStateType>
   initial: ExpenseFormValuesType
-  users: { id: number; name: string }[]
   itineraryTitle?: string | undefined
   expenseId?: number
 }
 
-// 세그먼트 버튼(통화·결제수단·결제한 사람). 실제 라디오를 숨겨 키보드로도 고를 수 있다.
+// 세그먼트 버튼(통화·결제수단). 실제 라디오를 숨겨 키보드로도 고를 수 있다.
 const Segmented = <T extends string | number>({
   name,
   legend,
@@ -71,7 +69,7 @@ const Segmented = <T extends string | number>({
   )
 }
 
-export const ExpenseForm = ({ action, initial, users, itineraryTitle, expenseId }: PropsType) => {
+export const ExpenseForm = ({ action, initial, itineraryTitle, expenseId }: PropsType) => {
   // 제어 컴포넌트로 두어 저장이 실패해도 입력값이 남는다
   const [v, setV] = useState(initial)
   const set = <K extends keyof ExpenseFormValuesType>(k: K, value: ExpenseFormValuesType[K]) =>
@@ -172,13 +170,6 @@ export const ExpenseForm = ({ action, initial, users, itineraryTitle, expenseId 
           ]}
           value={v.method}
           onChange={(m) => set('method', m)}
-        />
-        <Segmented
-          legend="결제한 사람"
-          name="paidById"
-          options={users.map((u) => ({ value: u.id, label: u.name }))}
-          value={v.paidById}
-          onChange={(id) => set('paidById', id)}
         />
 
         <label className={field}>

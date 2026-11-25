@@ -19,11 +19,10 @@ const CATEGORY_OF_KIND: Record<ItemKindType, CategoryType> = {
 }
 
 export const NewExpensePage = async ({ searchParams }: PageProps<'/expenses/new'>) => {
-  const { userId } = await getSession()
+  await getSession()
   const { itineraryItemId } = await searchParams
   const linkedId = Number(itineraryItemId)
-  const [users, days, item] = await Promise.all([
-    db.query.user.findMany({ orderBy: (u, { asc }) => asc(u.id) }),
+  const [days, item] = await Promise.all([
     db.query.tripDay.findMany({ orderBy: (d, { asc }) => asc(d.date) }),
     Number.isInteger(linkedId) && linkedId > 0
       ? db.query.itineraryItem.findFirst({
@@ -49,12 +48,10 @@ export const NewExpensePage = async ({ searchParams }: PageProps<'/expenses/new'
           currency: 'EUR',
           amount: '',
           method: 'card',
-          paidById: userId,
           itineraryItemId: item?.id ?? null,
           memo: '',
         }}
         itineraryTitle={item?.title}
-        users={users}
       />
     </>
   )

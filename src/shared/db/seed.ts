@@ -25,11 +25,9 @@ import {
   itineraryItem,
   setting,
   tripDay,
-  user,
 } from './schema'
 
 type SeedDataType = {
-  users: { id: number; name: string }[]
   // eslint-disable-next-line @typescript-eslint/naming-convention -- seed-data.json의 키 이름을 그대로 쓴다
   settings: { fx_eur_krw: number; reserve_pct: number }
   tripDays: { date: string; city: CityType; tz: string; title: string; note: string | null }[]
@@ -119,13 +117,11 @@ const main = async () => {
         booking,
         budgetItem,
         setting,
-        user,
       ]) {
         await tx.delete(t)
       }
     }
 
-    await tx.insert(user).values(data.users)
     await tx.insert(setting).values([
       { key: 'fx_eur_krw', value: JSON.stringify(data.settings.fx_eur_krw) },
       { key: 'reserve_pct', value: JSON.stringify(data.settings.reserve_pct) },
@@ -159,7 +155,6 @@ const main = async () => {
             title: i.title,
             detail: memo ? [memo, i.detail].filter(Boolean).join(' · ') : i.detail,
             dueAt,
-            checkedById: i.checked ? 1 : null,
             checkedAt: i.checked ? now : null,
             sortOrder: i.sortOrder,
           }

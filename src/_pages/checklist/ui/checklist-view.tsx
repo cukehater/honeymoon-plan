@@ -12,7 +12,7 @@ type ItemType = {
   title: string
   detail: string | null
   dueAt: Date | null
-  checkedBy: { name: string } | null
+  checkedAt: Date | null
 }
 type GroupType = { id: number; title: string; urgent: boolean; items: ItemType[] }
 
@@ -22,7 +22,7 @@ const formatDue = (d: Date) => {
   return `${d.getUTCMonth() + 1}/${d.getUTCDate()} ${p(d.getUTCHours())}:${p(d.getUTCMinutes())}`
 }
 
-export const ChecklistView = ({ groups, myName }: { groups: GroupType[]; myName: string }) => {
+export const ChecklistView = ({ groups }: { groups: GroupType[] }) => {
   const [, startTransition] = useTransition()
   const [error, setError] = useState('')
   const [optimistic, setOptimistic] = useOptimistic(
@@ -31,13 +31,13 @@ export const ChecklistView = ({ groups, myName }: { groups: GroupType[]; myName:
       state.map((g) => ({
         ...g,
         items: g.items.map((i) =>
-          i.id === id ? { ...i, checkedBy: checked ? { name: myName } : null } : i,
+          i.id === id ? { ...i, checkedAt: checked ? new Date() : null } : i,
         ),
       })),
   )
 
   const all = optimistic.flatMap((g) => g.items)
-  const done = all.filter((i) => i.checkedBy).length
+  const done = all.filter((i) => i.checkedAt).length
 
   const toggle = (id: number, checked: boolean) => {
     setError('')
@@ -76,7 +76,7 @@ export const ChecklistView = ({ groups, myName }: { groups: GroupType[]; myName:
         </p>
       )}
       {optimistic.map((g) => {
-        const groupDone = g.items.filter((i) => i.checkedBy).length
+        const groupDone = g.items.filter((i) => i.checkedAt).length
         return (
           <Card key={g.id} className={g.urgent ? 'ring-2 ring-caution/40' : ''}>
             <div className="mb-1 flex items-center justify-between gap-2">
@@ -93,7 +93,7 @@ export const ChecklistView = ({ groups, myName }: { groups: GroupType[]; myName:
                 <li key={i.id} className="border-t border-line first:border-t-0">
                   <label className="flex min-h-12 cursor-pointer items-start gap-3 py-3">
                     <input
-                      checked={!!i.checkedBy}
+                      checked={!!i.checkedAt}
                       className="peer sr-only"
                       type="checkbox"
                       onChange={(e) => toggle(i.id, e.target.checked)}
@@ -101,20 +101,19 @@ export const ChecklistView = ({ groups, myName }: { groups: GroupType[]; myName:
                     <span
                       aria-hidden
                       className={`mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border-2 transition-colors peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-accent ${
-                        i.checkedBy ? 'border-ok bg-ok text-surface' : 'border-line'
+                        i.checkedAt ? 'border-ok bg-ok text-surface' : 'border-line'
                       }`}
                     >
-                      {i.checkedBy && <Check size={15} strokeWidth={3} />}
+                      {i.checkedAt && <Check size={15} strokeWidth={3} />}
                     </span>
                     <span className="flex min-w-0 flex-col gap-1">
                       <span className="flex flex-wrap items-center gap-1.5">
                         <span
-                          className={`text-[15px] font-semibold ${i.checkedBy ? 'text-muted line-through' : ''}`}
+                          className={`text-[15px] font-semibold ${i.checkedAt ? 'text-muted line-through' : ''}`}
                         >
                           {i.title}
                         </span>
                         {i.dueAt && <Badge tone="caution">{formatDue(i.dueAt)} 마감</Badge>}
-                        {i.checkedBy && <Badge tone="ok">{i.checkedBy.name}</Badge>}
                       </span>
                       {i.detail && (
                         <span className="text-[13px] leading-relaxed text-muted">{i.detail}</span>

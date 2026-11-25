@@ -38,12 +38,6 @@ export type BookingNeedType = (typeof bookingNeedEnum.enumValues)[number]
 export type BookingKindType = (typeof bookingKindEnum.enumValues)[number]
 export type BudgetStatusType = (typeof budgetStatusEnum.enumValues)[number]
 
-// 사용자 2명
-export const user = pgTable('app_user', {
-  id: integer('id').primaryKey(),
-  name: text('name').notNull(),
-})
-
 // 여행 날짜 (11/30~12/7, 8행)
 export const tripDay = pgTable('trip_day', {
   date: text('date').primaryKey(), // '2026-11-30'
@@ -96,8 +90,7 @@ export const checklistItem = pgTable('checklist_item', {
   title: text('title').notNull(),
   detail: text('detail'),
   dueAt: timestamp('due_at', { withTimezone: true }),
-  checkedById: integer('checked_by').references(() => user.id),
-  checkedAt: timestamp('checked_at', { withTimezone: true }),
+  checkedAt: timestamp('checked_at', { withTimezone: true }), // null이 아니면 체크됨
   sortOrder: integer('sort_order').notNull(),
 })
 
@@ -140,17 +133,11 @@ export const expense = pgTable(
     fxRate: doublePrecision('fx_rate').notNull(), // KRW이면 1
     amountKrw: integer('amount_krw').notNull(), // 카드 청구 후 수정 가능
     method: payMethodEnum('method').notNull(),
-    paidById: integer('paid_by')
-      .notNull()
-      .references(() => user.id),
     budgetItemId: integer('budget_item_id').references(() => budgetItem.id),
     itineraryItemId: integer('itinerary_item_id').references(() => itineraryItem.id),
     taxFreeMinor: integer('tax_free_minor'), // P1: 환급 예상액(유로 센트)
     taxFreeStatus: taxFreeStatusEnum('tax_free_status'),
     memo: text('memo'),
-    createdById: integer('created_by')
-      .notNull()
-      .references(() => user.id),
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp('updated_at', { withTimezone: true })
       .notNull()
@@ -168,12 +155,6 @@ export const setting = pgTable('setting', {
   key: text('key').primaryKey(),
   value: text('value').notNull(),
 })
-
-export const userRelations = relations(user, ({ many }) => ({
-  checkedItems: many(checklistItem),
-  paidExpenses: many(expense, { relationName: 'paidBy' }),
-  createdExpenses: many(expense, { relationName: 'createdBy' }),
-}))
 
 export const tripDayRelations = relations(tripDay, ({ many }) => ({
   alerts: many(dayAlert),
@@ -195,7 +176,6 @@ export const checklistGroupRelations = relations(checklistGroup, ({ many }) => (
 
 export const checklistItemRelations = relations(checklistItem, ({ one }) => ({
   group: one(checklistGroup, { fields: [checklistItem.groupId], references: [checklistGroup.id] }),
-  checkedBy: one(user, { fields: [checklistItem.checkedById], references: [user.id] }),
 }))
 
 export const budgetItemRelations = relations(budgetItem, ({ many }) => ({
@@ -203,12 +183,6 @@ export const budgetItemRelations = relations(budgetItem, ({ many }) => ({
 }))
 
 export const expenseRelations = relations(expense, ({ one }) => ({
-  paidBy: one(user, { fields: [expense.paidById], references: [user.id], relationName: 'paidBy' }),
-  createdBy: one(user, {
-    fields: [expense.createdById],
-    references: [user.id],
-    relationName: 'createdBy',
-  }),
   budgetItem: one(budgetItem, { fields: [expense.budgetItemId], references: [budgetItem.id] }),
   itineraryItem: one(itineraryItem, {
     fields: [expense.itineraryItemId],

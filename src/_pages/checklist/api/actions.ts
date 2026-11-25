@@ -10,15 +10,11 @@ import { getSession } from '@/shared/lib/session'
 const ToggleInput = z.object({ id: z.number().int().positive(), checked: z.boolean() })
 
 export const toggleChecklistItem = async (id: number, checked: boolean) => {
-  const { userId } = await getSession()
+  await getSession()
   const input = ToggleInput.parse({ id, checked })
   await db
     .update(checklistItem)
-    .set(
-      input.checked
-        ? { checkedById: userId, checkedAt: new Date() }
-        : { checkedById: null, checkedAt: null },
-    )
+    .set({ checkedAt: input.checked ? new Date() : null })
     .where(eq(checklistItem.id, input.id))
   revalidatePath('/checklist')
   revalidatePath('/')

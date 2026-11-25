@@ -17,7 +17,6 @@ export const ExpensesPage = async () => {
   const [expenses, settings] = await Promise.all([
     db.query.expense.findMany({
       orderBy: (e, { desc }) => [desc(e.spentOn), desc(e.createdAt)],
-      with: { paidBy: { columns: { name: true } } },
     }),
     getSettings(),
   ])
@@ -109,7 +108,7 @@ export const ExpensesPage = async () => {
                           <span className="flex min-w-0 flex-1 flex-col">
                             <span className="truncate text-[15px] font-semibold">{e.title}</span>
                             <span className="truncate text-[13px] text-muted">
-                              {e.method === 'card' ? '카드' : '현금'} · {e.paidBy.name}
+                              {e.method === 'card' ? '카드' : '현금'}
                               {e.memo && ` · ${e.memo}`}
                             </span>
                           </span>

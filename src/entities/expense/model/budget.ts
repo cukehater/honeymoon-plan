@@ -9,7 +9,6 @@ export type ExpenseRowType = {
 
 export type ExpenseSummaryType = {
   total: number
-  perPerson: number
   count: number
   byCategory: Record<CategoryType, number>
   byDate: Record<string, number>
@@ -54,5 +53,5 @@ export const summarizeExpenses = (expenses: ExpenseRowType[]): ExpenseSummaryTyp
     byDate[e.spentOn] = (byDate[e.spentOn] ?? 0) + e.amountKrw
   }
   const total = sumKrw(expenses)
-  return { total, perPerson: Math.round(total / 2), count: expenses.length, byCategory, byDate }
+  return { total, count: expenses.length, byCategory, byDate }
 }

@@ -1,15 +1,10 @@
 import Image from 'next/image'
-import { connection } from 'next/server'
-
-import { db } from '@/shared/db'
 
 import { LoginForm } from './login-form'
 
 export const metadata = { title: '로그인' }
 
-export const LoginPage = async () => {
-  await connection()
-  const users = await db.query.user.findMany({ orderBy: (u, { asc }) => asc(u.id) })
+export const LoginPage = () => {
   return (
     <main className="relative flex min-h-dvh flex-1 flex-col">
       <div className="relative h-[46dvh] min-h-64">
@@ -30,7 +25,7 @@ export const LoginPage = async () => {
       </div>
       <div className="relative -mt-6 flex-1 rounded-t-[28px] bg-surface px-6 pt-8 pb-[calc(32px+env(safe-area-inset-bottom))]">
         <div className="mx-auto max-w-md">
-          <LoginForm users={users} />
+          <LoginForm />
         </div>
       </div>
     </main>

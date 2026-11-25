@@ -12,7 +12,7 @@ const row = (o: Partial<ExpenseRowType>): ExpenseRowType => ({
 describe('summarizeExpenses', () => {
   it('is all zeros with no expenses', () => {
     const s = summarizeExpenses([])
-    expect(s).toMatchObject({ total: 0, perPerson: 0, count: 0, byDate: {} })
+    expect(s).toMatchObject({ total: 0, count: 0, byDate: {} })
     expect(Object.values(s.byCategory).every((v) => v === 0)).toBe(true)
   })
 
@@ -31,9 +31,5 @@ describe('summarizeExpenses', () => {
       air: 0,
     })
     expect(s.byDate).toEqual({ '2026-12-05': 69_300, '2026-12-07': 160_000 })
-  })
-
-  it('rounds the per-person share', () => {
-    expect(summarizeExpenses([row({ amountKrw: 1_001 })]).perPerson).toBe(501)
   })
 })

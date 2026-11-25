@@ -14,22 +14,9 @@ export const GET = async (request: NextRequest) => {
   }
   const expenses = await db.query.expense.findMany({
     orderBy: (e, { asc }) => [asc(e.spentOn), asc(e.createdAt)],
-    with: { paidBy: { columns: { name: true } } },
   })
   const csv = toCsv([
-    [
-      '날짜',
-      '도시',
-      '항목',
-      '내용',
-      '통화',
-      '금액',
-      '환율',
-      '원화',
-      '결제수단',
-      '결제한 사람',
-      '메모',
-    ],
+    ['날짜', '도시', '항목', '내용', '통화', '금액', '환율', '원화', '결제수단', '메모'],
     ...expenses.map((e) => [
       e.spentOn,
       CITY[e.city],
@@ -40,7 +27,6 @@ export const GET = async (request: NextRequest) => {
       e.fxRate,
       e.amountKrw,
       e.method === 'card' ? '카드' : '현금',
-      e.paidBy.name,
       e.memo,
     ]),
   ])

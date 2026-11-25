@@ -1,15 +1,5 @@
 {
   "_source": "docs/reference/honeymoon.html 에서 추출 (2026-11-07)",
-  "users": [
-    {
-      "id": 1,
-      "name": "경식"
-    },
-    {
-      "id": 2,
-      "name": "수민"
-    }
-  ],
   "settings": {
     "fx_eur_krw": 1544,
     "reserve_pct": 10

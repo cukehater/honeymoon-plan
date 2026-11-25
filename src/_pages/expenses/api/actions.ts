@@ -43,7 +43,7 @@ export const createExpense = async (
   _prev: FormStateType,
   formData: FormData,
 ): Promise<FormStateType> => {
-  const { userId } = await getSession()
+  await getSession()
   const parsed = ExpenseInput.safeParse(formObject(formData))
   if (!parsed.success) return { error: parsed.error.issues[0]!.message }
   const input = parsed.data
@@ -55,7 +55,6 @@ export const createExpense = async (
       title: await titleFor(input),
       fxRate: rate,
       amountKrw: input.currency === 'EUR' ? eurToKrw(input.amountMinor, rate) : input.amountMinor,
-      createdById: userId,
     })
   } catch {
     return { error: '저장하지 못했습니다. 다시 시도해 주세요.' }

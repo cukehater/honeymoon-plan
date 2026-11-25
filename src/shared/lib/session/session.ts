@@ -12,20 +12,19 @@ const key = () => {
   return new TextEncoder().encode(secret)
 }
 
-export const verifySession = async (
-  token: string | undefined,
-): Promise<{ userId: number } | null> => {
-  if (!token) return null
+// 운영자 한 명이라 토큰에는 서명·만료만 담는다.
+export const verifySession = async (token: string | undefined): Promise<boolean> => {
+  if (!token) return false
   try {
-    const { payload } = await jwtVerify(token, key(), { algorithms: ['HS256'] })
-    return typeof payload.userId === 'number' ? { userId: payload.userId } : null
+    await jwtVerify(token, key(), { algorithms: ['HS256'] })
+    return true
   } catch {
-    return null
+    return false
   }
 }
 
-export const createSession = async (userId: number) => {
-  const token = await new SignJWT({ userId })
+export const createSession = async () => {
+  const token = await new SignJWT({})
     .setProtectedHeader({ alg: 'HS256' })
     .setIssuedAt()
     .setExpirationTime(`${MAX_AGE}s`)
@@ -42,9 +41,7 @@ export const createSession = async (userId: number) => {
 
 // Server Action·Server Component용. 세션이 없으면 /login으로 보낸다.
 export const getSession = async () => {
-  const session = await verifySession((await cookies()).get(SESSION_COOKIE)?.value)
-  if (!session) redirect('/login')
-  return session
+  if (!(await verifySession((await cookies()).get(SESSION_COOKIE)?.value))) redirect('/login')
 }
 
 export const destroySession = async () => {

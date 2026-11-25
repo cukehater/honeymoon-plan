@@ -15,10 +15,10 @@ export const EditExpensePage = async ({ params }: PageProps<'/expenses/[id]'>) =
   await getSession()
   const id = Number((await params).id)
   if (!Number.isInteger(id) || id <= 0) notFound()
-  const [expense, users] = await Promise.all([
-    db.query.expense.findFirst({ where: eq(expenseTable.id, id), with: { itineraryItem: true } }),
-    db.query.user.findMany({ orderBy: (u, { asc }) => asc(u.id) }),
-  ])
+  const expense = await db.query.expense.findFirst({
+    where: eq(expenseTable.id, id),
+    with: { itineraryItem: true },
+  })
   if (!expense) notFound()
 
   return (
@@ -37,13 +37,11 @@ export const EditExpensePage = async ({ params }: PageProps<'/expenses/[id]'>) =
               ? centsToInput(expense.amountMinor)
               : String(expense.amountMinor),
           method: expense.method,
-          paidById: expense.paidById,
           itineraryItemId: expense.itineraryItemId,
           memo: expense.memo ?? '',
           amountKrw: String(expense.amountKrw),
         }}
         itineraryTitle={expense.itineraryItem?.title}
-        users={users}
       />
     </>
   )

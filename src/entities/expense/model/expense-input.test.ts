@@ -9,7 +9,6 @@ const base = {
   currency: 'EUR',
   amount: '12.5',
   method: 'card',
-  paidById: '1',
   itineraryItemId: '',
   memo: '',
 }
@@ -32,7 +31,7 @@ describe('parseAmount', () => {
 describe('ExpenseInput', () => {
   it('parses a form into stored values', () => {
     const r = ExpenseInput.parse(base)
-    expect(r).toMatchObject({ amountMinor: 1250, paidById: 1, itineraryItemId: null, memo: null })
+    expect(r).toMatchObject({ amountMinor: 1250, itineraryItemId: null, memo: null })
     expect(r).not.toHaveProperty('amount')
   })
   it('rejects zero, negative and unknown enum values', () => {

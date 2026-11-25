@@ -50,13 +50,10 @@ const Alerts = ({ alerts }: { alerts: DayAlertType[] }) => {
   ))
 }
 
-// 사진 위 맨 윗줄: 두 사람 이름과 로그아웃
-const HeroTop = ({ couple }: { couple: string }) => {
+// 사진 위 맨 윗줄: 로그아웃
+const HeroTop = () => {
   return (
-    <div className="flex items-center justify-between">
-      <span className="inline-flex rounded-full bg-black/35 px-3 py-1 text-[13px] font-semibold text-white backdrop-blur-md">
-        {couple}
-      </span>
+    <div className="flex items-center justify-end">
       <LogoutButton />
     </div>
   )
@@ -65,15 +62,14 @@ const HeroTop = ({ couple }: { couple: string }) => {
 export const HomePage = async ({ searchParams }: PageProps<'/'>) => {
   await getSession()
   const now = resolveNow((await searchParams).now)
-  const [days, items, expenses, checklist, users] = await Promise.all([
+  const [days, items, expenses, checklist] = await Promise.all([
     db.query.tripDay.findMany({ orderBy: (d, { asc }) => asc(d.date), with: { alerts: true } }),
     db.query.itineraryItem.findMany({
       where: (i, { eq }) => eq(i.hidden, false),
       orderBy: (i, { asc }) => [asc(i.date), asc(i.startTime), asc(i.sortOrder)],
     }),
     db.query.expense.findMany({ columns: { spentOn: true, category: true, amountKrw: true } }),
-    db.query.checklistItem.findMany({ columns: { checkedById: true } }),
-    db.query.user.findMany({ orderBy: (u, { asc }) => asc(u.id) }),
+    db.query.checklistItem.findMany({ columns: { checkedAt: true } }),
   ])
   const summary = summarizeExpenses(expenses)
   const first = days[0]
@@ -81,8 +77,7 @@ export const HomePage = async ({ searchParams }: PageProps<'/'>) => {
   if (!first || !last) notFound()
   const today = currentTripDay(days, now)
   const before = !today && localNow(now, first.tz).date < first.date
-  const done = checklist.filter((c) => c.checkedById).length
-  const couple = users.map((u) => u.name).join(' · ')
+  const done = checklist.filter((c) => c.checkedAt).length
 
   if (today) {
     const index = days.indexOf(today)
@@ -99,7 +94,7 @@ export const HomePage = async ({ searchParams }: PageProps<'/'>) => {
         <PhotoHero
           alt={`${CITY_NAME[today.city]} 풍경`}
           src={dayPhoto(days, today.date)}
-          top={<HeroTop couple={couple} />}
+          top={<HeroTop />}
         >
           <h1 className="text-[32px] leading-tight">
             Day {index + 1} · {CITY_NAME[today.city]}
@@ -198,7 +193,7 @@ export const HomePage = async ({ searchParams }: PageProps<'/'>) => {
           alt="해 질 녘 포르투 도루강"
           height={340}
           src="/images/porto-dusk.webp"
-          top={<HeroTop couple={couple} />}
+          top={<HeroTop />}
         >
           <h1 className="mono text-[52px] leading-none font-bold tracking-tight">D-{dday}</h1>
           <p className="text-[16px] font-semibold">포르투 · 바르셀로나 신혼여행</p>
@@ -252,11 +247,7 @@ export const HomePage = async ({ searchParams }: PageProps<'/'>) => {
 
   return (
     <>
-      <PhotoHero
-        alt="바르셀로나 사그라다 파밀리아"
-        src="/images/barcelona.webp"
-        top={<HeroTop couple={couple} />}
-      >
+      <PhotoHero alt="바르셀로나 사그라다 파밀리아" src="/images/barcelona.webp" top={<HeroTop />}>
         <h1 className="text-[32px] leading-tight">여행을 마쳤어요</h1>
         <p className="mono text-[14px] font-semibold opacity-90">
           {formatDate(first.date)} – {formatDate(last.date)}

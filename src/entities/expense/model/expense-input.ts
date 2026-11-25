@@ -23,7 +23,6 @@ export const ExpenseInput = z
     currency: z.enum(['EUR', 'KRW']),
     amount: z.string(),
     method: z.enum(['card', 'cash']),
-    paidById: z.coerce.number().int().positive(),
     itineraryItemId: optionalId,
     memo: z
       .string()

@@ -15,6 +15,13 @@
       "when": 1795353764441,
       "tag": "0001_small_mentallo",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1795589923768,
+      "tag": "0002_lame_stature",
+      "breakpoints": true
     }
   ]
 }

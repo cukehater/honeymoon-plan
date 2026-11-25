@@ -5,7 +5,7 @@ import type { ExpenseSummaryType } from '@/entities/expense'
 import { formatKrw } from '@/shared/lib/format'
 import { Card } from '@/shared/ui/primitives'
 
-// 토스식 지출 요약: 총 지출을 크게, 그 아래 1인당과 건수
+// 토스식 지출 요약: 총 지출을 크게, 그 아래 건수
 export const SummaryTiles = ({ s, href }: { s: ExpenseSummaryType; href?: string }) => {
   const body = (
     <div className="flex items-start justify-between gap-3">
@@ -15,7 +15,6 @@ export const SummaryTiles = ({ s, href }: { s: ExpenseSummaryType; href?: string
           {formatKrw(s.total)}
         </span>
         <span className="text-sm text-muted">
-          1인당 <b className="mono font-semibold text-fg">{formatKrw(s.perPerson)}</b> ·{' '}
           <span className="mono">{s.count}</span>건
         </span>
       </div>
