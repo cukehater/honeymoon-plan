@@ -1,3 +1,5 @@
+import { notFound } from 'next/navigation'
+
 import { db } from '@/shared/db'
 import { getSession } from '@/shared/lib/session'
 import { currentTripDay, localNow } from '@/shared/lib/trip-time'
@@ -15,8 +17,10 @@ export const ItineraryPage = async () => {
   })
   const now = new Date()
   const first = days[0]
+  const last = days.at(-1)
+  if (!first || !last) notFound()
   const date =
     currentTripDay(days, now)?.date ??
-    (localNow(now, first.tz).date < first.date ? first.date : days[days.length - 1].date)
+    (localNow(now, first.tz).date < first.date ? first.date : last.date)
   return <DayView date={date} />
 }

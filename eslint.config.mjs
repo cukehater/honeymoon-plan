@@ -21,6 +21,8 @@ export default defineConfig([
     '**/build/**',
     '**/dist/**',
     '**/coverage/**',
+    '**/test-results/**',
+    '**/playwright-report/**',
     '**/.turbo/**',
     '**/next-env.d.ts',
   ]),

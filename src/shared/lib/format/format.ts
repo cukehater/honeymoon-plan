@@ -16,7 +16,7 @@ export const formatEur = (cents: number) => {
 
 // "2026-12-06" → "12/6 (일)"
 export const formatDate = (date: string) => {
-  const [y, m, d] = date.split('-').map(Number)
+  const [y, m, d] = date.split('-').map(Number) as [number, number, number]
   return `${m}/${d} (${WEEKDAYS[new Date(Date.UTC(y, m - 1, d)).getUTCDay()]})`
 }
 

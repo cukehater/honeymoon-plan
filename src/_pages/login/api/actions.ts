@@ -34,7 +34,7 @@ export const login = async (_prev: LoginStateType, formData: FormData): Promise<
     userId: String(formData.get('userId') ?? ''),
   }
   const h = await headers()
-  const ip = h.get('x-forwarded-for')?.split(',')[0].trim() || h.get('x-real-ip') || 'unknown'
+  const ip = h.get('x-forwarded-for')?.split(',')[0]?.trim() || h.get('x-real-ip') || 'unknown'
   const now = Date.now()
   const entry = fails.get(ip)
   if (entry && entry.lockedUntil > now) {
@@ -46,7 +46,7 @@ export const login = async (_prev: LoginStateType, formData: FormData): Promise<
   }
 
   const parsed = LoginInput.safeParse(raw)
-  if (!parsed.success) return { error: parsed.error.issues[0].message, userId: raw.userId }
+  if (!parsed.success) return { error: parsed.error.issues[0]!.message, userId: raw.userId }
 
   const expected = process.env.APP_PASSCODE
   if (!expected) throw new Error('APP_PASSCODE is not set')

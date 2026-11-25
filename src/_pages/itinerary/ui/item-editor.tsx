@@ -11,7 +11,7 @@ import { createItineraryItem, setItineraryItemHidden, updateItineraryItem } from
 
 const submit = `${primaryButton} min-h-11 text-[15px]`
 
-const Message = ({ error }: { error?: string }) => {
+const Message = ({ error }: { error?: string | undefined }) => {
   return error ? (
     <p className="text-[13px] font-semibold text-warn" role="alert">
       {error}

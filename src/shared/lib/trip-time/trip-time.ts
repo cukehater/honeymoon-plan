@@ -52,6 +52,6 @@ export const findNowAndNext = <I extends ItemType>(days: DayType[], items: I[], 
   const prev = timed[(nextIdx === -1 ? timed.length : nextIdx) - 1]
   return {
     current: prev && prev.item.date === today ? prev.item : null,
-    next: nextIdx === -1 ? null : timed[nextIdx].item,
+    next: nextIdx === -1 ? null : timed[nextIdx]!.item,
   }
 }

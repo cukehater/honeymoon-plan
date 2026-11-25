@@ -28,7 +28,7 @@ type PropsType = {
   action: (prev: FormStateType, formData: FormData) => Promise<FormStateType>
   initial: ExpenseFormValuesType
   users: { id: number; name: string }[]
-  itineraryTitle?: string
+  itineraryTitle?: string | undefined
   expenseId?: number
 }
 

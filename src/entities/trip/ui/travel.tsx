@@ -35,7 +35,7 @@ export const dayPhoto = (days: { date: string; city: CityType }[], date: string)
   const day = days.find((d) => d.date === date)!
   const nth = days.filter((d) => d.city === day.city && d.date < date).length
   const list = CITY_PHOTOS[day.city]
-  return list[nth % list.length]
+  return list[nth % list.length]!
 }
 
 export const KIND_ICON: Record<ItemKindType, IconType> = {

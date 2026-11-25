@@ -1,5 +1,6 @@
 import { ChevronRight, MapPin, TriangleAlert } from 'lucide-react'
 import Link from 'next/link'
+import { notFound } from 'next/navigation'
 
 import { sumKrw, summarizeExpenses, SummaryTiles } from '@/entities/expense'
 import { CITY_NAME, dayPhoto, KIND_ICON, mapUrl } from '@/entities/trip'
@@ -76,7 +77,8 @@ export const HomePage = async ({ searchParams }: PageProps<'/'>) => {
   ])
   const summary = summarizeExpenses(expenses)
   const first = days[0]
-  const last = days[days.length - 1]
+  const last = days.at(-1)
+  if (!first || !last) notFound()
   const today = currentTripDay(days, now)
   const before = !today && localNow(now, first.tz).date < first.date
   const done = checklist.filter((c) => c.checkedById).length

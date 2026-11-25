@@ -15,7 +15,7 @@ const timeOf = (iso: string) => iso.slice(11, 16)
 
 // "파리 CDG → 포르투 OPO · AF1516" → 출발, 도착, 편명
 const parseFlight = (title: string) => {
-  const [route, ...rest] = title.split(' · ')
+  const [route = '', ...rest] = title.split(' · ')
   const [from, to] = route.split('→').map((s) => s.trim())
   return { from, to: to ?? '', flight: rest.join(' · ') }
 }

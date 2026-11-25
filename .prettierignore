@@ -3,6 +3,8 @@ out
 build
 dist
 coverage
+test-results
+playwright-report
 .turbo
 next-env.d.ts
 pnpm-lock.yaml

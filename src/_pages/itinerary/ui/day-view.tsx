@@ -37,7 +37,7 @@ export const DayView = async ({ date }: { date: string }) => {
   const today = currentTripDay(days, new Date())?.date ?? null
   const hidden = day.items.filter((i) => i.hidden)
   const navDays = days.map((d) => {
-    const [mmdd, weekday] = formatDate(d.date).split(' ')
+    const [mmdd = '', weekday = ''] = formatDate(d.date).split(' ')
     return {
       date: d.date,
       label: mmdd,

@@ -42,7 +42,7 @@ export const updateItineraryItem = async (
 ): Promise<FormStateType> => {
   await getSession()
   const parsed = UpdateInput.safeParse(formObject(formData))
-  if (!parsed.success) return { error: parsed.error.issues[0].message }
+  if (!parsed.success) return { error: parsed.error.issues[0]!.message }
   const { id, ...data } = parsed.data
   try {
     const [item] = await db
@@ -50,6 +50,7 @@ export const updateItineraryItem = async (
       .set(data)
       .where(eq(itineraryItem.id, id))
       .returning()
+    if (!item) return { error: '일정을 찾지 못했습니다.' }
     revalidateItinerary(item.date)
   } catch {
     return { error: '저장하지 못했습니다. 다시 시도해 주세요.' }
@@ -69,6 +70,7 @@ export const setItineraryItemHidden = async (
       .set({ hidden: input.hidden })
       .where(eq(itineraryItem.id, input.id))
       .returning()
+    if (!item) return { error: '일정을 찾지 못했습니다.' }
     revalidateItinerary(item.date)
   } catch {
     return { error: '저장하지 못했습니다. 다시 시도해 주세요.' }
@@ -82,7 +84,7 @@ export const createItineraryItem = async (
 ): Promise<FormStateType> => {
   await getSession()
   const parsed = CreateInput.safeParse(formObject(formData))
-  if (!parsed.success) return { error: parsed.error.issues[0].message }
+  if (!parsed.success) return { error: parsed.error.issues[0]!.message }
   const input = parsed.data
   try {
     const day = await db.query.tripDay.findFirst({ where: eq(tripDay.date, input.date) })
@@ -94,7 +96,7 @@ export const createItineraryItem = async (
     await db.insert(itineraryItem).values({
       ...input,
       mapQuery: toMapQuery(input.title, input.kind, day.city),
-      sortOrder: (last.sortOrder ?? 0) + 1,
+      sortOrder: (last?.sortOrder ?? 0) + 1,
     })
   } catch {
     return { error: '저장하지 못했습니다. 다시 시도해 주세요.' }

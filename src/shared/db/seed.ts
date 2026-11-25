@@ -82,7 +82,7 @@ type SeedDataType = {
 const parseDueNote = (note: string): Date | null => {
   const m = /^(\d{1,2})\/(\d{1,2}) (\d{2}):(\d{2})$/.exec(note)
   if (!m) return null
-  const [, mo, d, h, mi] = m.map(Number)
+  const [, mo, d, h, mi] = m.map(Number) as [number, number, number, number, number]
   return new Date(Date.UTC(2026, mo - 1, d, h, mi))
 }
 
@@ -93,13 +93,13 @@ const main = async () => {
   )
 
   const [days] = await db.select({ n: count() }).from(tripDay)
-  if (days.n > 0) {
+  if (days!.n > 0) {
     if (!force) {
       // eslint-disable-next-line no-console -- CLI 스크립트의 진행 메시지
       console.log('이미 시드 데이터가 있습니다. 다시 넣으려면 --force')
       return
     }
-    const [{ n: expenses }] = await db.select({ n: count() }).from(expense)
+    const expenses = (await db.select({ n: count() }).from(expense))[0]!.n
     if (expenses > 0) {
       throw new Error(`지출 ${expenses}건이 있어 --force를 거부합니다.`)
     }
@@ -155,7 +155,7 @@ const main = async () => {
           const dueAt = i.dueNote ? parseDueNote(i.dueNote) : null
           const memo = i.dueNote && !dueAt ? i.dueNote : null
           return {
-            groupId: group.id,
+            groupId: group!.id,
             title: i.title,
             detail: memo ? [memo, i.detail].filter(Boolean).join(' · ') : i.detail,
             dueAt,

@@ -91,7 +91,7 @@ export const ExpensesPage = async () => {
               <div key={d}>
                 <div className="mb-1 flex justify-between text-[13px] font-semibold text-muted">
                   <span className="mono">{formatDate(d)}</span>
-                  <span className="mono">{formatKrw(s.byDate[d])}</span>
+                  <span className="mono">{formatKrw(s.byDate[d]!)}</span>
                 </div>
                 <ul>
                   {expenses

@@ -45,7 +45,7 @@ export const createExpense = async (
 ): Promise<FormStateType> => {
   const { userId } = await getSession()
   const parsed = ExpenseInput.safeParse(formObject(formData))
-  if (!parsed.success) return { error: parsed.error.issues[0].message }
+  if (!parsed.success) return { error: parsed.error.issues[0]!.message }
   const input = parsed.data
   const { fxRate } = await getSettings()
   const rate = input.currency === 'EUR' ? fxRate : 1
@@ -73,7 +73,7 @@ export const updateExpense = async (
   const expenseId = Id.parse(id)
   const raw = formObject(formData)
   const parsed = ExpenseInput.safeParse(raw)
-  if (!parsed.success) return { error: parsed.error.issues[0].message }
+  if (!parsed.success) return { error: parsed.error.issues[0]!.message }
   const input = parsed.data
   const typedKrw = raw.amountKrw ? parseAmount(raw.amountKrw, 'KRW') : null
   if (raw.amountKrw && (typedKrw == null || typedKrw <= 0))
@@ -103,6 +103,7 @@ export const deleteExpense = async (id: number): Promise<FormStateType> => {
   const expenseId = Id.parse(id)
   try {
     const [deleted] = await db.delete(expense).where(eq(expense.id, expenseId)).returning()
+    if (!deleted) return { error: '지출을 찾지 못했습니다.' }
     revalidateExpenses(deleted.spentOn)
   } catch {
     return { error: '삭제하지 못했습니다. 다시 시도해 주세요.' }
@@ -121,7 +122,7 @@ export const updateSetting = async (
 ): Promise<FormStateType> => {
   await getSession()
   const parsed = SettingInput.safeParse(formObject(formData))
-  if (!parsed.success) return { error: parsed.error.issues[0].message }
+  if (!parsed.success) return { error: parsed.error.issues[0]!.message }
   const { key, value } = parsed.data
   try {
     await db

@@ -1,2 +1,8 @@
 allowBuilds:
   esbuild: true
+  sharp: false
+  unrs-resolver: false
+  agent-browser: false
+permissions:
+  agent-browser:
+    skills: true

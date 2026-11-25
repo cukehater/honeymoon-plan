@@ -192,14 +192,14 @@ importers:
         specifier: ^0.45.4
         version: 0.45.4(@neondatabase/serverless@1.2.1)
       jose:
-        specifier: ^6.2.15
-        version: 6.2.15
+        specifier: ^6.2.18
+        version: 6.2.18
       lucide-react:
-        specifier: ^1.70.0
-        version: 1.70.0(@types/react@19.3.0)(react@19.3.1)
+        specifier: ^1.78.0
+        version: 1.78.0(@types/react@19.3.0)(react@19.3.1)
       next:
         specifier: 16.4.6
-        version: 16.4.6(@babel/core@7.29.13(supports-color@7.2.0))(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+        version: 16.4.6(@babel/core@7.29.13(supports-color@7.2.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       react:
         specifier: 19.3.1
         version: 19.3.1
@@ -219,6 +219,9 @@ importers:
       '@feature-sliced/steiger-plugin':
         specifier: ^0.8.2
         version: 0.8.2(typescript@6.0.3)
+      '@playwright/test':
+        specifier: ^1.65.1
+        version: 1.65.1
       '@tailwindcss/turbopack':
         specifier: ^4.3.5
         version: 4.3.5
@@ -243,6 +246,9 @@ importers:
       '@vitejs/plugin-react':
         specifier: ^6.3.0
         version: 6.3.0(vite@8.3.6(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1))
+      agent-browser:
+        specifier: ^0.43.0
+        version: 0.43.0
       drizzle-kit:
         specifier: ^0.31.11
         version: 0.31.11
@@ -302,6 +308,45 @@ packages:
 
   '@adobe/css-tools@4.5.0':
     resolution: {integrity: sha512-6OzddxPio9UiWTCemp4N8cYLV2ZN1ncRnV1cVGtve7dhPOtRkleRyx32GQCYSwDYgaHU3USMm84tNsvKzRCa1Q==}
+
+  '@agent-browser/cli-darwin-arm64@0.43.0':
+    resolution: {integrity: sha512-HV6GP59IjNnowlrXR/5rVM8msPWwQDEONt/tWC8STzUfKZQHKZI/Iv9sf2h2ZhwK8xwoqLhxpf+KxcFgJ0sExQ==}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@agent-browser/cli-darwin-x64@0.43.0':
+    resolution: {integrity: sha512-3NKnKFOWLYDYTz4bJxo4jt+GwjM4VtcW5FDrQY35eUrytig65FEDdXmXKuRbZGq9jEEWxh6rmpS4R6xS53XCaw==}
+    cpu: [x64]
+    os: [darwin]
+
+  '@agent-browser/cli-linux-arm64-gnu@0.43.0':
+    resolution: {integrity: sha512-8DC234LGlXCn8A2YXGk6woy1uTjyexvtHd/TOQHLrV2sfUMZD647HTHEJyF+2z1J1oR34LaB5jqHJ9d0REC+Cw==}
+    cpu: [arm64]
+    os: [linux]
+    libc: [glibc]
+
+  '@agent-browser/cli-linux-arm64-musl@0.43.0':
+    resolution: {integrity: sha512-/dYeGX2E1lWZ25q1IZSVs6PaPmr0GmhHU8z/LtCh0anHN4ND50i5fOPbysRBaE8iQCBY74h+1R2kePfEqD7X4Q==}
+    cpu: [arm64]
+    os: [linux]
+    libc: [musl]
+
+  '@agent-browser/cli-linux-x64-gnu@0.43.0':
+    resolution: {integrity: sha512-WY8vy2Saa3oRt6XEmz4Sae1W5qS9TjYcbX6IE+dxb8s2APfL9XyQjMHC6jBZrhwqDBIvUeTMCT/P2cq3XLPSBw==}
+    cpu: [x64]
+    os: [linux]
+    libc: [glibc]
+
+  '@agent-browser/cli-linux-x64-musl@0.43.0':
+    resolution: {integrity: sha512-WpCI0cIaVIVj4trdduDmW90h51BAP5Nhx6lALOqHjUhOOae/TkLL4bK8gJfjPb/nOp2FRjsF1l77f6rVwkpsug==}
+    cpu: [x64]
+    os: [linux]
+    libc: [musl]
+
+  '@agent-browser/cli-win32-x64-msvc@0.43.0':
+    resolution: {integrity: sha512-xhk8wnHk3aiBFSR0pd1Ye3ay2jKjgRardgBJLiB9nXJv0ZkbeP/wh3X7jMiKUfUGE1qqJrKdaM5szQ6iz8/8+w==}
+    cpu: [x64, arm64]
+    os: [win32]
 
   '@alloc/quick-lru@5.3.0':
     resolution: {integrity: sha512-U4+70Pc5ZS9osnCBCE5Jha/ciHM+Yp+CNMNC/7HvYbNRk1Ldd+f7qO65W5qfhu/TCv+/ozljlXXe9Nj8419DMA==}
@@ -1525,6 +1570,11 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@playwright/test@1.65.1':
+    resolution: {integrity: sha512-y+NCIRm2LvY4slUVWvGh1nujJ8RF/hEisIsq2mtUPgdQC4L701bq5hZGMhrpeXjACvwvO9tj5dJqhvM6TP9lbw==}
+    engines: {node: '>=20'}
+    hasBin: true
+
   '@rolldown/binding-android-arm-eabi@1.2.16':
     resolution: {integrity: sha512-ia3DwAs0OsMGS7+IConptSiyk9pEXkOx/AbJ2n/lAGxH3QkWQus1t8d7gnAT38FCU2sQu8lUbeR6AiZFv4JxaA==}
     engines: {node: ^20.19.0 || >=22.12.0}
@@ -2005,6 +2055,11 @@ packages:
   acorn@8.19.0:
     resolution: {integrity: sha512-oJlA3XiRm7Cyk6qFD2Jn8ak9B7jSy0qy00ADO3+8dpT0LSjFihQYv4C02LFCSYJV3Q37xYwwRy5m+IpIiUzqWw==}
     engines: {node: '>=0.4.0'}
+    hasBin: true
+
+  agent-browser@0.43.0:
+    resolution: {integrity: sha512-TExwnZAW39fUBDJhUPrw8KKGmcjzBo7FxNqoP2/usHG1ODsjGI2jAWq3+Q6I5JYyBMjePFEsj8KGB68mALtglA==}
+    engines: {node: '>=22.0.0'}
     hasBin: true
 
   ajv@6.15.0:
@@ -3030,8 +3085,8 @@ packages:
     resolution: {integrity: sha512-AC/7JofJvZGrrneWNaEnJeOLUx+JlGt7tNa0wZiRPT4MY1wmfKjt2+6O2p2uz2+skll8OZZmJMNqeke7kKbNgQ==}
     hasBin: true
 
-  jose@6.2.15:
-    resolution: {integrity: sha512-qdF6ewcZARtef63fJ9AKKZPgxw+t7USH6HLXYcD4CrdmSvDp79rpJSPFEKc90QBeGS63u1KQtN2MZQHC0yDIzA==}
+  jose@6.2.18:
+    resolution: {integrity: sha512-doV4thUwgkrycJH4yLeqwTGIIZphHl+pk7CPReuMIhYhncmgzdko85MaCG4YQFTxqMFr1/oEH32tZuKKovcDEg==}
 
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
@@ -3195,8 +3250,8 @@ packages:
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
-  lucide-react@1.70.0:
-    resolution: {integrity: sha512-gCTPPN1MlQUBtUgdsUv+0CAUj+X8hifRUiRBw4E5v7lvDIOIpx0EZezdGQMSimS8pKA6esvullJub4GYr0mCHA==}
+  lucide-react@1.78.0:
+    resolution: {integrity: sha512-61NFdT5ZfAY8xs3LWKkB78GVeuiCcjYFEXeHWxWP+mQhP+UWLGsA9hJZQPtIyXRDhOvT8kgmWwAIyH5L7RIhAA==}
     peerDependencies:
       '@types/react': '*'
       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
@@ -3388,6 +3443,16 @@ packages:
   picomatch@4.0.7:
     resolution: {integrity: sha512-qcJu88Q2IWqJsDD529JKMdwGm/dvInW4HvQnRwiH9JtihJvzGOscDtHE3x1pBKeUOTysQ8kVmLnJ2kJu7yhcGA==}
     engines: {node: '>=12'}
+
+  playwright-core@1.65.1:
+    resolution: {integrity: sha512-hqPpz7blSMPxWVdoeE1yiBSzXsKiVOd2k+kjCvmUywD2GPO2Dd9HfcWnq9NN0GHbNZDFgZ9JfBFr+X5/BLo0qw==}
+    engines: {node: '>=20'}
+    hasBin: true
+
+  playwright@1.65.1:
+    resolution: {integrity: sha512-vJ1FuoOrNwOKHUIVEvSt3jT1L+wjjDpwhwIstKtfvTh8XIG4FG4bIFuvNdMxi81LGfAhUgUZleVFaOLY4RIUUw==}
+    engines: {node: '>=20'}
+    hasBin: true
 
   pluralize@8.0.0:
     resolution: {integrity: sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==}
@@ -4027,6 +4092,27 @@ packages:
 snapshots:
 
   '@adobe/css-tools@4.5.0': {}
+
+  '@agent-browser/cli-darwin-arm64@0.43.0':
+    optional: true
+
+  '@agent-browser/cli-darwin-x64@0.43.0':
+    optional: true
+
+  '@agent-browser/cli-linux-arm64-gnu@0.43.0':
+    optional: true
+
+  '@agent-browser/cli-linux-arm64-musl@0.43.0':
+    optional: true
+
+  '@agent-browser/cli-linux-x64-gnu@0.43.0':
+    optional: true
+
+  '@agent-browser/cli-linux-x64-musl@0.43.0':
+    optional: true
+
+  '@agent-browser/cli-win32-x64-msvc@0.43.0':
+    optional: true
 
   '@alloc/quick-lru@5.3.0': {}
 
@@ -4910,6 +4996,10 @@ snapshots:
   '@oxc-resolver/binding-win32-x64-msvc@11.24.2':
     optional: true
 
+  '@playwright/test@1.65.1':
+    dependencies:
+      playwright: 1.65.1
+
   '@rolldown/binding-android-arm-eabi@1.2.16':
     optional: true
 
@@ -5281,6 +5371,16 @@ snapshots:
       acorn: 8.19.0
 
   acorn@8.19.0: {}
+
+  agent-browser@0.43.0:
+    optionalDependencies:
+      '@agent-browser/cli-darwin-arm64': 0.43.0
+      '@agent-browser/cli-darwin-x64': 0.43.0
+      '@agent-browser/cli-linux-arm64-gnu': 0.43.0
+      '@agent-browser/cli-linux-arm64-musl': 0.43.0
+      '@agent-browser/cli-linux-x64-gnu': 0.43.0
+      '@agent-browser/cli-linux-x64-musl': 0.43.0
+      '@agent-browser/cli-win32-x64-msvc': 0.43.0
 
   ajv@6.15.0:
     dependencies:
@@ -6450,7 +6550,7 @@ snapshots:
 
   jiti@2.7.0: {}
 
-  jose@6.2.15: {}
+  jose@6.2.18: {}
 
   js-tokens@4.0.0: {}
 
@@ -6610,7 +6710,7 @@ snapshots:
     dependencies:
       yallist: 3.1.1
 
-  lucide-react@1.70.0(@types/react@19.3.0)(react@19.3.1):
+  lucide-react@1.78.0(@types/react@19.3.0)(react@19.3.1):
     dependencies:
       react: 19.3.1
     optionalDependencies:
@@ -6656,7 +6756,7 @@ snapshots:
 
   natural-compare@1.4.0: {}
 
-  next@16.4.6(@babel/core@7.29.13(supports-color@7.2.0))(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
+  next@16.4.6(@babel/core@7.29.13(supports-color@7.2.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
     dependencies:
       '@next/env': 16.4.6
       '@swc/helpers': 0.5.23
@@ -6675,6 +6775,7 @@ snapshots:
       '@next/swc-linux-x64-musl': 16.4.6
       '@next/swc-win32-arm64-msvc': 16.4.6
       '@next/swc-win32-x64-msvc': 16.4.6
+      '@playwright/test': 1.65.1
       sharp: 0.35.5(@types/node@26.6.6)
     transitivePeerDependencies:
       - '@babel/core'
@@ -6840,6 +6941,12 @@ snapshots:
   picomatch@2.3.2: {}
 
   picomatch@4.0.7: {}
+
+  playwright-core@1.65.1: {}
+
+  playwright@1.65.1:
+    dependencies:
+      playwright-core: 1.65.1
 
   pluralize@8.0.0: {}
 
