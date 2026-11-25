@@ -32,7 +32,8 @@ export const createSession = async (userId: number) => {
     .sign(key())
   ;(await cookies()).set(SESSION_COOKIE, token, {
     httpOnly: true,
-    secure: true,
+    // dev에서 테일스케일 IP 같은 비-localhost HTTP로 접속하면 Secure 쿠키가 저장되지 않는다.
+    secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
     path: '/',
     maxAge: MAX_AGE,
