@@ -27,7 +27,7 @@ export const DayView = async ({ date }: { date: string }) => {
       orderBy: (d, { asc }) => asc(d.date),
     }),
     db.query.expense.findMany({
-      where: (e, { eq }) => eq(e.spentOn, date),
+      where: (e, { and, eq }) => and(eq(e.spentOn, date), eq(e.prepaid, false)),
       columns: { amountKrw: true },
     }),
     db.query.dayAlert.findMany({ where: (a, { isNull }) => isNull(a.date) }),
