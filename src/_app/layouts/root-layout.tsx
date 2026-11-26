@@ -16,7 +16,7 @@ const pretendard = localFont({
 })
 
 export const metadata: Metadata = {
-  title: '허니문 플래너',
+  title: 'Honeymoon Plan',
   robots: { index: false, follow: false },
 }
 

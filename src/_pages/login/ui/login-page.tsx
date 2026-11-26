@@ -18,7 +18,7 @@ export const LoginPage = () => {
         />
         <div className="photo-scrim absolute inset-0" />
         <div className="absolute inset-x-0 bottom-0 mx-auto flex max-w-md flex-col gap-1 px-6 pb-12 text-white">
-          <h1 className="text-[32px] leading-tight">허니문 플래너</h1>
+          <h1 className="text-[32px] leading-tight">Honeymoon Plan</h1>
           <p className="text-[16px] font-semibold">포르투 · 바르셀로나 신혼여행</p>
           <p className="mono text-[14px] opacity-90">2026.11.30 – 12.08 · 8박 9일</p>
         </div>
