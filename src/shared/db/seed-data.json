@@ -30,7 +30,7 @@
       "date": "2026-12-03",
       "city": "porto",
       "tz": "Europe/Lisbon",
-      "title": "강을 따라 바다까지, 그리고 허니문 디너",
+      "title": "도루강 크루즈, 해 질 녘 커플 스냅",
       "note": null
     },
     {
@@ -45,7 +45,7 @@
       "city": "barcelona",
       "tz": "Europe/Madrid",
       "title": "구엘 공원, 그라시아, 사그라다 파밀리아",
-      "note": "시간 정해진 예약은 구엘 공원 09:30, 사그라다 15:15 두 개뿐이라 여유 있게. 일요일·공휴일에 닫는 상점 쇼핑은 오늘."
+      "note": "시간 정해진 예약은 구엘 공원 09:30, 사그라다 14:45 두 개뿐이라 여유 있게. 일요일·공휴일에 닫는 상점 쇼핑은 오늘."
     },
     {
       "date": "2026-12-06",
@@ -170,17 +170,6 @@
     },
     {
       "date": "2026-12-01",
-      "startTime": "12:30",
-      "title": "점심: 카자 게데스 (Casa Guedes)",
-      "description": "명물: 돼지고기 다리살 + 세하 치즈 샌드위치\n볼량 시장 근처\n착장: 노포라 편한 캐주얼, 소스 튀니 밝은 옷 조심",
-      "kind": "meal",
-      "booking": "none",
-      "bookingNote": null,
-      "isKey": false,
-      "sortOrder": 4
-    },
-    {
-      "date": "2026-12-01",
       "startTime": "13:45",
       "title": "상벤투역 아줄레주 → 포르투 대성당(Sé)",
       "description": "상벤투역: 역사 홀 2만 장 타일 벽화(숙소 바로 옆)\n대성당 테라스에서 구시가 전망\n착장: 성당 안에서 모자 벗기, 테라스 바람 셈\n비 오면 돌바닥 미끄러움 → 고무 밑창 신발",
@@ -192,7 +181,7 @@
     },
     {
       "date": "2026-12-01",
-      "startTime": "14:45",
+      "startTime": "14:30",
       "title": "플로레스 거리 → 히베이라 강변 → 다리 하층으로 가이아",
       "description": "숙소 이름의 그 거리, 내리막 따라 강변까지\n동 루이스 1세 다리 아래층을 걸어 건너기\n착장: 젖은 돌길 미끄러움 → 고무 밑창 운동화 필수\n강바람 → 목도리, 우산보다 모자 달린 방수 겉옷",
       "kind": "activity",
@@ -235,17 +224,6 @@
       "sortOrder": 9
     },
     {
-      "date": "2026-12-01",
-      "startTime": "20:00",
-      "title": "저녁: 타베르나 두스 메르카도레스",
-      "description": "히베이라 골목의 작은 해산물 타베르나\n월요일 휴무, 화요일 영업\n좌석 적음 → 예약 필수\n착장: 니트에 코트, 어두운 강변 골목 → 굽 낮은 신발",
-      "kind": "meal",
-      "booking": "none",
-      "bookingNote": null,
-      "isKey": false,
-      "sortOrder": 10
-    },
-    {
       "date": "2026-12-02",
       "startTime": "08:30",
       "title": "도루 밸리 와이너리 투어 (로투스 투어)",
@@ -268,19 +246,8 @@
       "sortOrder": 2
     },
     {
-      "date": "2026-12-02",
-      "startTime": "20:00",
-      "title": "저녁: 프란세지냐 (카페 산티아구)",
-      "description": "포르투식 고기 샌드위치에 치즈·소스를 끼얹은 명물\n하나 나눠 먹어도 충분\n식후 알리아두스 광장 크리스마스 조명\n착장: 편한 차림, 밤 7℃ 안팎 → 코트·장갑",
-      "kind": "meal",
-      "booking": "none",
-      "bookingNote": null,
-      "isKey": false,
-      "sortOrder": 3
-    },
-    {
       "date": "2026-12-03",
-      "startTime": "10:00",
+      "startTime": "09:30",
       "title": "느긋한 브런치",
       "description": "전날 투어 피로 → 늦게 시작\n착장: 니트에 청바지 같은 편한 캐주얼",
       "kind": "meal",
@@ -291,7 +258,7 @@
     },
     {
       "date": "2026-12-03",
-      "startTime": "11:00",
+      "startTime": "10:30",
       "title": "6개 다리 크루즈 (약 50분)",
       "description": "히베이라 선착장 출발\n전통 라벨루 배로 다리 6개 통과\n착장: 강 위 체감 3~4℃ 더 낮음 → 패딩·두꺼운 코트, 목도리, 장갑\n사진: 밝은 색 목도리가 잘 보임",
       "kind": "activity",
@@ -302,10 +269,10 @@
     },
     {
       "date": "2026-12-03",
-      "startTime": "12:30",
-      "title": "1번 트램 → 포즈 두 도루",
-      "description": "강변 정류장 인판트 출발\n강 따라 대서양 하구까지 약 20분\n옛 나무 트램이라 난방 약함 → 겉옷 그대로",
-      "kind": "activity",
+      "startTime": "13:30",
+      "title": "숙소에서 휴식 · 스냅 준비",
+      "description": "크루즈 뒤 점심은 히베이라 근처에서 즉흥\n헤어·메이크업, 스냅 의상으로 갈아입기\n15:45 숙소 출발",
+      "kind": "rest",
       "booking": "none",
       "bookingNote": null,
       "isKey": false,
@@ -313,36 +280,25 @@
     },
     {
       "date": "2026-12-03",
-      "startTime": "13:30",
-      "title": "점심: 마토지뉴스 생선구이 거리",
-      "description": "포즈에서 우버 10분\n숯불에 굽는 그날 생선(정어리·도미 등)\n착장: 연기 냄새 배어도 괜찮은 겉옷",
-      "kind": "meal",
-      "booking": "none",
-      "bookingNote": null,
-      "isKey": false,
+      "startTime": "16:00",
+      "title": "커플 스냅: 대성당 → 다리 상층 → 세하 두 필라르",
+      "description": "약 1시간 45분, 작가 예약 필요\n대성당 테라스·상벤투 골목 → 동 루이스 1세 다리 상층 → 세하 두 필라르 일몰(17:05경)과 블루아워\n다리 상층은 메트로 D선이 다니는 구간 → 촬영 위치는 작가와 미리 맞추기\n비 오면 상벤투역 같은 실내·처마 밑 위주로 줄이거나 12/1 오후·12/3 오전으로 변경\n착장: 해 지면 7℃ 안팎 → 촬영 사이사이 코트 걸치기",
+      "kind": "activity",
+      "booking": "required",
+      "bookingNote": "예약",
+      "isKey": true,
       "sortOrder": 4
     },
     {
       "date": "2026-12-03",
-      "startTime": "15:00",
-      "title": "포즈 해안 산책 · 펠게이라스 등대",
-      "description": "파도가 방파제를 넘는 풍경\n이후 숙소로 돌아가 짐 미리 싸기\n착장: 바람·물보라 셈 → 모자 달린 방수 겉옷, 목도리, 장갑(우산 무용)\n젖은 방파제 미끄러움 → 운동화",
-      "kind": "activity",
+      "startTime": "18:00",
+      "title": "숙소로 돌아와 짐 싸기",
+      "description": "다음 날 07:45 체크아웃\n저녁은 히베이라·가이아 강변에서 즉흥",
+      "kind": "rest",
       "booking": "none",
       "bookingNote": null,
       "isKey": false,
       "sortOrder": 5
-    },
-    {
-      "date": "2026-12-03",
-      "startTime": "19:30",
-      "title": "허니문 디너: 더 예트먼 (The Yeatman)",
-      "description": "가이아 언덕의 미쉐린 2스타\n화~토 저녁만, 좌석 18:30·19:30·20:30 → 목요일 19:30\n예약 시 신혼여행이라고 적기\n대안: 안티쿰(Antiqvvm, 1스타)\n착장: 스마트 캐주얼 이상. 남자 셔츠+재킷(타이 X), 여자 원피스 또는 블라우스+슬랙스\n운동화·청바지·후드 피하기, 굽은 낮게, 코트는 맡기기(밤 7℃ 안팎)",
-      "kind": "meal",
-      "booking": "none",
-      "bookingNote": null,
-      "isKey": true,
-      "sortOrder": 6
     },
     {
       "date": "2026-12-04",
@@ -409,17 +365,6 @@
       "bookingNote": null,
       "isKey": false,
       "sortOrder": 6
-    },
-    {
-      "date": "2026-12-04",
-      "startTime": "20:30",
-      "title": "저녁: 타파스 (세르베세리아 카탈라나 또는 타파스 24)",
-      "description": "카사 바트요에서 둘 다 도보 5~10분\n카탈라나는 예약 불가, 30분~1시간 대기 흔함 → 바에서 한 잔 하며 대기\n착장: 스마트 캐주얼, 서서 기다릴 수 있으니 편한 신발",
-      "kind": "meal",
-      "booking": "none",
-      "bookingNote": null,
-      "isKey": false,
-      "sortOrder": 7
     },
     {
       "date": "2026-12-04",
@@ -499,17 +444,6 @@
       "sortOrder": 6
     },
     {
-      "date": "2026-12-05",
-      "startTime": "20:30",
-      "title": "저녁: 세트 포르테스 (7 Portes) 파에야",
-      "description": "고딕 지구에서 도보 10분\n1836년부터 이어온 노포\n해산물 파에야, 오징어먹물 쌀요리\n택시로 호텔 복귀\n착장: 스마트 캐주얼(셔츠나 니트에 코트)",
-      "kind": "meal",
-      "booking": "none",
-      "bookingNote": null,
-      "isKey": false,
-      "sortOrder": 7
-    },
-    {
       "date": "2026-12-06",
       "startTime": "07:30",
       "title": "이른 아침 식사",
@@ -555,6 +489,17 @@
     },
     {
       "date": "2026-12-06",
+      "startTime": "16:45",
+      "title": "바르셀로네타 해변 일몰 산책",
+      "description": "호텔에서 택시 약 20분\n일몰 17:23경\n공휴일이라 상점은 닫아도 해변 산책로는 열려 있음\n착장: 바닷바람 → 코트·목도리",
+      "kind": "activity",
+      "booking": "none",
+      "bookingNote": null,
+      "isKey": false,
+      "sortOrder": 5
+    },
+    {
+      "date": "2026-12-06",
       "startTime": "20:00",
       "title": "마지막 밤 저녁: 그라시아 지구",
       "description": "일요일 저녁 휴무 식당 많음 → 영업 여부 꼭 확인\n호텔에서 도보권인 그라시아가 편함\n착장: 조금 차려입은 스마트 캐주얼, 밤 9℃ 안팎 → 코트",
@@ -562,7 +507,7 @@
       "booking": "none",
       "bookingNote": null,
       "isKey": false,
-      "sortOrder": 5
+      "sortOrder": 6
     },
     {
       "date": "2026-12-07",
@@ -590,23 +535,12 @@
       "date": "2026-12-07",
       "startTime": "11:30",
       "title": "보케리아 시장 → 람블라스 일부",
-      "description": "그라시아 거리 따라 내려가 메트로 L3 리세우역 근처\n월요일이라 시장 영업\n람블라스 소매치기 주의 → 가방은 몸 앞, 겉옷 주머니에 휴대폰 X\n포트와인 등 액체류 기념품은 위탁 수하물에",
+      "description": "그라시아 거리 따라 내려가 메트로 L3 리세우역 근처\n월요일이라 시장 영업\n람블라스 소매치기 주의 → 가방은 몸 앞, 겉옷 주머니에 휴대폰 X\n포트와인 등 액체류 기념품은 위탁 수하물에\n월요일은 생선 점포·일부 바가 쉼 → 구경 위주, 점심은 즉흥",
       "kind": "activity",
       "booking": "none",
       "bookingNote": null,
       "isKey": false,
       "sortOrder": 3
-    },
-    {
-      "date": "2026-12-07",
-      "startTime": "12:45",
-      "title": "점심: 보케리아 시장",
-      "description": "시장 안 카운터 바(피노초 등)에서 서서 먹기\n마지막 하몽, 크레마 카탈라나\n이후 택시로 호텔\n착장: 편한 신발",
-      "kind": "meal",
-      "booking": "none",
-      "bookingNote": null,
-      "isKey": false,
-      "sortOrder": 4
     },
     {
       "date": "2026-12-07",
@@ -650,7 +584,7 @@
       "items": [
         {
           "title": "인천 → 파리 → 포르투 (AF5093, AF1516)",
-          "detail": "공동운항편은 실제 운항 항공사 규정이 적용될 수 있어요. 예약한 사이트(또는 에어프랑스 '예약 관리')에서 위탁 수하물 추가. 공항 현장 구매보다 사전 구매가 저렴합니다.",
+          "detail": "사전 구매 불가, 공항 체크인 카운터에서 현장 결제. 인천공항 카운터에 여유 있게 도착하기.",
           "dueNote": null,
           "checked": false,
           "sortOrder": 1
@@ -659,64 +593,15 @@
           "title": "포르투 → 바르셀로나 (부엘링 VY1175)",
           "detail": "부엘링은 요금 등급에 따라 기내용 캐리어도 유료이고, 위탁 수하물은 별도 구매입니다. 부엘링 사이트 '예약 관리'에서 기내 캐리어 포함 여부까지 확인.",
           "dueNote": null,
-          "checked": false,
+          "checked": true,
           "sortOrder": 2
         },
         {
           "title": "바르셀로나 → 파리 → 인천 (AF1549, AF5092)",
-          "detail": "짐은 인천까지 연결돼요(파리에서 수취·재수속 불필요). 예약 사이트에서 위탁 수하물만 추가하면 됩니다.",
+          "detail": "사전 구매 불가, 바르셀로나 공항 체크인 카운터에서 현장 결제. 짐은 인천까지 연결돼요(파리에서 수취·재수속 불필요).",
           "dueNote": null,
           "checked": false,
           "sortOrder": 3
-        },
-        {
-          "title": "귀국편은 무게 여유 있게",
-          "detail": "포트와인·올리브오일 같은 액체 기념품은 기내 반입이 안 되니 위탁 수하물을 넉넉한 무게로.",
-          "dueNote": null,
-          "checked": false,
-          "sortOrder": 4
-        }
-      ]
-    },
-    {
-      "title": "여권 · 항공",
-      "urgent": false,
-      "sortOrder": 2,
-      "items": [
-        {
-          "title": "여권 유효기간 확인",
-          "detail": "셍겐 지역은 출국 예정일 기준 3개월 이상 남아 있어야 합니다. 두 사람 모두.",
-          "dueNote": null,
-          "checked": false,
-          "sortOrder": 1
-        },
-        {
-          "title": "ETIAS(유럽 여행허가) 시행 여부 재확인",
-          "detail": "2026년 4분기 도입 예정으로 발표돼 있습니다. 출발 2~3주 전 EU 공식 사이트에서 신청 필요 여부를 확인하세요.",
-          "dueNote": null,
-          "checked": false,
-          "sortOrder": 2
-        },
-        {
-          "title": "좌석 지정 (나란히)",
-          "detail": "특히 귀국 BCN→CDG는 앞쪽 좌석이 환승에 유리.",
-          "dueNote": null,
-          "checked": false,
-          "sortOrder": 3
-        },
-        {
-          "title": "각 구간 온라인 체크인",
-          "detail": "11/29 · 12/3 · 12/6에 알림 맞춰두기.",
-          "dueNote": "출발 24~30시간 전",
-          "checked": false,
-          "sortOrder": 4
-        },
-        {
-          "title": "귀국 환승 65분 확인",
-          "detail": "같은 예약번호의 연결편인지 예약처에 확인. 별도 발권이면 대체편 보호가 안 되니 반드시 체크.",
-          "dueNote": null,
-          "checked": false,
-          "sortOrder": 5
         }
       ]
     },
@@ -731,20 +616,6 @@
           "dueNote": null,
           "checked": false,
           "sortOrder": 1
-        },
-        {
-          "title": "에어비앤비 무료 취소 기한",
-          "detail": "일정 변경 가능성이 있으면 이 전에 결정.",
-          "dueNote": "10/31 16:00",
-          "checked": false,
-          "sortOrder": 2
-        },
-        {
-          "title": "카사 푸스터: 특별 요청 남기기",
-          "detail": "아고다 '특별 요청'에 신혼여행(Honeymoon)과 14시 30분경 도착 예정 기재. 객실은 더블베드로 요청.",
-          "dueNote": null,
-          "checked": false,
-          "sortOrder": 3
         },
         {
           "title": "도시 관광세 현장 결제 준비",
@@ -762,21 +633,21 @@
       "items": [
         {
           "title": "렐루 서점 · 12/1 09:00",
-          "detail": "완료(€31.90). 입장권 QR을 두 사람 휴대폰에 저장.",
+          "detail": "입장권 QR을 두 사람 휴대폰에 저장.",
           "dueNote": null,
           "checked": true,
           "sortOrder": 1
         },
         {
           "title": "테일러스 포트와인 셀러 · 12/1 15:20",
-          "detail": "완료(74,525원).",
+          "detail": null,
           "dueNote": null,
           "checked": true,
           "sortOrder": 2
         },
         {
           "title": "도루 밸리 데이투어 · 12/2",
-          "detail": "완료(395,000원, 마이리얼트립). 현장 현금 1인 €65 별도. 11/2부터 취소 시 20% 이상 공제, 11/29부터 환불 불가.",
+          "detail": "현장 현금 1인 €65 별도. 11/2부터 취소 시 20% 이상 공제, 11/29부터 환불 불가.",
           "dueNote": null,
           "checked": true,
           "sortOrder": 3
@@ -815,6 +686,13 @@
           "dueNote": null,
           "checked": false,
           "sortOrder": 8
+        },
+        {
+          "title": "스냅 작가 · 12/3 16:00",
+          "detail": "1~2시간, 포르투 일몰. 비 오면 12/1 오후나 12/3 오전으로 무료 변경하는 조건 넣기. 헤어·메이크업 담당과 잔금 현금 여부도 확인.",
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 9
         }
       ]
     },
@@ -827,19 +705,19 @@
           "title": "여행자 보험 가입",
           "detail": "항공 지연·수하물 지연 보장 포함 상품. 환승이 짧아 특히 유용.",
           "dueNote": null,
-          "checked": false,
+          "checked": true,
           "sortOrder": 1
         },
         {
           "title": "유럽 eSIM 또는 로밍",
           "detail": "포르투갈·스페인·프랑스 모두 되는 유럽 통합 상품.",
           "dueNote": null,
-          "checked": false,
+          "checked": true,
           "sortOrder": 2
         },
         {
           "title": "해외결제 수수료 낮은 카드 + 소액 유로 현금",
-          "detail": "대부분 카드 결제 가능. 관광세·팁·작은 가게용 현금 조금.",
+          "detail": "대부분 카드 결제 가능. 유로 현금은 €400 이상: 도루 투어 현장 €130, 관광세, 스냅 잔금, 팁.",
           "dueNote": null,
           "checked": false,
           "sortOrder": 3
@@ -885,13 +763,6 @@
           "dueNote": null,
           "checked": false,
           "sortOrder": 4
-        },
-        {
-          "title": "멀티 어댑터는 필요 없음",
-          "detail": "포르투갈·스페인·프랑스 모두 한국과 같은 둥근 2핀(220~230V). 멀티탭 하나면 충분.",
-          "dueNote": null,
-          "checked": false,
-          "sortOrder": 5
         }
       ]
     },
@@ -1083,25 +954,11 @@
           "sortOrder": 3
         },
         {
-          "title": "7~8착장",
-          "detail": null,
-          "dueNote": null,
-          "checked": false,
-          "sortOrder": 4
-        },
-        {
-          "title": "블랙 셔츠",
+          "title": "스냅 의상",
           "detail": null,
           "dueNote": null,
           "checked": false,
           "sortOrder": 5
-        },
-        {
-          "title": "블랙 드레스",
-          "detail": null,
-          "dueNote": null,
-          "checked": false,
-          "sortOrder": 6
         },
         {
           "title": "촬영 소품",
@@ -1118,25 +975,11 @@
       "sortOrder": 11,
       "items": [
         {
-          "title": "간단 세안도구",
-          "detail": null,
-          "dueNote": null,
-          "checked": false,
-          "sortOrder": 1
-        },
-        {
           "title": "수건",
           "detail": null,
           "dueNote": null,
           "checked": false,
           "sortOrder": 2
-        },
-        {
-          "title": "기초 제품",
-          "detail": null,
-          "dueNote": null,
-          "checked": false,
-          "sortOrder": 3
         },
         {
           "title": "마스크팩",
@@ -1151,13 +994,6 @@
           "dueNote": null,
           "checked": false,
           "sortOrder": 5
-        },
-        {
-          "title": "태블릿",
-          "detail": "챙길지 고민 중",
-          "dueNote": null,
-          "checked": false,
-          "sortOrder": 6
         },
         {
           "title": "목베개",
