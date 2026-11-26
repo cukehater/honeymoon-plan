@@ -7,7 +7,13 @@ import { CITY_NAME, dayPhoto, KIND_ICON, mapUrl } from '@/entities/trip'
 import { type DayAlertType, db, type ItineraryItemType } from '@/shared/db'
 import { formatDate, formatKrw } from '@/shared/lib/format'
 import { getSession } from '@/shared/lib/session'
-import { currentTripDay, findNowAndNext, localNow, toInstant } from '@/shared/lib/trip-time'
+import {
+  currentTripDay,
+  daysUntil,
+  findNowAndNext,
+  localNow,
+  toInstant,
+} from '@/shared/lib/trip-time'
 import { BulletList } from '@/shared/ui/bullet-list'
 import { PhotoHero } from '@/shared/ui/photo-hero'
 import { Badge, Card, IconTile, ProgressBar, SectionTitle } from '@/shared/ui/primitives'
@@ -22,9 +28,6 @@ const resolveNow = (param: string | string[] | undefined) => {
   }
   return new Date()
 }
-
-const daysBetween = (from: string, to: string) =>
-  Math.round((Date.parse(to) - Date.parse(from)) / 86_400_000)
 
 // "35분 후", "2시간 10분 후", 다음 날이면 날짜
 const untilText = (minutes: number, item: ItineraryItemType, today: string) => {
@@ -188,7 +191,8 @@ export const HomePage = async ({ searchParams }: PageProps<'/'>) => {
   }
 
   if (before) {
-    const dday = daysBetween(localNow(now, first.tz).date, first.date)
+    // 출국 전에는 한국에 있으니 한국 날짜로 센다 (첫날 tz인 리스본 기준이면 한국 0~9시에 하루 밀린다)
+    const dday = daysUntil(first.date, now, 'Asia/Seoul')
     const firstItems = items.filter((i) => i.date === first.date)
     return (
       <>

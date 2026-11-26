@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { currentTripDay, findNowAndNext, localNow, toInstant } from './trip-time'
+import { currentTripDay, daysUntil, findNowAndNext, localNow, toInstant } from './trip-time'
 
 const days = [
   { date: '2026-12-03', tz: 'Europe/Lisbon' },
@@ -56,5 +56,11 @@ describe('trip-time', () => {
       current: null,
       next: null,
     })
+  })
+
+  it('counts days until departure by the given tz date', () => {
+    // 한국 11/27 00:02 = 리스본 11/26 15:02. 출국 준비는 한국 날짜 기준이어야 한다.
+    expect(daysUntil('2026-11-30', at('2026-11-26T15:02:00Z'), 'Asia/Seoul')).toBe(3)
+    expect(daysUntil('2026-11-30', at('2026-11-29T15:30:00Z'), 'Asia/Seoul')).toBe(0)
   })
 })

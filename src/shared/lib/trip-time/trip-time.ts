@@ -24,6 +24,10 @@ export const localNow = (now: Date, tz: string) => {
   return parts(now, tz)
 }
 
+// tz 기준 오늘부터 date까지 남은 날 수 (D-day)
+export const daysUntil = (date: string, now: Date, tz: string) =>
+  Math.round((Date.parse(date) - Date.parse(localNow(now, tz).date)) / 86_400_000)
+
 // 현지 날짜+시각 → 실제 시점
 export const toInstant = (date: string, time: string, tz: string): Date => {
   const guess = new Date(`${date}T${time}:00Z`)
