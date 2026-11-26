@@ -3,6 +3,7 @@ import Link from 'next/link'
 
 import { KIND_ICON, KIND_LABEL, mapUrl } from '@/entities/trip'
 import type { DayAlertType, ItineraryItemType, TripDayType } from '@/shared/db'
+import { BulletList } from '@/shared/ui/bullet-list'
 import { Badge } from '@/shared/ui/primitives'
 
 import { ItemEditor } from './item-editor'
@@ -115,7 +116,7 @@ const ItemText = ({ item }: { item: ItineraryItemType }) => {
         {item.booking === 'done' && <Badge tone="ok">예약 완료</Badge>}
       </span>
       {item.description && (
-        <span className="text-[14px] leading-relaxed text-muted">{item.description}</span>
+        <BulletList className="text-[14px] leading-relaxed text-muted" text={item.description} />
       )}
     </span>
   )

@@ -8,6 +8,7 @@ import { type DayAlertType, db, type ItineraryItemType } from '@/shared/db'
 import { formatDate, formatKrw } from '@/shared/lib/format'
 import { getSession } from '@/shared/lib/session'
 import { currentTripDay, findNowAndNext, localNow, toInstant } from '@/shared/lib/trip-time'
+import { BulletList } from '@/shared/ui/bullet-list'
 import { PhotoHero } from '@/shared/ui/photo-hero'
 import { Badge, Card, IconTile, ProgressBar, SectionTitle } from '@/shared/ui/primitives'
 
@@ -122,9 +123,9 @@ export const HomePage = async ({ searchParams }: PageProps<'/'>) => {
                 <div className="min-w-0">
                   <h2 className="text-[20px]">{current.title}</h2>
                   {current.description && (
-                    <p className="mt-1 line-clamp-3 text-[14px] text-muted">
-                      {current.description}
-                    </p>
+                    <div className="mt-1 line-clamp-3 text-[14px] text-muted">
+                      <BulletList text={current.description} />
+                    </div>
                   )}
                 </div>
               </div>

@@ -84,7 +84,7 @@
       "date": "2026-11-30",
       "startTime": "12:05",
       "title": "인천 → 파리 CDG · AF5093",
-      "description": "18:30 도착. 기내에서 최대한 자두기. 착장: 14시간 비행. 허리 조이지 않는 편한 바지에 얇은 겉옷을 겹쳐 입기(기내는 서늘). 압박 양말, 목베개. 도착하는 포르투는 밤 8℃ 안팎이라 코트는 기내에 들고 타기.",
+      "description": "18:30 파리 도착\n기내에서 최대한 자두기\n착장: 허리 편한 바지, 얇은 겉옷 겹쳐 입기(기내 서늘)\n준비물: 압박 양말, 목베개\n포르투 밤 8℃ 안팎 → 코트는 기내에",
       "kind": "flight",
       "booking": "none",
       "bookingNote": null,
@@ -95,7 +95,7 @@
       "date": "2026-11-30",
       "startTime": "18:30",
       "title": "CDG 환승 2시간 10분",
-      "description": "2E 터미널 도착 → 2F 터미널 출발로 이동. 짐은 포르투까지 연결되니 찾지 않아도 돼요. 여기서 셍겐 입국심사를 받습니다. 첫 유럽 입국이라 출입국시스템(EES) 지문·얼굴 등록이 있어 줄이 길 수 있으니 바로 이동하세요. 착장: 터미널을 오래 걸으니 편한 운동화. 셍겐 입국심사 줄에서 기다리니 겉옷은 손에.",
+      "description": "2E 터미널 도착 → 2F 터미널 출발\n짐은 포르투까지 연결, 찾지 않음\n셍겐 입국심사 + EES 지문·얼굴 등록(첫 유럽 입국) → 줄 길 수 있으니 바로 이동\n착장: 편한 운동화, 겉옷은 손에",
       "kind": "transfer",
       "booking": "none",
       "bookingNote": null,
@@ -106,7 +106,7 @@
       "date": "2026-11-30",
       "startTime": "20:40",
       "title": "파리 → 포르투 · AF1516",
-      "description": "21:55 도착. 착장: 기내 차림 그대로. 내리면 밤 8℃ 안팎에 비가 올 수 있으니 코트를 꺼내 두기.",
+      "description": "21:55 도착\n착장: 기내 차림 그대로\n밤 8℃ 안팎·비 가능 → 내리기 전 코트 꺼내 두기",
       "kind": "flight",
       "booking": "none",
       "bookingNote": null,
@@ -117,7 +117,7 @@
       "date": "2026-11-30",
       "startTime": "22:30",
       "title": "공항 → 숙소: 우버/택시 추천",
-      "description": "약 20분, 30유로 안팎. 밤늦게 짐 들고 메트로(보라색 E선, 상벤투역)보다 편합니다. 열쇠보관함 비밀번호는 미리 받아두기. 착장: 밤바람이 차니 코트 단추까지. 짐이 있으니 우산보다 모자 달린 방수 겉옷이 편해요.",
+      "description": "약 20분, 30유로 안팎\n밤늦게 짐 들고 메트로(보라색 E선, 상벤투역)보다 편함\n열쇠보관함 비밀번호 미리 받아두기\n착장: 코트 단추까지, 우산보다 모자 달린 방수 겉옷",
       "kind": "transfer",
       "booking": "none",
       "bookingNote": null,
@@ -128,7 +128,7 @@
       "date": "2026-11-30",
       "startTime": "23:00",
       "title": "체크인 후 휴식",
-      "description": "근처 식당은 거의 닫으니 파리 공항에서 간단히 먹고 오세요. 착장: 숙소 난방이 약할 수 있으니 수면 양말과 따뜻한 잠옷.",
+      "description": "근처 식당 거의 닫음 → 파리 공항에서 간단히 먹고 오기\n착장: 숙소 난방 약할 수 있음, 수면 양말·따뜻한 잠옷",
       "kind": "rest",
       "booking": "none",
       "bookingNote": null,
@@ -139,7 +139,7 @@
       "date": "2026-12-01",
       "startTime": "09:00",
       "title": "렐루 서점 (Livraria Lello)",
-      "description": "09:00 입장 예매 완료(€31.90). 숙소에서 도보 7분. 입장권 금액은 책 구매 시 차감. 착장: 아침 8~10℃. 니트에 코트. 서점 안은 사진을 많이 찍으니 단정한 톤(네이비·베이지·버건디)이 나무 계단과 잘 어울려요. 오전 내내 돌길 언덕이라 쿠션 좋은 운동화.",
+      "description": "09:00 입장 예매 완료(€31.90), 책 구매 시 입장료 차감\n숙소에서 도보 7분\n착장: 아침 8~10℃, 니트에 코트\n사진 톤: 네이비·베이지·버건디가 나무 계단과 어울림\n오전 내내 돌길 언덕 → 쿠션 좋은 운동화",
       "kind": "activity",
       "booking": "done",
       "bookingNote": "예약 완료",
@@ -150,7 +150,7 @@
       "date": "2026-12-01",
       "startTime": "10:00",
       "title": "클레리구스 탑",
-      "description": "바로 옆. 200여 계단 위에서 붉은 지붕과 도루강을 한눈에. 착장: 계단 200여 개를 오르니 땀이 나요. 벗기 쉬운 겹쳐 입기. 꼭대기는 바람이 세서 목도리 하나 챙기기.",
+      "description": "서점 바로 옆\n200여 계단 위에서 붉은 지붕과 도루강 전망\n착장: 오르면 땀남 → 벗기 쉬운 겹쳐 입기\n꼭대기 바람 셈 → 목도리",
       "kind": "activity",
       "booking": "none",
       "bookingNote": null,
@@ -161,7 +161,7 @@
       "date": "2026-12-01",
       "startTime": "11:00",
       "title": "만테이가리아 에그타르트 → 알마스 성당 → 산타 카타리나 거리",
-      "description": "파란 아줄레주 외벽의 알마스 성당 앞이 사진 명소. 마제스틱 카페는 공휴일 영업 여부 확인. 착장: 파란 아줄레주 벽 앞 사진은 흰색·크림·노랑 같은 밝은 옷이 잘 받아요. 쇼핑 거리라 편한 캐주얼.",
+      "description": "알마스 성당 파란 아줄레주 외벽 앞이 사진 명소\n마제스틱 카페는 공휴일 영업 여부 확인\n착장: 흰색·크림·노랑 같은 밝은 옷이 타일 앞에서 잘 받음, 편한 캐주얼",
       "kind": "meal",
       "booking": "none",
       "bookingNote": null,
@@ -172,7 +172,7 @@
       "date": "2026-12-01",
       "startTime": "12:30",
       "title": "점심: 카자 게데스 (Casa Guedes)",
-      "description": "돼지고기 다리살에 세하 치즈를 얹은 샌드위치가 명물. 볼량 시장 근처. 착장: 현지인 노포라 편한 캐주얼 그대로. 소스가 튈 수 있으니 밝은 옷은 조심.",
+      "description": "명물: 돼지고기 다리살 + 세하 치즈 샌드위치\n볼량 시장 근처\n착장: 노포라 편한 캐주얼, 소스 튀니 밝은 옷 조심",
       "kind": "meal",
       "booking": "none",
       "bookingNote": null,
@@ -183,7 +183,7 @@
       "date": "2026-12-01",
       "startTime": "13:45",
       "title": "상벤투역 아줄레주 → 포르투 대성당(Sé)",
-      "description": "숙소 바로 옆 역사 홀의 2만 장 타일 벽화. 대성당 테라스에서 구시가 전망. 착장: 대성당은 성당이니 모자는 벗고 들어가기. 테라스는 바람이 세요. 돌바닥이 비에 미끄러우니 밑창이 고무인 신발.",
+      "description": "상벤투역: 역사 홀 2만 장 타일 벽화(숙소 바로 옆)\n대성당 테라스에서 구시가 전망\n착장: 성당 안에서 모자 벗기, 테라스 바람 셈\n비 오면 돌바닥 미끄러움 → 고무 밑창 신발",
       "kind": "activity",
       "booking": "none",
       "bookingNote": null,
@@ -194,7 +194,7 @@
       "date": "2026-12-01",
       "startTime": "14:45",
       "title": "플로레스 거리 → 히베이라 강변 → 다리 하층으로 가이아",
-      "description": "숙소 이름의 그 거리. 내리막을 따라 강변까지, 동 루이스 1세 다리 아래층을 걸어 건넙니다. 착장: 내리막 돌길이 비에 젖으면 미끄러워요. 고무 밑창 운동화 필수. 강바람이 차니 목도리. 우산은 바람에 뒤집히기 쉬워 모자 달린 방수 겉옷이 나아요.",
+      "description": "숙소 이름의 그 거리, 내리막 따라 강변까지\n동 루이스 1세 다리 아래층을 걸어 건너기\n착장: 젖은 돌길 미끄러움 → 고무 밑창 운동화 필수\n강바람 → 목도리, 우산보다 모자 달린 방수 겉옷",
       "kind": "activity",
       "booking": "none",
       "bookingNote": null,
@@ -205,7 +205,7 @@
       "date": "2026-12-01",
       "startTime": "15:20",
       "title": "테일러스 포트와인 셀러",
-      "description": "15:20 예약 완료(74,525원). 셀러는 18:15까지, 오디오 가이드로 둘러보는 자유 관람에 시음 포함. 해 지기 전에 끝내도록 오후로 당겼어요. 착장: 셀러 안은 서늘하고(약 15℃) 어두워요. 겉옷은 입은 채로. 시음 자리라 너무 캐주얼한 운동복만 피하면 충분.",
+      "description": "15:20 예약 완료(74,525원)\n오디오 가이드 자유 관람 + 시음 포함, 셀러는 18:15까지\n해 지기 전 끝내려고 오후로 당김\n착장: 실내 약 15℃·어두움 → 겉옷 입은 채로, 운동복만 피하기",
       "kind": "activity",
       "booking": "done",
       "bookingNote": "예약 완료",
@@ -216,7 +216,7 @@
       "date": "2026-12-01",
       "startTime": "16:45",
       "title": "모루 정원 일몰 → 다리 상층으로 귀환",
-      "description": "셀러에서 도보 15분. 12월 초 일몰은 17시 조금 넘어서. 노을 뒤 다리 위층을 걸어 구시가로 돌아오면 야경이 정면. 착장: 해 지면 금방 6~8℃로 떨어지고 언덕 위라 바람이 세요. 장갑과 목도리. 노을 사진은 어두운 코트에 밝은 목도리가 포인트.",
+      "description": "셀러에서 도보 15분\n12월 초 일몰 17시 조금 넘어서\n노을 후 다리 상층으로 구시가 귀환 → 야경 정면\n착장: 해 지면 6~8℃·언덕 바람 → 장갑, 목도리\n사진: 어두운 코트에 밝은 목도리 포인트",
       "kind": "activity",
       "booking": "none",
       "bookingNote": null,
@@ -227,7 +227,7 @@
       "date": "2026-12-01",
       "startTime": "18:00",
       "title": "숙소에서 휴식",
-      "description": "다리 상층 끝에서 숙소까지 도보 10분 남짓. 착장: 저녁 식사 전에 젖은 신발과 양말 갈아신기.",
+      "description": "다리 상층 끝에서 숙소까지 도보 10분 남짓\n저녁 전 젖은 신발·양말 갈아신기",
       "kind": "rest",
       "booking": "none",
       "bookingNote": null,
@@ -238,7 +238,7 @@
       "date": "2026-12-01",
       "startTime": "20:00",
       "title": "저녁: 타베르나 두스 메르카도레스",
-      "description": "히베이라 골목의 작은 해산물 타베르나. 월요일 휴무, 화요일 영업. 좌석이 적어 예약 필수. 착장: 작은 동네 타베르나라 편한 캐주얼. 니트에 코트면 충분. 돌아오는 강변 골목이 어두우니 굽 낮은 신발.",
+      "description": "히베이라 골목의 작은 해산물 타베르나\n월요일 휴무, 화요일 영업\n좌석 적음 → 예약 필수\n착장: 니트에 코트, 어두운 강변 골목 → 굽 낮은 신발",
       "kind": "meal",
       "booking": "none",
       "bookingNote": null,
@@ -249,7 +249,7 @@
       "date": "2026-12-02",
       "startTime": "08:30",
       "title": "도루 밸리 와이너리 투어 (로투스 투어)",
-      "description": "예약 완료(395,000원, 마이리얼트립). 08:30 Pilares da Ponte Pênsil 집합, 10분 전 도착(지각 시 기다리지 않음). 미니버스 중그룹으로 바뀌면 08:00 볼사 궁전 출발. 정확한 장소는 하루 전 그룹 채팅으로 안내. 아마란트 → 대형 와이너리 포트와인 시음 → 아르마마르 바비큐 점심 → 소규모 퀸타 와인 시음. 시음비·점심은 현장에서 1인 €65 현금(카드 불가)으로 따로 내니 유로 현금 미리 준비. 착장·준비물: 12월 도루 계곡은 5~14℃에 비가 잦으니 경량패딩에 방수 겉옷을 겹쳐 입기. 포도밭 흙길이 젖어 있으니 미끄럽지 않은 운동화. 시음 자리 사진이 많으니 무채색 니트가 무난. 산길이 구불구불해 멀미약, 우산, 보조배터리. 와인을 사면 기내 반입이 안 되니 위탁 수하물에 넣을 완충재(지퍼백·뽁뽁이)도 챙기기.",
+      "description": "예약 완료(395,000원, 마이리얼트립)\n08:30 Pilares da Ponte Pênsil 집합, 10분 전 도착(지각 시 출발)\n미니버스 중그룹이면 08:00 볼사 궁전 출발, 정확한 장소는 하루 전 그룹 채팅 안내\n코스: 아마란트 → 대형 와이너리 포트와인 시음 → 아르마마르 바비큐 점심 → 소규모 퀸타 시음\n시음비·점심 1인 €65 현장 현금(카드 불가) → 유로 현금 준비\n착장: 5~14℃·비 잦음 → 경량패딩 + 방수 겉옷, 미끄럽지 않은 운동화, 무채색 니트\n준비물: 멀미약, 우산, 보조배터리, 와인 포장용 지퍼백·뽁뽁이(위탁 수하물)",
       "kind": "activity",
       "booking": "done",
       "bookingNote": "예약 완료",
@@ -260,7 +260,7 @@
       "date": "2026-12-02",
       "startTime": "17:00",
       "title": "포르투 대성당에서 투어 종료, 숙소에서 휴식",
-      "description": "종료 시각은 교통 상황에 따라 달라질 수 있어요. 대성당에서 숙소까지 도보 5분 남짓. 착장: 투어 차림 그대로. 저녁 외출 전 갈아입을 마른 신발 준비.",
+      "description": "종료 시각은 교통 상황에 따라 변동\n대성당에서 숙소까지 도보 5분 남짓\n저녁 외출 전 마른 신발로 갈아신기",
       "kind": "rest",
       "booking": "none",
       "bookingNote": null,
@@ -271,7 +271,7 @@
       "date": "2026-12-02",
       "startTime": "20:00",
       "title": "저녁: 프란세지냐 (카페 산티아구)",
-      "description": "포르투식 고기 샌드위치에 치즈와 소스를 끼얹은 명물. 하나를 나눠 먹어도 충분. 이후 알리아두스 광장 크리스마스 조명. 착장: 북적이는 캐주얼 식당. 편한 차림. 이후 광장 조명 구경은 밤 7℃ 안팎이라 코트와 장갑.",
+      "description": "포르투식 고기 샌드위치에 치즈·소스를 끼얹은 명물\n하나 나눠 먹어도 충분\n식후 알리아두스 광장 크리스마스 조명\n착장: 편한 차림, 밤 7℃ 안팎 → 코트·장갑",
       "kind": "meal",
       "booking": "none",
       "bookingNote": null,
@@ -282,7 +282,7 @@
       "date": "2026-12-03",
       "startTime": "10:00",
       "title": "느긋한 브런치",
-      "description": "전날 투어로 피곤할 테니 늦게 시작. 착장: 느긋한 날. 니트에 청바지 같은 편한 캐주얼.",
+      "description": "전날 투어 피로 → 늦게 시작\n착장: 니트에 청바지 같은 편한 캐주얼",
       "kind": "meal",
       "booking": "none",
       "bookingNote": null,
@@ -293,7 +293,7 @@
       "date": "2026-12-03",
       "startTime": "11:00",
       "title": "6개 다리 크루즈 (약 50분)",
-      "description": "히베이라 선착장 출발. 전통 라벨루 배를 타고 다리 여섯 개를 지나갑니다. 착장: 강 위는 체감온도가 3~4℃ 더 낮아요. 패딩이나 두꺼운 코트, 목도리, 장갑. 배 위 사진은 밝은 색 목도리가 잘 보여요.",
+      "description": "히베이라 선착장 출발\n전통 라벨루 배로 다리 6개 통과\n착장: 강 위 체감 3~4℃ 더 낮음 → 패딩·두꺼운 코트, 목도리, 장갑\n사진: 밝은 색 목도리가 잘 보임",
       "kind": "activity",
       "booking": "none",
       "bookingNote": null,
@@ -304,7 +304,7 @@
       "date": "2026-12-03",
       "startTime": "12:30",
       "title": "1번 트램 → 포즈 두 도루",
-      "description": "강변 정류장 인판트에서 출발, 강을 따라 대서양 하구까지 약 20분. 착장: 옛 나무 트램이라 난방이 약해요. 겉옷 그대로.",
+      "description": "강변 정류장 인판트 출발\n강 따라 대서양 하구까지 약 20분\n옛 나무 트램이라 난방 약함 → 겉옷 그대로",
       "kind": "activity",
       "booking": "none",
       "bookingNote": null,
@@ -315,7 +315,7 @@
       "date": "2026-12-03",
       "startTime": "13:30",
       "title": "점심: 마토지뉴스 생선구이 거리",
-      "description": "포즈에서 우버 10분. 숯불에 굽는 정어리·도미 같은 그날 생선. 착장: 생선구이 연기가 옷에 배요. 향이 남아도 괜찮은 겉옷으로.",
+      "description": "포즈에서 우버 10분\n숯불에 굽는 그날 생선(정어리·도미 등)\n착장: 연기 냄새 배어도 괜찮은 겉옷",
       "kind": "meal",
       "booking": "none",
       "bookingNote": null,
@@ -326,7 +326,7 @@
       "date": "2026-12-03",
       "startTime": "15:00",
       "title": "포즈 해안 산책 · 펠게이라스 등대",
-      "description": "파도가 방파제를 넘는 풍경. 바람이 세니 겉옷 필수. 이후 숙소로 돌아가 짐 미리 싸기. 착장: 대서양 바람이 아주 세고 물보라가 튀어요. 모자 달린 방수 겉옷, 목도리, 장갑. 우산은 쓸모없어요. 방파제는 젖어 미끄러우니 운동화.",
+      "description": "파도가 방파제를 넘는 풍경\n이후 숙소로 돌아가 짐 미리 싸기\n착장: 바람·물보라 셈 → 모자 달린 방수 겉옷, 목도리, 장갑(우산 무용)\n젖은 방파제 미끄러움 → 운동화",
       "kind": "activity",
       "booking": "none",
       "bookingNote": null,
@@ -337,7 +337,7 @@
       "date": "2026-12-03",
       "startTime": "19:30",
       "title": "허니문 디너: 더 예트먼 (The Yeatman)",
-      "description": "가이아 언덕의 미쉐린 2스타. 화~토 저녁만 영업하고 좌석은 18:30·19:30·20:30 세 번이라 목요일 19:30이 맞습니다. 예약 시 신혼여행이라고 적어두세요. 대안: 안티쿰(Antiqvvm, 1스타). 착장: 미쉐린 2스타 허니문 디너. 스마트 캐주얼 이상: 남자는 셔츠에 재킷(타이 불필요), 여자는 원피스나 블라우스에 슬랙스. 운동화·청바지·후드는 피하기. 언덕 위 테라스는 밤 7℃ 안팎이라 코트는 맡기고, 굽은 돌길에 맞게 낮게.",
+      "description": "가이아 언덕의 미쉐린 2스타\n화~토 저녁만, 좌석 18:30·19:30·20:30 → 목요일 19:30\n예약 시 신혼여행이라고 적기\n대안: 안티쿰(Antiqvvm, 1스타)\n착장: 스마트 캐주얼 이상. 남자 셔츠+재킷(타이 X), 여자 원피스 또는 블라우스+슬랙스\n운동화·청바지·후드 피하기, 굽은 낮게, 코트는 맡기기(밤 7℃ 안팎)",
       "kind": "meal",
       "booking": "none",
       "bookingNote": null,
@@ -348,7 +348,7 @@
       "date": "2026-12-04",
       "startTime": "07:45",
       "title": "체크아웃(열쇠 반납) → 우버로 공항",
-      "description": "약 20분. 셍겐 내 이동이라 출국심사 없음. 부엘링은 수하물 규정이 엄격하니 무게 미리 확인. 착장: 이동하는 날. 편한 캐주얼에 겉옷은 들고 타기. 부엘링은 무게가 엄격하니 무거운 코트와 신발은 입고 신어서 짐 줄이기.",
+      "description": "공항까지 약 20분\n셍겐 내 이동 → 출국심사 없음\n부엘링 수하물 규정 엄격 → 무게 미리 확인\n착장: 편한 캐주얼, 무거운 코트·신발은 입고 신어서 짐 줄이기",
       "kind": "transfer",
       "booking": "none",
       "bookingNote": null,
@@ -359,7 +359,7 @@
       "date": "2026-12-04",
       "startTime": "10:15",
       "title": "포르투 → 바르셀로나 · VY1175",
-      "description": "13:00 도착 (제1터미널). 착장: 짧은 비행이라 이동 차림 그대로. 바르셀로나 오후는 14℃ 안팎으로 포르투보다 따뜻해요.",
+      "description": "13:00 도착(제1터미널)\n착장: 이동 차림 그대로\n바르셀로나 오후 14℃ 안팎, 포르투보다 따뜻함",
       "kind": "flight",
       "booking": "none",
       "bookingNote": null,
@@ -370,7 +370,7 @@
       "date": "2026-12-04",
       "startTime": "13:45",
       "title": "공항 → 카사 푸스터",
-      "description": "택시 약 30분. 대중교통이면 에어로부스로 카탈루냐 광장 후 메트로. 짐이 있으면 택시가 편해요. 착장: 겉옷은 벗어 들 정도의 날씨.",
+      "description": "택시 약 30분(짐 있으면 추천)\n대중교통: 에어로부스 → 카탈루냐 광장 → 메트로\n착장: 겉옷 벗어 들 정도",
       "kind": "transfer",
       "booking": "none",
       "bookingNote": null,
@@ -381,7 +381,7 @@
       "date": "2026-12-04",
       "startTime": "14:30",
       "title": "짐 맡기고 늦은 점심",
-      "description": "호텔 바로 위가 그라시아 지구. 동네 타파스 바에서 가볍게. 착장: 동네 바라 편한 캐주얼. 낮에는 니트 한 장에 가벼운 코트면 충분.",
+      "description": "호텔 바로 위가 그라시아 지구\n동네 타파스 바에서 가볍게\n착장: 니트 한 장에 가벼운 코트",
       "kind": "meal",
       "booking": "none",
       "bookingNote": null,
@@ -392,7 +392,7 @@
       "date": "2026-12-04",
       "startTime": "16:30",
       "title": "카사 바트요",
-      "description": "호텔에서 그라시아 거리를 따라 도보 15분. 해 질 무렵 입장하면 옥상에서 노을. 약 1시간 30분. 착장: 실내 관람 후 옥상으로 나가요. 해 질 무렵 옥상은 바람이 차니 코트 챙기기. 무지갯빛 타일 앞 사진은 단색 옷이 잘 받아요.",
+      "description": "호텔에서 그라시아 거리 따라 도보 15분\n해 질 무렵 입장 → 옥상에서 노을\n약 1시간 30분\n착장: 옥상 바람 차니 코트, 무지갯빛 타일 앞은 단색 옷",
       "kind": "activity",
       "booking": "required",
       "bookingNote": "예약",
@@ -403,7 +403,7 @@
       "date": "2026-12-04",
       "startTime": "18:30",
       "title": "그라시아 거리 산책",
-      "description": "카사 아마트예르, 크리스마스 조명. 호텔로 돌아와 체크인 정리. 착장: 그라시아 거리는 명품 거리라 조금 단정한 캐주얼이 어울려요. 밤 10℃ 안팎이라 코트.",
+      "description": "카사 아마트예르, 크리스마스 조명\n호텔로 돌아와 체크인 정리\n착장: 명품 거리라 단정한 캐주얼, 밤 10℃ 안팎 → 코트",
       "kind": "activity",
       "booking": "none",
       "bookingNote": null,
@@ -414,7 +414,7 @@
       "date": "2026-12-04",
       "startTime": "20:30",
       "title": "저녁: 타파스 (세르베세리아 카탈라나 또는 타파스 24)",
-      "description": "카사 바트요에서 둘 다 도보 5~10분. 카탈라나는 예약을 받지 않아 30분~1시간 대기가 흔하니 바에서 한 잔 하며 기다리세요. 착장: 북적이는 타파스 바. 스마트 캐주얼이면 충분. 서서 기다릴 수 있으니 편한 신발.",
+      "description": "카사 바트요에서 둘 다 도보 5~10분\n카탈라나는 예약 불가, 30분~1시간 대기 흔함 → 바에서 한 잔 하며 대기\n착장: 스마트 캐주얼, 서서 기다릴 수 있으니 편한 신발",
       "kind": "meal",
       "booking": "none",
       "bookingNote": null,
@@ -425,7 +425,7 @@
       "date": "2026-12-04",
       "startTime": "22:00",
       "title": "카사 푸스터 루프탑 테라스 한 잔",
-      "description": "호텔 옥상에서 바르셀로나 야경. 겨울 운영 여부와 시간은 체크인 때 프런트에 확인하세요. 착장: 루프탑 밤바람은 8℃ 안팎. 디너 차림에 코트와 목도리.",
+      "description": "호텔 옥상에서 바르셀로나 야경\n겨울 운영 여부·시간은 체크인 때 프런트 확인\n착장: 밤 8℃ 안팎 → 디너 차림에 코트·목도리",
       "kind": "activity",
       "booking": "none",
       "bookingNote": null,
@@ -436,7 +436,7 @@
       "date": "2026-12-05",
       "startTime": "09:30",
       "title": "구엘 공원",
-      "description": "첫 입장 시간대. 호텔에서 택시 10분. 11~15시가 가장 붐비니 일찍 갑니다. 약 1시간 30분. 착장: 아침 9~11℃, 햇볕은 따뜻하지만 언덕이라 바람이 있어요. 겹쳐 입기. 흙길과 경사로가 많으니 운동화. 모자이크 벤치 사진은 흰색·파랑 같은 단색이 잘 받아요.",
+      "description": "첫 입장 시간대, 호텔에서 택시 10분\n11~15시 가장 붐빔 → 일찍\n약 1시간 30분\n착장: 아침 9~11℃·언덕 바람 → 겹쳐 입기, 흙길·경사로 → 운동화\n사진: 모자이크 벤치엔 흰색·파랑 단색",
       "kind": "activity",
       "booking": "required",
       "bookingNote": "사전 예매",
@@ -447,7 +447,7 @@
       "date": "2026-12-05",
       "startTime": "11:15",
       "title": "그라시아 골목 산책하며 내려오기",
-      "description": "공원에서 내리막 도보 20분. 비레이나 광장, 솔 광장 주변 카페에서 커피 한 잔. 착장: 햇볕 드는 광장은 따뜻해 겉옷을 벗어 들 수 있게 겹쳐 입기. 골목 돌길이라 운동화.",
+      "description": "공원에서 내리막 도보 20분\n비레이나 광장, 솔 광장 주변 카페에서 커피\n착장: 볕 든 광장은 따뜻 → 벗기 쉬운 겹쳐 입기, 돌길이라 운동화",
       "kind": "activity",
       "booking": "none",
       "bookingNote": null,
@@ -458,7 +458,7 @@
       "date": "2026-12-05",
       "startTime": "13:00",
       "title": "점심: 가우디 대로 테라스",
-      "description": "그라시아에서 택시 10분. 사그라다 바로 앞까지 이어진 보행자 거리에서 성당을 바라보며 여유 있게. 착장: 낮 테라스는 햇볕이 있으면 14℃ 안팎이라 코트를 의자에 걸 정도. 그늘은 서늘하니 목도리는 가방에.",
+      "description": "그라시아에서 택시 10분\n사그라다 바로 앞 보행자 거리, 성당 보며 여유 있게\n착장: 볕 있으면 14℃ 안팎, 그늘 대비 목도리는 가방에",
       "kind": "meal",
       "booking": "none",
       "bookingNote": null,
@@ -469,7 +469,7 @@
       "date": "2026-12-05",
       "startTime": "14:45",
       "title": "사그라다 파밀리아",
-      "description": "14:30까지 입구 도착(보안검색, 큰 가방과 금속 장식은 줄이기). 점심 장소에서 도보 5분. 오디오가이드 포함 약 1시간 30분~2시간. 오후 햇살이 서쪽 '수난의 파사드' 쪽 스테인드글라스를 통과해 실내가 주황·붉은빛으로 물드는 시간대. 토요일은 18시에 닫아요. 착장: 성당 복장 규정: 어깨를 가리고 짧은 반바지·치마는 금지, 모자는 벗기. 겨울 차림이면 문제없어요. 실내는 서늘하니 겉옷 입은 채로. 빛을 담는 사진에는 흰색·베이지 같은 밝은 옷이 따뜻한 색감을 잘 받아요.",
+      "description": "14:30까지 입구 도착(보안검색 → 큰 가방·금속 장식 줄이기)\n점심 장소에서 도보 5분\n오디오가이드 포함 약 1시간 30분~2시간\n오후 햇살이 '수난의 파사드' 스테인드글라스 통과 → 실내가 주황·붉은빛\n토요일 18시 마감\n복장 규정: 어깨 가리기, 짧은 반바지·치마 금지, 모자 벗기\n착장: 실내 서늘 → 겉옷 입은 채로, 흰색·베이지 옷이 빛을 잘 받음",
       "kind": "activity",
       "booking": "done",
       "bookingNote": "사전 예매",
@@ -480,7 +480,7 @@
       "date": "2026-12-05",
       "startTime": "17:15",
       "title": "가우디 광장 연못에서 본 사그라다",
-      "description": "관람을 마치고 나오면 해 질 무렵. 성당 동쪽 가우디 광장 연못 건너편에서 조명이 켜지는 '탄생의 파사드'가 물에 비칩니다. 착장: 해 지면 8~10℃. 연못가에 오래 서 있으니 목도리와 장갑.",
+      "description": "관람 후 해 질 무렵\n성당 동쪽 가우디 광장 연못 건너편에서 조명 켜진 '탄생의 파사드' 반영\n착장: 해 지면 8~10℃ → 목도리·장갑",
       "kind": "activity",
       "booking": "none",
       "bookingNote": null,
@@ -491,7 +491,7 @@
       "date": "2026-12-05",
       "startTime": "18:30",
       "title": "고딕 지구: 대성당 + 산타 루시아 크리스마스 마켓",
-      "description": "택시 15분. 대성당 앞 광장에 서는 바르셀로나에서 가장 오래된 성탄 시장. 내일은 공휴일이라 상점이 닫으니 쇼핑은 오늘. 착장: 밤 마켓은 사람이 많아요. 크로스백을 몸 앞으로 메고 지퍼 달린 코트 주머니 쓰기(소매치기 주의). 목도리 필수.",
+      "description": "택시 15분\n대성당 앞 광장, 바르셀로나에서 가장 오래된 성탄 시장\n내일 공휴일 → 쇼핑은 오늘\n소매치기 주의: 크로스백은 몸 앞, 지퍼 달린 코트 주머니\n착장: 목도리 필수",
       "kind": "activity",
       "booking": "none",
       "bookingNote": null,
@@ -502,7 +502,7 @@
       "date": "2026-12-05",
       "startTime": "20:30",
       "title": "저녁: 세트 포르테스 (7 Portes) 파에야",
-      "description": "고딕 지구에서 도보 10분. 1836년부터 이어온 노포. 해산물 파에야와 검은 오징어먹물 쌀요리. 택시로 호텔 복귀. 착장: 1836년 노포의 클래식한 식당. 스마트 캐주얼(셔츠나 니트에 코트)이 분위기에 맞아요.",
+      "description": "고딕 지구에서 도보 10분\n1836년부터 이어온 노포\n해산물 파에야, 오징어먹물 쌀요리\n택시로 호텔 복귀\n착장: 스마트 캐주얼(셔츠나 니트에 코트)",
       "kind": "meal",
       "booking": "none",
       "bookingNote": null,
@@ -513,7 +513,7 @@
       "date": "2026-12-06",
       "startTime": "07:30",
       "title": "이른 아침 식사",
-      "description": "호텔 조식이 가장 간편. 착장: 몬세라트 출발 전. 아래 투어 차림으로 바로 나가기.",
+      "description": "호텔 조식이 가장 간편\n몬세라트 투어 차림으로 바로 출발",
       "kind": "meal",
       "booking": "none",
       "bookingNote": null,
@@ -524,7 +524,7 @@
       "date": "2026-12-06",
       "startTime": "08:30",
       "title": "몬세라트 오전 투어",
-      "description": "12:00 소년 합창단 공연 전에 도착하는 오전 투어로. 후보: 마이리얼트립 NomadBenz 몬세라트 오전(한국어, 4.9). 산 위는 시내보다 5℃쯤 낮고 바람이 세니 따뜻하게. 검은 성모상 앞은 줄이 길어요. 착장: 해발 약 720m라 시내보다 5℃쯤 낮은 0~8℃에 바람이 셉니다. 경량패딩에 두꺼운 겉옷, 목도리, 장갑, 귀까지 덮는 모자. 돌길과 계단이 많으니 운동화. 바실리카는 성당이라 모자는 실내에서 벗기.",
+      "description": "12:00 소년 합창단 공연 전 도착하는 오전 투어\n후보: 마이리얼트립 NomadBenz 몬세라트 오전(한국어, 4.9)\n검은 성모상 앞 줄 긺\n착장: 해발 약 720m, 0~8℃·바람 셈 → 경량패딩 + 두꺼운 겉옷, 목도리, 장갑, 귀 덮는 모자\n돌길·계단 많음 → 운동화, 바실리카 안에서 모자 벗기",
       "kind": "activity",
       "booking": "required",
       "bookingNote": "사전 예매",
@@ -535,7 +535,7 @@
       "date": "2026-12-06",
       "startTime": "12:00",
       "title": "에스콜라니아 소년 합창단 (Salve·Virolai)",
-      "description": "바실리카에서 일요일·공휴일 12:00. 20분 전에 들어가 자리 잡기. 시각은 수도원 사이트에서 다시 확인. 착장: 미사와 같은 전례 공간. 모자 벗고 조용히. 실내도 추워요.",
+      "description": "바실리카, 일요일·공휴일 12:00\n20분 전 입장해 자리 잡기\n시각은 수도원 사이트에서 재확인\n착장: 전례 공간 → 모자 벗고 조용히, 실내도 추움",
       "kind": "activity",
       "booking": "none",
       "bookingNote": null,
@@ -546,7 +546,7 @@
       "date": "2026-12-06",
       "startTime": "14:30",
       "title": "바르셀로나 복귀, 호텔에서 휴식",
-      "description": "투어 종료 시각에 따라 늦은 점심. 착장: 돌아와서 저녁 전에 따뜻하게 갈아입기.",
+      "description": "투어 종료 시각에 따라 늦은 점심\n저녁 전 따뜻하게 갈아입기",
       "kind": "rest",
       "booking": "none",
       "bookingNote": null,
@@ -557,7 +557,7 @@
       "date": "2026-12-06",
       "startTime": "20:00",
       "title": "마지막 밤 저녁: 그라시아 지구",
-      "description": "많은 식당이 일요일 저녁 휴무라 영업 여부를 꼭 확인. 호텔에서 도보권인 그라시아가 편해요. 착장: 마지막 밤 저녁. 조금 차려입은 스마트 캐주얼로 사진 남기기. 밤 9℃ 안팎이라 코트.",
+      "description": "일요일 저녁 휴무 식당 많음 → 영업 여부 꼭 확인\n호텔에서 도보권인 그라시아가 편함\n착장: 조금 차려입은 스마트 캐주얼, 밤 9℃ 안팎 → 코트",
       "kind": "meal",
       "booking": "none",
       "bookingNote": null,
@@ -568,7 +568,7 @@
       "date": "2026-12-07",
       "startTime": "09:30",
       "title": "체크아웃 후 짐 맡기기",
-      "description": "착장: 오늘은 오후에 장거리 비행. 편하면서 사진에 남을 만한 깔끔한 캐주얼.",
+      "description": "착장: 오후 장거리 비행 → 편하면서 사진에 남을 깔끔한 캐주얼",
       "kind": "transfer",
       "booking": "none",
       "bookingNote": null,
@@ -579,7 +579,7 @@
       "date": "2026-12-07",
       "startTime": "10:00",
       "title": "카사 밀라 (라 페드레라)",
-      "description": "호텔에서 도보 8분. 굴뚝 조각이 늘어선 물결 모양 옥상. 약 1시간 15분. 착장: 옥상 바람이 차니 코트. 굴뚝 조각 사이 사진은 단색 옷이 잘 받아요.",
+      "description": "호텔에서 도보 8분\n굴뚝 조각이 늘어선 물결 모양 옥상\n약 1시간 15분\n착장: 옥상 바람 → 코트, 사진엔 단색 옷",
       "kind": "activity",
       "booking": "required",
       "bookingNote": "예매",
@@ -590,7 +590,7 @@
       "date": "2026-12-07",
       "startTime": "11:30",
       "title": "보케리아 시장 → 람블라스 일부",
-      "description": "그라시아 거리를 따라 내려가 메트로 L3 리세우역 근처. 월요일이라 시장이 열어요. 람블라스는 소매치기 주의. 포트와인 등 액체류 기념품은 위탁 수하물에. 착장: 시장은 북적여요. 가방은 몸 앞으로. 겉옷 주머니에 휴대폰 두지 않기.",
+      "description": "그라시아 거리 따라 내려가 메트로 L3 리세우역 근처\n월요일이라 시장 영업\n람블라스 소매치기 주의 → 가방은 몸 앞, 겉옷 주머니에 휴대폰 X\n포트와인 등 액체류 기념품은 위탁 수하물에",
       "kind": "activity",
       "booking": "none",
       "bookingNote": null,
@@ -601,7 +601,7 @@
       "date": "2026-12-07",
       "startTime": "12:45",
       "title": "점심: 보케리아 시장",
-      "description": "시장 안 카운터 바(피노초 등)에서 서서 먹는 점심. 마지막 하몽과 크레마 카탈라나. 이후 택시로 호텔. 착장: 카운터에 서서 먹어요. 편한 신발.",
+      "description": "시장 안 카운터 바(피노초 등)에서 서서 먹기\n마지막 하몽, 크레마 카탈라나\n이후 택시로 호텔\n착장: 편한 신발",
       "kind": "meal",
       "booking": "none",
       "bookingNote": null,
@@ -612,7 +612,7 @@
       "date": "2026-12-07",
       "startTime": "14:15",
       "title": "호텔에서 짐 찾아 택시로 공항 (제1터미널)",
-      "description": "약 30분. 15:00 전후 도착해 수하물 위탁. 짐은 인천까지 연결돼요. 착장: 14시간 비행 대비 차림으로 미리 갈아입기. 편한 바지, 얇은 겉옷 겹쳐 입기. 인천 12월은 영하일 수 있으니 두꺼운 외투는 기내로.",
+      "description": "약 30분, 15:00 전후 도착해 수하물 위탁\n짐은 인천까지 연결\n착장: 12시간 비행 대비 편한 바지·얇은 겉옷 겹쳐 입기\n인천 12월 영하 가능 → 두꺼운 외투는 기내로",
       "kind": "transfer",
       "booking": "none",
       "bookingNote": null,
@@ -623,7 +623,7 @@
       "date": "2026-12-07",
       "startTime": "17:55",
       "title": "바르셀로나 → 파리 · AF1549",
-      "description": "19:55 2G 터미널 도착. 내리자마자 환승 표지(Correspondance) 따라 2E 터미널로 이동. 착장: 65분 환승이라 뛸 수 있게 운동화. 겉옷은 들기 쉽게.",
+      "description": "19:55 2G 터미널 도착\n내리자마자 환승 표지(Correspondance) 따라 2E 터미널로\n착장: 65분 환승 → 뛸 수 있게 운동화, 겉옷은 들기 쉽게",
       "kind": "flight",
       "booking": "none",
       "bookingNote": null,
@@ -634,7 +634,7 @@
       "date": "2026-12-07",
       "startTime": "21:00",
       "title": "파리 → 인천 · AF5092",
-      "description": "12/8(화) 17:20 인천 도착. 착장: 편한 차림에 압박 양말. 인천 도착은 영하권일 수 있어요. 두꺼운 외투를 기내에 두기.",
+      "description": "12/8(화) 17:20 인천 도착\n착장: 편한 차림에 압박 양말\n인천 영하권 가능 → 두꺼운 외투 기내에",
       "kind": "flight",
       "booking": "none",
       "bookingNote": null,
@@ -894,6 +894,307 @@
           "sortOrder": 5
         }
       ]
+    },
+    {
+      "title": "필수 · 상비",
+      "urgent": false,
+      "sortOrder": 7,
+      "items": [
+        {
+          "title": "여권",
+          "detail": "가장 중요",
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 1
+        },
+        {
+          "title": "여권 사본",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 2
+        },
+        {
+          "title": "비상 현금",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 3
+        },
+        {
+          "title": "상비약",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 4
+        },
+        {
+          "title": "손난로",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 5
+        },
+        {
+          "title": "컵라면",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 6
+        },
+        {
+          "title": "사탕",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 7
+        }
+      ]
+    },
+    {
+      "title": "전자기기",
+      "urgent": false,
+      "sortOrder": 8,
+      "items": [
+        {
+          "title": "충전기",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 1
+        },
+        {
+          "title": "이어폰",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 2
+        },
+        {
+          "title": "카메라",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 3
+        },
+        {
+          "title": "고데기",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 4
+        },
+        {
+          "title": "멀티탭",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 5
+        },
+        {
+          "title": "넷플릭스 다운로드",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 6
+        }
+      ]
+    },
+    {
+      "title": "세면 · 화장품",
+      "urgent": false,
+      "sortOrder": 9,
+      "items": [
+        {
+          "title": "클렌징",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 1
+        },
+        {
+          "title": "기초 화장품",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 2
+        },
+        {
+          "title": "화장품",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 3
+        },
+        {
+          "title": "비누",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 4
+        },
+        {
+          "title": "렌즈 용액",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 5
+        },
+        {
+          "title": "치약",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 6
+        },
+        {
+          "title": "칫솔",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 7
+        }
+      ]
+    },
+    {
+      "title": "옷",
+      "urgent": false,
+      "sortOrder": 10,
+      "items": [
+        {
+          "title": "속옷",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 1
+        },
+        {
+          "title": "양말",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 2
+        },
+        {
+          "title": "잠옷",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 3
+        },
+        {
+          "title": "7~8착장",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 4
+        },
+        {
+          "title": "블랙 셔츠",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 5
+        },
+        {
+          "title": "블랙 드레스",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 6
+        },
+        {
+          "title": "촬영 소품",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 7
+        }
+      ]
+    },
+    {
+      "title": "기내 소지품",
+      "urgent": false,
+      "sortOrder": 11,
+      "items": [
+        {
+          "title": "간단 세안도구",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 1
+        },
+        {
+          "title": "수건",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 2
+        },
+        {
+          "title": "기초 제품",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 3
+        },
+        {
+          "title": "마스크팩",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 4
+        },
+        {
+          "title": "물티슈",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 5
+        },
+        {
+          "title": "태블릿",
+          "detail": "챙길지 고민 중",
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 6
+        },
+        {
+          "title": "목베개",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 7
+        },
+        {
+          "title": "안대",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 8
+        },
+        {
+          "title": "모자",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 9
+        },
+        {
+          "title": "립밤",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 10
+        },
+        {
+          "title": "머리끈",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 11
+        }
+      ]
     }
   ],
   "bookings": [
@@ -905,7 +1206,7 @@
       "endsAt": "2026-11-30T18:30:00+01:00",
       "address": null,
       "phone": null,
-      "detail": "인천 T2 → CDG 2E · 대한항공 KE901 운항",
+      "detail": "인천 T2 → CDG 2E · 대한항공 KE901 운항 · 좌석 38A·38B",
       "url": null
     },
     {
@@ -949,7 +1250,7 @@
       "endsAt": "2026-12-08T17:20:00+09:00",
       "address": null,
       "phone": null,
-      "detail": "CDG 2E → 인천 T2 · 대한항공 KE902 운항",
+      "detail": "CDG 2E → 인천 T2 · 대한항공 KE902 운항 · 좌석 47A·47B",
       "url": null
     },
     {
@@ -988,7 +1289,7 @@
     {
       "kind": "activity",
       "title": "테일러스 포트와인 셀러 셀프 투어",
-      "refCode": null,
+      "refCode": "9254322",
       "startsAt": "2026-12-01T15:20:00+00:00",
       "endsAt": null,
       "address": "Rua do Choupelo 250, 4400-088 Vila Nova de Gaia, Portugal",
@@ -1004,7 +1305,7 @@
       "endsAt": "2026-12-02T17:00:00+00:00",
       "address": "Pilares da Ponte Pênsil, Porto, Portugal",
       "phone": null,
-      "detail": "08:20까지 집합 · 현장 지불 €130 현금만 · 17:00 포르투 대성당 해산",
+      "detail": "08:20 집합 · 17:00 포르투 대성당 해산 · 12/1 그룹 톡으로 장소 확정 · 미니버스로 바뀌면 08:00 볼사 궁전 집합",
       "url": "https://www.myrealtrip.com/offers/3519726"
     },
     {
@@ -1106,8 +1407,8 @@
       "title": "사그라다 파밀리아",
       "status": "paid",
       "currency": "EUR",
-      "amountMinor": 6000,
-      "note": "결제 금액 확인 후 수정",
+      "amountMinor": 5200,
+      "note": null,
       "sortOrder": 10
     },
     {
@@ -1122,9 +1423,9 @@
     {
       "category": "tour",
       "title": "포트와인 셀러 투어",
-      "status": "estimated",
-      "currency": "EUR",
-      "amountMinor": 5000,
+      "status": "paid",
+      "currency": "KRW",
+      "amountMinor": 74525,
       "note": null,
       "sortOrder": 12
     },
