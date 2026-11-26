@@ -1,0 +1,1 @@
+ALTER TABLE "expense" ADD COLUMN "prepaid" boolean DEFAULT false NOT NULL;

@@ -138,6 +138,7 @@ export const expense = pgTable(
     taxFreeMinor: integer('tax_free_minor'), // P1: 환급 예상액(유로 센트)
     taxFreeStatus: taxFreeStatusEnum('tax_free_status'),
     memo: text('memo'),
+    prepaid: boolean('prepaid').notNull().default(false), // 출발 전 결제(항공·숙소·보험). 일자별 내역에서 뺀다
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp('updated_at', { withTimezone: true })
       .notNull()

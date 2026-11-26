@@ -1,27 +1,55 @@
 import { Download, Plus, Receipt } from 'lucide-react'
 import Link from 'next/link'
 
-import { CATEGORIES, CATEGORY_LABEL, summarizeExpenses, SummaryTiles } from '@/entities/expense'
+import {
+  CATEGORIES,
+  CATEGORY_LABEL,
+  sumKrw,
+  summarizeExpenses,
+  SummaryTiles,
+} from '@/entities/expense'
 import { CATEGORY_ICON, CATEGORY_TONE } from '@/entities/trip'
-import { db, getSettings } from '@/shared/db'
+import { db, type expense } from '@/shared/db'
 import { formatDate, formatEur, formatKrw } from '@/shared/lib/format'
 import { getSession } from '@/shared/lib/session'
 import { Card, IconTile, PageHeader, ProgressBar, SectionTitle } from '@/shared/ui/primitives'
 
-import { SettingForm } from './settings-forms'
-
 export const metadata = { title: '경비' }
+
+type ExpenseRowItemType = typeof expense.$inferSelect
+
+const ExpenseRow = ({ e }: { e: ExpenseRowItemType }) => (
+  <li>
+    <Link
+      className="press -mx-2 flex min-h-14 items-center gap-3 rounded-[14px] px-2 py-2 text-fg no-underline hover:bg-surface-2"
+      href={`/expenses/${e.id}`}
+    >
+      <IconTile icon={CATEGORY_ICON[e.category]} tone={CATEGORY_TONE[e.category]} />
+      <span className="flex min-w-0 flex-1 flex-col">
+        <span className="truncate text-[15px] font-semibold">{e.title}</span>
+        <span className="truncate text-[13px] text-muted">
+          {e.method === 'card' ? '카드' : '현금'}
+          {e.memo && ` · ${e.memo}`}
+        </span>
+      </span>
+      <span className="mono flex shrink-0 flex-col items-end">
+        <span className="text-[15px] font-bold">{formatKrw(e.amountKrw)}</span>
+        {e.currency === 'EUR' && (
+          <span className="text-[12px] text-muted">{formatEur(e.amountMinor)}</span>
+        )}
+      </span>
+    </Link>
+  </li>
+)
 
 export const ExpensesPage = async () => {
   await getSession()
-  const [expenses, settings] = await Promise.all([
-    db.query.expense.findMany({
-      orderBy: (e, { desc }) => [desc(e.spentOn), desc(e.createdAt)],
-    }),
-    getSettings(),
-  ])
+  const expenses = await db.query.expense.findMany({
+    orderBy: (e, { desc }) => [desc(e.spentOn), desc(e.createdAt)],
+  })
   const s = summarizeExpenses(expenses)
   const dates = Object.keys(s.byDate).sort().reverse()
+  const prepaid = expenses.filter((e) => e.prepaid)
 
   return (
     <>
@@ -94,34 +122,9 @@ export const ExpensesPage = async () => {
                 </div>
                 <ul>
                   {expenses
-                    .filter((e) => e.spentOn === d)
+                    .filter((e) => !e.prepaid && e.spentOn === d)
                     .map((e) => (
-                      <li key={e.id}>
-                        <Link
-                          className="press -mx-2 flex min-h-14 items-center gap-3 rounded-[14px] px-2 py-2 text-fg no-underline hover:bg-surface-2"
-                          href={`/expenses/${e.id}`}
-                        >
-                          <IconTile
-                            icon={CATEGORY_ICON[e.category]}
-                            tone={CATEGORY_TONE[e.category]}
-                          />
-                          <span className="flex min-w-0 flex-1 flex-col">
-                            <span className="truncate text-[15px] font-semibold">{e.title}</span>
-                            <span className="truncate text-[13px] text-muted">
-                              {e.method === 'card' ? '카드' : '현금'}
-                              {e.memo && ` · ${e.memo}`}
-                            </span>
-                          </span>
-                          <span className="mono flex shrink-0 flex-col items-end">
-                            <span className="text-[15px] font-bold">{formatKrw(e.amountKrw)}</span>
-                            {e.currency === 'EUR' && (
-                              <span className="text-[12px] text-muted">
-                                {formatEur(e.amountMinor)}
-                              </span>
-                            )}
-                          </span>
-                        </Link>
-                      </li>
+                      <ExpenseRow key={e.id} e={e} />
                     ))}
                 </ul>
               </div>
@@ -130,15 +133,24 @@ export const ExpensesPage = async () => {
         )}
       </Card>
 
-      <Card>
-        <SectionTitle>환율</SectionTitle>
-        <SettingForm
-          initial={settings.fxRate}
-          label="€1당 원화 (새로 기록하는 유로 지출에 적용)"
-          name="fx_eur_krw"
-          unit="원"
-        />
-      </Card>
+      {prepaid.length > 0 && (
+        <Card>
+          <SectionTitle
+            action={
+              <span className="mono text-[13px] font-semibold text-muted">
+                {formatKrw(sumKrw(prepaid))}
+              </span>
+            }
+          >
+            사전 결제
+          </SectionTitle>
+          <ul>
+            {prepaid.map((e) => (
+              <ExpenseRow key={e.id} e={e} />
+            ))}
+          </ul>
+        </Card>
+      )}
     </>
   )
 }

@@ -8,5 +8,4 @@ export type {
   ItineraryItemType,
   TripDayType,
 } from './schema'
-export { checklistItem, expense, itineraryItem, setting, tripDay } from './schema'
-export { getSettings } from './settings'
+export { checklistItem, expense, itineraryItem, tripDay } from './schema'

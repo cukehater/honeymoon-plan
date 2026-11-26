@@ -5,6 +5,7 @@ export type ExpenseRowType = {
   spentOn: string
   category: CategoryType
   amountKrw: number
+  prepaid: boolean // 출발 전 결제. 총액·항목별에는 넣고 일자별에서는 뺀다
 }
 
 export type ExpenseSummaryType = {
@@ -34,6 +35,9 @@ export const CATEGORY_LABEL: Record<CategoryType, string> = {
   etc: '기타',
 }
 
+// €1당 원. 환율은 고정값으로 계산한다.
+export const FX_EUR_KRW = 1500
+
 // 유로 센트 × 환율 → 원
 export const eurToKrw = (cents: number, fxRate: number) => Math.round((cents * fxRate) / 100)
 
@@ -50,7 +54,7 @@ export const summarizeExpenses = (expenses: ExpenseRowType[]): ExpenseSummaryTyp
   const byDate: Record<string, number> = {}
   for (const e of expenses) {
     byCategory[e.category] += e.amountKrw
-    byDate[e.spentOn] = (byDate[e.spentOn] ?? 0) + e.amountKrw
+    if (!e.prepaid) byDate[e.spentOn] = (byDate[e.spentOn] ?? 0) + e.amountKrw
   }
   const total = sumKrw(expenses)
   return { total, count: expenses.length, byCategory, byDate }

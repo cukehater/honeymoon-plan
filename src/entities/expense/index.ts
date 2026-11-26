@@ -3,6 +3,7 @@ export {
   CATEGORY_LABEL,
   eurToKrw,
   type ExpenseSummaryType,
+  FX_EUR_KRW,
   sumKrw,
   summarizeExpenses,
 } from './model/budget'

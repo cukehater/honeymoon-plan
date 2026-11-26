@@ -6,6 +6,7 @@ const row = (o: Partial<ExpenseRowType>): ExpenseRowType => ({
   spentOn: '2026-12-05',
   category: 'food',
   amountKrw: 0,
+  prepaid: false,
   ...o,
 })
 
@@ -31,5 +32,15 @@ describe('summarizeExpenses', () => {
       air: 0,
     })
     expect(s.byDate).toEqual({ '2026-12-05': 69_300, '2026-12-07': 160_000 })
+  })
+
+  it('counts prepaid in total and category but not by date', () => {
+    const s = summarizeExpenses([
+      row({ amountKrw: 2_685_370, category: 'air', spentOn: '2026-11-30', prepaid: true }),
+      row({ amountKrw: 30_000, spentOn: '2026-11-30' }),
+    ])
+    expect(s.total).toBe(2_715_370)
+    expect(s.byCategory.air).toBe(2_685_370)
+    expect(s.byDate).toEqual({ '2026-11-30': 30_000 })
   })
 })

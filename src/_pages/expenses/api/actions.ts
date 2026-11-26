@@ -9,10 +9,11 @@ import {
   CATEGORY_LABEL,
   eurToKrw,
   ExpenseInput,
+  FX_EUR_KRW,
   parseAmount,
   resolveAmountKrw,
 } from '@/entities/expense'
-import { type CategoryType, db, expense, getSettings, itineraryItem, setting } from '@/shared/db'
+import { type CategoryType, db, expense, itineraryItem } from '@/shared/db'
 import { getSession } from '@/shared/lib/session'
 
 export type FormStateType = { error?: string } | undefined
@@ -47,8 +48,7 @@ export const createExpense = async (
   const parsed = ExpenseInput.safeParse(formObject(formData))
   if (!parsed.success) return { error: parsed.error.issues[0]!.message }
   const input = parsed.data
-  const { fxRate } = await getSettings()
-  const rate = input.currency === 'EUR' ? fxRate : 1
+  const rate = input.currency === 'EUR' ? FX_EUR_KRW : 1
   try {
     await db.insert(expense).values({
       ...input,
@@ -80,14 +80,13 @@ export const updateExpense = async (
 
   const prev = await db.query.expense.findFirst({ where: eq(expense.id, expenseId) })
   if (!prev) return { error: '지출을 찾을 수 없습니다.' }
-  const { fxRate } = await getSettings()
   try {
     await db
       .update(expense)
       .set({
         ...input,
         title: await titleFor(input),
-        ...resolveAmountKrw(prev, { ...input, amountKrw: typedKrw }, fxRate),
+        ...resolveAmountKrw(prev, { ...input, amountKrw: typedKrw }, FX_EUR_KRW),
       })
       .where(eq(expense.id, expenseId))
   } catch {
@@ -108,29 +107,4 @@ export const deleteExpense = async (id: number): Promise<FormStateType> => {
     return { error: '삭제하지 못했습니다. 다시 시도해 주세요.' }
   }
   redirect('/expenses')
-}
-
-const SettingInput = z.object({
-  key: z.literal('fx_eur_krw'),
-  value: z.coerce.number().positive('환율은 0보다 커야 합니다.').max(100000),
-})
-
-export const updateSetting = async (
-  _prev: FormStateType,
-  formData: FormData,
-): Promise<FormStateType> => {
-  await getSession()
-  const parsed = SettingInput.safeParse(formObject(formData))
-  if (!parsed.success) return { error: parsed.error.issues[0]!.message }
-  const { key, value } = parsed.data
-  try {
-    await db
-      .insert(setting)
-      .values({ key, value: JSON.stringify(value) })
-      .onConflictDoUpdate({ target: setting.key, set: { value: JSON.stringify(value) } })
-  } catch {
-    return { error: '저장하지 못했습니다. 다시 시도해 주세요.' }
-  }
-  revalidateExpenses()
-  return {}
 }

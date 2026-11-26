@@ -68,7 +68,9 @@ export const HomePage = async ({ searchParams }: PageProps<'/'>) => {
       where: (i, { eq }) => eq(i.hidden, false),
       orderBy: (i, { asc }) => [asc(i.date), asc(i.startTime), asc(i.sortOrder)],
     }),
-    db.query.expense.findMany({ columns: { spentOn: true, category: true, amountKrw: true } }),
+    db.query.expense.findMany({
+      columns: { spentOn: true, category: true, amountKrw: true, prepaid: true },
+    }),
     db.query.checklistItem.findMany({ columns: { checkedAt: true } }),
   ])
   const summary = summarizeExpenses(expenses)
@@ -87,7 +89,7 @@ export const HomePage = async ({ searchParams }: PageProps<'/'>) => {
       : null
     const minutes = nextAt ? Math.max(0, Math.round((nextAt.getTime() - now.getTime()) / 60000)) : 0
     const NowIcon = current ? KIND_ICON[current.kind] : null
-    const todaySpent = sumKrw(expenses.filter((e) => e.spentOn === today.date))
+    const todaySpent = sumKrw(expenses.filter((e) => !e.prepaid && e.spentOn === today.date))
 
     return (
       <>
