@@ -1,4 +1,4 @@
-import { Download, Plus, Receipt } from 'lucide-react'
+import { Plus, Receipt } from 'lucide-react'
 import Link from 'next/link'
 
 import {
@@ -53,19 +53,7 @@ export const ExpensesPage = async () => {
 
   return (
     <>
-      <PageHeader
-        action={
-          <a
-            download
-            className="press inline-flex min-h-11 items-center gap-1.5 rounded-full bg-surface px-4 text-[13px] font-semibold text-fg no-underline"
-            href="/api/expenses.csv"
-          >
-            <Download aria-hidden size={16} />
-            CSV
-          </a>
-        }
-        title="경비"
-      />
+      <PageHeader title="경비" />
       <SummaryTiles s={s} />
 
       {s.total > 0 && (
