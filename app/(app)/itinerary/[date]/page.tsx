@@ -1,1 +1,1 @@
-export { DayPage as default } from '@/_pages/itinerary'
+export { DayPage as default } from '@/pages/itinerary'

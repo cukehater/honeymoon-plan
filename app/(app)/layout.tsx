@@ -1,1 +1,1 @@
-export { AppLayout as default } from '@/_app/layouts'
+export { AppLayout as default } from '@/app/layouts'

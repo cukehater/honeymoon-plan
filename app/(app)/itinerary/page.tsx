@@ -1,1 +1,1 @@
-export { ItineraryPage as default, metadata } from '@/_pages/itinerary'
+export { ItineraryPage as default, metadata } from '@/pages/itinerary'

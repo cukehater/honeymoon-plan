@@ -1,1 +1,1 @@
-export { LoginPage as default, metadata } from '@/_pages/login'
+export { LoginPage as default, metadata } from '@/pages/login'

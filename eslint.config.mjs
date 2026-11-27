@@ -1,3 +1,6 @@
+import { globSync } from 'node:fs'
+import path from 'node:path'
+
 import js from '@eslint/js'
 import { defineConfig, globalIgnores } from 'eslint/config'
 import nextVitals from 'eslint-config-next/core-web-vitals'
@@ -32,6 +35,17 @@ export default defineConfig([
   ...nextVitals,
   ...nextTs,
   { settings: { next: { rootDir: ROOT || '.' } } },
+  {
+    rules: {
+      // 기본값은 src/pages(FSD 레이어)까지 라우트로 읽어 오탐한다. Next.js 루트 pages/만 지정한다
+      '@next/next/no-html-link-for-pages': [
+        'error',
+        globSync(`${ROOT}pages`, { cwd: import.meta.dirname }).map((d) =>
+          path.join(import.meta.dirname, d),
+        ),
+      ],
+    },
+  },
 
   /* 앱 소스: 팀 규칙 */
   {

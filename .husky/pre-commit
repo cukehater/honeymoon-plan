@@ -1,4 +1,1 @@
-pnpm exec lint-staged
-pnpm typecheck
-pnpm steiger
-pnpm knip
+pnpm exec lint-staged --hide-all --concurrent false

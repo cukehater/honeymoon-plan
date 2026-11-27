@@ -1,1 +1,1 @@
-export { getExpensesCsv as GET } from '@/_app/api-routes'
+export { getExpensesCsv as GET } from '@/app/api-routes'

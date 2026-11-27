@@ -1,1 +1,1 @@
-export { ChecklistPage as default, metadata } from '@/_pages/checklist'
+export { ChecklistPage as default, metadata } from '@/pages/checklist'

@@ -1,1 +1,1 @@
-export { NewExpensePage as default, newExpenseMetadata as metadata } from '@/_pages/expenses'
+export { NewExpensePage as default, newExpenseMetadata as metadata } from '@/pages/expenses'

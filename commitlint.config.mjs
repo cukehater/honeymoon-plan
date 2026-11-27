@@ -2,10 +2,10 @@ const config = {
   plugins: [
     {
       rules: {
-        'subject-korean': ({ subject }) => [
-          /[가-힣]/.test(subject ?? ''),
-          '설명은 한국어로 작성합니다.',
-        ],
+        'subject-korean': ({ subject }, when = 'always') => {
+          const korean = /[가-힣]/.test(subject ?? '')
+          return [when === 'never' ? !korean : korean, '설명은 한국어로 작성합니다.']
+        },
       },
     },
   ],

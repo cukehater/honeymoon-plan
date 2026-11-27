@@ -13,7 +13,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## 프로젝트 구조
 
 - FSD(Feature-Sliced Design). Next.js 라우트(`app/`)는 `src/` 레이어를 재수출만 한다.
-- 레이어 import는 아래 방향만: `_app → _pages → widgets → features → entities → shared`. 같은 레이어 슬라이스끼리 import하지 않는다.
+- 레이어 import는 아래 방향만: `app → pages → widgets → features → entities → shared`. 같은 레이어 슬라이스끼리 import하지 않는다.
 - 슬라이스는 `index.ts`로만 노출한다. 파일·폴더명은 kebab-case.
 - 서버 컴포넌트가 기본이다. `'use client'`는 상호작용이 필요한 말단 파일에만 둔다.
 

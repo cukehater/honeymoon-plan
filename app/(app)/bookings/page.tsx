@@ -1,1 +1,1 @@
-export { BookingsPage as default, metadata } from '@/_pages/bookings'
+export { BookingsPage as default, metadata } from '@/pages/bookings'
