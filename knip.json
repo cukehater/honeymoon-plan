@@ -1,6 +1,5 @@
 {
-  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "$schema": "./node_modules/knip/schema.json",
   "entry": ["steiger.config.ts"],
-  // src/app/pwa에서 register('/sw.js') URL 문자열로 등록해 import 그래프에 잡히지 않는다
   "ignore": ["public/sw.js"]
 }
