@@ -773,24 +773,10 @@
       "items": [
         {
           "title": "여권",
-          "detail": "가장 중요",
+          "detail": null,
           "dueNote": null,
           "checked": false,
           "sortOrder": 1
-        },
-        {
-          "title": "여권 사본",
-          "detail": null,
-          "dueNote": null,
-          "checked": false,
-          "sortOrder": 2
-        },
-        {
-          "title": "비상 현금",
-          "detail": null,
-          "dueNote": null,
-          "checked": false,
-          "sortOrder": 3
         },
         {
           "title": "상비약",
@@ -819,6 +805,27 @@
           "dueNote": null,
           "checked": false,
           "sortOrder": 7
+        },
+        {
+          "title": "물티슈",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 8
+        },
+        {
+          "title": "목베개",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 9
+        },
+        {
+          "title": "안대",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 10
         }
       ]
     },
@@ -924,6 +931,34 @@
           "dueNote": null,
           "checked": false,
           "sortOrder": 7
+        },
+        {
+          "title": "수건",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 8
+        },
+        {
+          "title": "마스크팩",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 9
+        },
+        {
+          "title": "립밤",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 10
+        },
+        {
+          "title": "머리끈",
+          "detail": null,
+          "dueNote": null,
+          "checked": false,
+          "sortOrder": 11
         }
       ]
     },
@@ -966,69 +1001,13 @@
           "dueNote": null,
           "checked": false,
           "sortOrder": 7
-        }
-      ]
-    },
-    {
-      "title": "기내 소지품",
-      "urgent": false,
-      "sortOrder": 11,
-      "items": [
-        {
-          "title": "수건",
-          "detail": null,
-          "dueNote": null,
-          "checked": false,
-          "sortOrder": 2
-        },
-        {
-          "title": "마스크팩",
-          "detail": null,
-          "dueNote": null,
-          "checked": false,
-          "sortOrder": 4
-        },
-        {
-          "title": "물티슈",
-          "detail": null,
-          "dueNote": null,
-          "checked": false,
-          "sortOrder": 5
-        },
-        {
-          "title": "목베개",
-          "detail": null,
-          "dueNote": null,
-          "checked": false,
-          "sortOrder": 7
-        },
-        {
-          "title": "안대",
-          "detail": null,
-          "dueNote": null,
-          "checked": false,
-          "sortOrder": 8
         },
         {
           "title": "모자",
           "detail": null,
           "dueNote": null,
           "checked": false,
-          "sortOrder": 9
-        },
-        {
-          "title": "립밤",
-          "detail": null,
-          "dueNote": null,
-          "checked": false,
-          "sortOrder": 10
-        },
-        {
-          "title": "머리끈",
-          "detail": null,
-          "dueNote": null,
-          "checked": false,
-          "sortOrder": 11
+          "sortOrder": 8
         }
       ]
     }

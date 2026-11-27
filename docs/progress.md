@@ -19,6 +19,7 @@
 - 2026-11-27 e2e 전수검사(e2e-regression all) 후속 수정: 홈 D-day를 첫날 tz(리스본) 대신 한국 날짜로 계산(`daysUntil`, `src/shared/lib/trip-time`, 테스트 추가). 한국 0~9시에 하루 밀려 보이던 문제(11/27 00시에 D-4). `next.config.ts`에 `devIndicators: false`: 폰 폭에서 Next.js 개발 표시기가 홈 로그아웃 버튼을 덮음(dev 전용, 에러 오버레이는 유지). `pnpm check` 통과, 브라우저로 D-3·`?now=` 11/29 23:30 KST D-1·11/30 08:00 KST D-0, 로그아웃 실제 클릭 확인(에러 0).
 - 2026-11-27 앱 이름을 "허니문 플래너"에서 "Honeymoon Plan"으로 통일: 기본 `<title>`(`root-layout.tsx`), PWA manifest `name`·`short_name`, 로그인 h1, e2e `home.spec.ts`. `pnpm check`·`pnpm test:e2e` 통과, `/login` h1·manifest 응답 확인.
 - 2026-11-27 next-preset migrate 재적용: FSD 레이어 `src/_app`·`src/_pages`를 표준 이름 `src/app`·`src/pages`로 변경(`git mv`, 라우트 재수출 `@/app`·`@/pages`), 루트 `pages/README.md` 추가, steiger `typo-in-layer-name` 예외 제거. ESLint(`no-html-link-for-pages`를 루트 `pages/`로 한정)·commitlint·lint-staged(typecheck·steiger·knip을 lint-staged 안에서 커밋될 내용으로 검사)·husky pre-commit을 프리셋으로 교체. knip의 `public/sw.js` 예외는 유지(URL 문자열 등록이라 오탐). lucide-react·vitest·agent-browser·@types/react(-dom) 최신으로. verify.sh 전체 통과, `pnpm test:e2e` 통과, 주요 5개 라우트 브라우저 확인(에러 0).
+- 2026-11-27 체크리스트 정리: '여권' 설명("가장 중요") 제거, '여권 사본'·'비상 현금' 삭제, '기내 소지품' 그룹 삭제 후 항목 이동(세면 · 화장품: 수건·마스크팩·립밤·머리끈 / 필수 · 상비: 물티슈·목베개·안대 / 옷: 모자). Neon DB 일회성 트랜잭션(UPDATE·DELETE), `seed-data.json` 동일하게 반영. 브라우저 확인은 안 함.
 
 ## 진행 중
 
